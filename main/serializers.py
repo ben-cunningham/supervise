@@ -3,16 +3,20 @@ from models import Job, Estimator, JOB_CHOICES
 
 
 class EstimatorSerializer(serializers.ModelSerializer):
+	avg_estimate = serializers.IntegerField(required=False)
+	jobs = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+	
 	class Meta:
 		model = Estimator
 		fields = (
+			'pk',
 			'avg_estimate',
 			'name',
+			'jobs',
 		)
 
 
 class JobSerializer(serializers.ModelSerializer):
-	# estimator = EstimatorSerializer(source='estimator')
 	job_type = serializers.ChoiceField(choices=JOB_CHOICES)
 
 	class Meta:
