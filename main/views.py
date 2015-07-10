@@ -1,10 +1,20 @@
-from models import Job, Estimator, ResultsCalculator
-from serializers import JobSerializer, EstimatorSerializer
+from models import Job, Estimator, ResultsCalculator, Quote, House
+from serializers import JobSerializer, EstimatorSerializer, QuoteSerializer, HouseSerializer
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+
+class HouseList(generics.ListCreateAPIView):
+	queryset = House.objects.all()
+	serializer_class = HouseSerializer
+	
+	
+class HouseDetail(generics.RetrieveUpdateDestroyAPIView):
+	queryset = House.objects.all()
+	serializer_class = HouseSerializer
+	
 
 class EstimatorList(generics.ListCreateAPIView):
 	queryset = Estimator.objects.all()
@@ -24,6 +34,16 @@ class JobList(generics.ListCreateAPIView):
 class JobDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset = Job.objects.all()
 	serializer_class = JobSerializer
+	
+	
+class QuoteList(generics.ListCreateAPIView):
+	queryset = Quote.objects.all()
+	serializer_class = QuoteSerializer
+	
+	
+class QuoteDetail(generics.RetrieveUpdateDestroyAPIView):
+	queryset = Quote.objects.all()
+	serializer_class = QuoteSerializer
 
 
 class results_calculator(APIView):

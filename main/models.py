@@ -16,6 +16,17 @@ class Estimator(models.Model):
 	avg_estimate = models.IntegerField(default=0)
 
 
+class House(models.Model):
+	address = models.CharField(max_length=100)
+	
+	
+class Quote(models.Model):
+	created = models.DateTimeField(auto_now_add=True)
+	quote = models.IntegerField()
+	won = models.BooleanField(default=False)
+	house = models.ForeignKey(House, null=True, related_name='quotes')
+
+
 class Job(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	estimator = models.ForeignKey(Estimator, null=True, related_name='jobs')
@@ -50,5 +61,4 @@ class ResultsCalculator(object):
 		return job_stats
 		
 	def estimatorTotals(self):
-		pass
-		
+		pass	
