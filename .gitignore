@@ -1,5 +1,6 @@
 venv
 *.pyc
+*.sqlite3
 staticfiles
 static/bower_components/*
 client/dist/*

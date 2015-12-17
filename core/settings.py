@@ -62,7 +62,7 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
 }
 
-ROOT_URLCONF = 'Lincor_BE.urls'
+ROOT_URLCONF = 'core.urls'
 
 CORS_ORIGIN_WHITELIST = (
 	'http://localhost:9000',
