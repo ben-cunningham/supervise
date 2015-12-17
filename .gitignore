@@ -2,3 +2,4 @@ venv
 *.pyc
 staticfiles
 static/bower_components/*
+client/dist/*
