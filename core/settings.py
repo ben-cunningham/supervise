@@ -1,18 +1,16 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
+import datetime
+import sys
 
+
+from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '-m118hah+(_et5=y8wa0rq3-8%&2$&r*tibktg&58g65gky$h^'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -44,6 +42,26 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
 )
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES' : (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES' : (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+}
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA' : datetime.timedelta(days=14),
+    'JWT_ALLOW_REFRESH': True,
+}
+
 ROOT_URLCONF = 'Lincor_BE.urls'
 
 CORS_ORIGIN_WHITELIST = (
@@ -68,25 +86,19 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Lincor_BE.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django_db',
+        'USER': 'bencunningham',
+        'PASSWORD': '5902kilkee',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
-DATABASES['default'] =  dj_database_url.config()
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -98,8 +110,20 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
+
+DEV_SPA = os.path.abspath(os.path.join(BASE_DIR, 'client', 'app'))
+# Production SPA
+PROD_SPA = os.path.abspath(os.path.join(BASE_DIR, 'client', 'dist'))
+# Chose correct SPA
+SPA_INDEX = DEV_SPA if DEBUG else PROD_SPA
+
+STATICFILES_DIRS = (
+    os.path.abspath(os.path.join(BASE_DIR, 'static')),
+    SPA_INDEX,
+)
+
+TEMPLATE_DIRS = (
+    SPA_INDEX,
+)

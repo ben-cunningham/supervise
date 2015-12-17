@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title> Lincor </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            if(localStorage.getItem('token')) {
+                $.ajax({
+                  type : "POST",
+                  url : "/api/verify-token/",
+                  async : false,
+                  data : {
+                    token : localStorage.getItem('token')
+                  },
+                  success : function(data) {
+                    window.location.replace("/");
+                  }
+              });
+            }
+        </script>
+    </head>
+    <body>
+        <form class="creation-form" role="form">
+            <div>
+                <label for="username"> Username: </label>
+                <input type="text" id="username">
+            </div>
+
+        	<div>
+                <label for="password"> Password: </label>
+                <input type="password" id="password">
+            </div>
+
+            <button type="button" onclick="onSubmit()">Submit</button>
+        </form>
+
+        or Create an Account
+
+        <form class="creation-form" role="form">
+            <div>
+                <label for="email"> Email: </label>
+                <input type="text" id="email">
+            </div>
+
+            <button type="button" onclick="onSubmit()">Submit</button>
+        </form>
+
+    </body>
+    <script>
+        function onSubmit() {
+            var username = $("#username").val();
+            var password = $("#password").val();
+
+            $.ajax({
+              type : "POST",
+              url : "/api/login/",
+              data : {
+                username : username,
+                password : password
+              },
+              success : function( data ) {
+                localStorage.setItem('token', data['token']);
+                window.location.replace("/");
+              }
+            });
+        }
+    </script>
+</html>

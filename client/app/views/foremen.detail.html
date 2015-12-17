@@ -1,0 +1,15 @@
+<div>
+    {{ foreman.user.first_name }}
+    {{ foreman.user.last_name }}
+</div>
+
+<table>
+    <tr>
+        <td>Address</td>
+        <td>Budget</td>
+    </tr>
+    <tr ng-repeat="job in jobs">
+            <td> {{ job.address }} </td>
+            <td> {{ job.budget }} </td>
+    </tr>
+</table>

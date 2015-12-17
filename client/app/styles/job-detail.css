@@ -1,0 +1,40 @@
+@import url(http://nicholastodor.com/sf/usesf.css);
+
+.body {
+	font-family: 'San Francisco Display', sans-serif;
+	padding-left: 10px;
+}
+
+.title {
+	padding-top: 10px;
+	text-align: left;		
+	font-size: 200%;	
+}
+
+#completed {
+	width: 15px;
+    height: 15px;
+    -webkit-border-radius: 7.5px;
+    -moz-border-radius: 7.5px;
+    border-radius: 7.5px;
+	background-color: #00A300;
+	display: inline-block;
+	vertical-align: middle;
+	margin: auto 5px;
+}
+
+#not-completed {
+	width: 15px;
+    height: 15px;
+    -webkit-border-radius: 7.5px;
+    -moz-border-radius: 7.5px;
+    border-radius: 7.5px;
+	background-color: #FFCC00;
+	display: inline-block;
+	vertical-align: middle;
+	margin: auto 5px;
+}
+
+table {
+	width: 300px;
+}

@@ -1,0 +1,42 @@
+<form class="creation-form" role="form" ng-submit="submit()">
+    <div>
+        <label for="address"> Address: </label>
+        <input type="text" id="address" ng-model="job.house.address">
+    </div>
+    <div>
+        <label for="budget"> Budget </label>
+        <input type="text" id="budget" ng-model="job.budget">
+    </div>
+    <div>
+        <label for="current_hours_spent"> Current no. of hours spent </label>
+        <input type="text" id="current_hours_spent" ng-model="job.current_hours_spent">
+    </div>
+
+    <div>
+        <label for="completed"> Completed? </label>
+        <input type="checkbox" id="completed" ng-model="job.completed">
+    </div>
+
+    <div>
+        <label for="job_type"> Job Type: </label>
+        <select ng-model="job.job_type" id="job_type">
+            <option value="p"> Paint </option>
+            <option value="pw"> Pressure Wash </option>
+            <option value="h"> Hourly </option>
+        </select>
+    </div>
+
+    <div>
+        <label for="Estimator"> Estimator: </label>
+        <select ng-model="job.estimator.pk" id="Estimator" ng-options="estimator.pk as estimator.user.first_name for estimator in estimators">
+        </select>
+    </div>
+
+    <div>
+        <label for="Foreman"> Foreman: </label>
+        <select ng-model="job.foreman.pk" id="Foreman" ng-options="foreman.pk as foreman.user.first_name for foreman in foremen">
+        </select>
+    </div>
+
+    <input type="submit">
+</form>

@@ -1,0 +1,28 @@
+@import url(http://nicholastodor.com/sf/usesf.css);
+
+.jobs {
+    font-family: 'San Francisco Display', sans-serif;
+}
+
+hr {
+    margin-top: 1px;
+    margin-bottom: 0.5em;
+    margin-left: 0.5em;
+    margin-right: auto;
+}
+
+.category {
+    padding: 10px;
+    font-size: 190%;
+    color: #515151;
+}
+
+.postings {
+    padding: 10px;
+    font-size: 170%;
+}
+
+.postings a {
+    text-decoration: none;
+    color: #515151;
+}

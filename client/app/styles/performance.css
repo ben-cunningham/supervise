@@ -1,0 +1,25 @@
+.container {
+    margin: 0 auto;
+    padding: 50px;
+    width: 650px;
+}
+
+.sidebar {
+    float: left;
+    width: 150px;
+    min-height: 400px;
+    background-color: #808080;
+}
+
+.sidebar a {
+    text-decoration: none;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.graph {
+    overflow:auto;
+    padding-left: 5px;
+}

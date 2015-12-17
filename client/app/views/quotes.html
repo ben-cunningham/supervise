@@ -1,0 +1,35 @@
+<div class="quotes">
+    <div class="category">
+        Quotes
+    </div>
+    <hr width=150 size=4 noshade>
+    <table>
+        <div class="quotes">
+            <tr ng-repeat="(index, quote) in quotes">
+                <td ng-if="quote.state == 0">
+                    {{ houses[index].address }}
+                    <div class="buttons">
+                        <button class="won-bid" ng-click="bidAccepted(quote.pk)">
+                            Quote Accepted
+                        </button>
+
+                        <button class="lost-bid" ng-click="bidDeclined(quote.pk)">
+                            Quote Not Accepted
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </div>
+     </table>
+     Rejected Quotes
+     <table>
+        <div class="quotes">
+            <tr ng-repeat="(index, quote) in quotes">
+                <td ng-if="quote.state == 2">
+                    {{ houses[index].address }}
+                </td>
+            </tr>
+        </div>
+     </table>
+
+</div>

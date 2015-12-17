@@ -1,0 +1,94 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html class="no-js">
+    <head>
+        <title>Lincor Web-app</title>
+        <base href="/app">
+        <!--<meta name="description" content="">-->
+        <!--<meta name="viewport" content="width=device-width">-->
+
+        <link rel="stylesheet" href="{% static 'bower_components/dist/angular-chart.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+    </head>
+    <body ng-app="lincorFeApp">
+        {% verbatim %}
+        <div class="app" ng-controller="rootController">
+            <div class="header">
+                <ul class="nav navbar-nav">
+                    <li class=""><a ui-sref="jobs">Jobs | </a></li>
+                    <li class=""><a ui-sref="quotes">Quotes | </a></li>
+                    <li class=""><a ui-sref="performance"> Performance </a></li>
+                </ul>
+                <span class="new-job">
+                    <div class="button"> <a href="">+</a></div>
+                    <div class="drop-down">
+                        <ul>
+                        <li> <a ui-sref="newQuote"> New Quote </a></li>
+                        <li> <a ui-sref="newJob"> New Job </a></li>
+                        <li> <a ui-sref="manageForemen"> Manage Foremen </a> </li>
+                        <li> <a ui-sref="logout"> Logout </a></li>
+                        </ul>
+                    </div>
+                </span>
+            </div>
+
+            <div ui-view></div>
+        </div>
+        {% endverbatim %}
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
+        <script src="{% static 'bower_components/angular/angular.js' %}"></script>
+        <script src="{% static 'bower_components/angular-resource/angular-resource.js' %}"></script>
+        <script src="{% static 'bower_components/angular-route/angular-route.js' %}"></script>
+        <script src="{% static 'bower_components/Chart.js/Chart.js' %}"></script>
+        <script src="{% static 'bower_components/angular-chart.js/dist/angular-chart.js' %}"></script>
+        <script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>
+        <script src="{% static 'bower_components/angular-modal-service/dst/angular-modal-service.js' %}"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <script src="{% static 'bower_components/Chart.js/Chart.min.js' %}"></script>
+        <script src="{% static 'bower_components/dist/angular-chart.js' %}"></script>
+        <script src="{% static 'bower_components/angular-ui-router/release/angular-ui-router.js' %}"></script>
+
+            <!-- build:js({.tmp,app}) scripts/scripts.js -->
+            <script src="{% static 'scripts/app.js' %}"></script>
+            <script src="{% static 'scripts/services.js' %}"></script>
+            <script src="{% static 'scripts/controllers/rootController.js' %}"></script>
+            <script src="{% static 'scripts/controllers/login.js' %}"></script>
+            <script src="{% static 'scripts/controllers/jobs.js' %}"></script>
+            <script src="{% static 'scripts/controllers/quotes.js' %}"></script>
+            <script src="{% static 'scripts/controllers/job-detail.js' %}"></script>
+            <script src="{% static 'scripts/controllers/new-job.js' %}"></script>
+            <script src="{% static 'scripts/controllers/new_quote.js' %}"></script>
+            <script src="{% static 'scripts/controllers/performance.js' %}"></script>
+            <script src="{% static 'scripts/controllers/manage_foremen.js' %}"></script>
+            <script src="{% static 'scripts/controllers/foreman.detail.js' %}"></script>
+            <script src="{% static 'scripts/controllers/foreman.create.js' %}"></script>
+        <!-- endbuild -->
+    </body>
+
+<script>
+
+$(".drop-down").hide();
+
+$(document).click(function () {
+   $(".drop-down").hide();
+});
+
+$(".new-job").click(function(e) {
+   e.stopPropagation();
+   $(".drop-down").show();
+});
+
+$(".drop-down, li").click(function(e) {
+   $(".drop-down").hide();
+});
+
+</script>
+</html>

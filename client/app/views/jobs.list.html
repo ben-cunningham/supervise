@@ -1,0 +1,17 @@
+<div class="jobs">
+    <div class="category">
+        On-Going
+    </div>
+    <hr width=150 size=4 noshade>
+    <div class="postings" ng-repeat="job in jobs | filter: { completed : false }">
+        <a ui-sref="jobs-detail({ pk: {{ job.pk }}})"> {{ job.house.address }} </a>
+    </div>
+
+    <div class="category">
+        Completed
+    </div>
+    <hr width=150 size=4 noshade>
+    <div class="postings" ng-repeat="job in jobs | filter: { completed : true }">
+        <a ui-sref="jobs-detail({ pk: job.pk })"> {{ job.house.address }} </a>
+    </div> 
+</div>
