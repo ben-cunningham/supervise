@@ -26,6 +26,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'sign_in',
+    'employees',
+    'tasks',
     'rest_framework',
     'corsheaders',
 )
