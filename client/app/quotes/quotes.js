@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lincorFeApp.controllers').controller('QuotesCtrl', ['$scope','Quotes', 'House', 'Quote', 'Jobs', '$state',
+angular.module('myApp.quotes').controller('QuotesCtrl', ['$scope','Quotes', 'House', 'Quote', 'Jobs', '$state',
     function($scope, Quotes, House, Quote, Jobs,  $state) {
         $scope.houses = []
 

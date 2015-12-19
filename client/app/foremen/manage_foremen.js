@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lincorFeApp.controllers')
+angular.module('myApp.foremen')
   .controller('manageForemenCtrl', ['$scope', 'Foremen', function($scope, Foremen) {
         $scope.foremen = Foremen.getForemen(null);
 

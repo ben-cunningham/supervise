@@ -57,20 +57,23 @@
         <script src="{% static 'bower_components/angular-ui-router/release/angular-ui-router.js' %}"></script>
 
             <!-- build:js({.tmp,app}) scripts/scripts.js -->
-            <script src="{% static 'scripts/app.js' %}"></script>
-            <script src="{% static 'scripts/services.js' %}"></script>
-            <script src="{% static 'scripts/controllers/rootController.js' %}"></script>
-            <script src="{% static 'scripts/controllers/login.js' %}"></script>
-            <script src="{% static 'scripts/controllers/jobs.js' %}"></script>
-            <script src="{% static 'scripts/controllers/quotes.js' %}"></script>
-            <script src="{% static 'scripts/controllers/job-detail.js' %}"></script>
-            <script src="{% static 'scripts/controllers/new-job.js' %}"></script>
-            <script src="{% static 'scripts/controllers/new_quote.js' %}"></script>
-            <script src="{% static 'scripts/controllers/performance.js' %}"></script>
-            <script src="{% static 'scripts/controllers/manage_foremen.js' %}"></script>
-            <script src="{% static 'scripts/controllers/foreman.detail.js' %}"></script>
-            <script src="{% static 'scripts/controllers/foreman.create.js' %}"></script>
-        <!-- endbuild -->
+            <script src="{% static 'app.js' %}"></script>
+            <script src="{% static 'services.js' %}"></script>
+            <script src="{% static 'rootController.js' %}"></script>
+            <script src="{% static 'performance.js' %}"></script>
+
+            <script src="{% static 'foremen/manage_foremen.js' %}"></script>
+            <script src="{% static 'foremen/foreman.detail.js' %}"></script>
+            <script src="{% static 'foremen/foreman.create.js' %}"></script>
+
+            <script src="{% static 'quotes/quotes.js' %}"></script>
+            <script src="{% static 'quotes/new_quote.js' %}"></script>
+
+            <script src="{% static 'jobs/jobs.js' %}"></script>
+            <script src="{% static 'jobs/job-detail.js' %}"></script>
+            <script src="{% static 'jobs/new-job.js' %}"></script>
+            <script src="{% static 'jobs/jobs.module.js' %}"></script>
+            <!-- endbuild -->
     </body>
 
 <script>

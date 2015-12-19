@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lincorFeApp.controllers').controller('NewQuoteCtrl', ['$scope', '$stateParams','Quotes', 'Houses', 'Estimators',
+angular.module('myApp.quotes').controller('NewQuoteCtrl', ['$scope', '$stateParams','Quotes', 'Houses', 'Estimators',
     function($scope, $stateParams, Quotes, Houses, Estimators) {
 
         $scope.showNewHouse = true;

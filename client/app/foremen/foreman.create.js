@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lincorFeApp.controllers')
+angular.module('myApp.foremen')
   .controller('newForemanCtrl', ['$scope', 'Foremen', 'Jobs',  function($scope, Foremen, Jobs) {
       $scope.foreman =  null;
       $scope.submit = function() {

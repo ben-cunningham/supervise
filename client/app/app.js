@@ -1,14 +1,22 @@
 'use strict';
 
 angular.module('lincorFeApp.controllers', []);
+angular.module('lincorFeApp.services', []);
+angular.module('myApp.jobs', []);
+angular.module('myApp.quotes', []);
+angular.module('myApp.foremen', []);
+
 
 var myApp = angular
     .module('lincorFeApp', [
         'ngResource',
         'ui.router',
+        'chart.js',
         'lincorFeApp.services',
         'lincorFeApp.controllers',
-        'chart.js',
+        'myApp.jobs',
+        'myApp.quotes',
+        'myApp.foremen',
     ]);
 
 
@@ -21,7 +29,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         $stateProvider
             .state('jobs', {
                 url : '/',
-                templateUrl : '../static/views/jobs.list.html',
+                templateUrl : '../static/jobs/jobs.list.html',
                 controller : 'JobListCtrl',
                 resolve : {
                     authenticate : authenticate
@@ -29,7 +37,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('quotes', {
                 url : '/quotes',
-                templateUrl : '../static/views/quotes.html',
+                templateUrl : '../static/quotes/quotes.html',
                 controller : 'QuotesCtrl',
                 resolve : {
                     authenticate : authenticate
@@ -37,7 +45,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('jobs-detail', {
                 url : '/jobs/:pk',
-                templateUrl : '../static/views/jobs.detail.html',
+                templateUrl : '../static/jobs/jobs.detail.html',
                 controller : 'JobDetailCtrl',
                 resolve : {
                     authenticate : authenticate
@@ -45,7 +53,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('newQuote', {
                 url : '/new-quote',
-                templateUrl : '../static/views/new_quote.html',
+                templateUrl : '../static/quotes/new_quote.html',
                 controller : 'NewQuoteCtrl',
                 resolve : {
                     authenticate : authenticate
@@ -53,7 +61,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('newJob', {
                 url : '/new-job?data&isQuote',
-                templateUrl : '../static/views/new-job.html',
+                templateUrl : '../static/jobs/new-job.html',
                 controller : 'NewJobCtrl',
                 resolve : {
                     authenticate : authenticate
@@ -61,7 +69,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('manageForemen', {
                 url : '/manage-foremen',
-                templateUrl : '../static/views/manage_foremen.html',
+                templateUrl : '../static/foremen/manage_foremen.html',
                 controller : 'manageForemenCtrl',
                 resolve : {
                     authenticate : authenticate
@@ -69,7 +77,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('foremanDetail', {
               url : '/foremen/:pk',
-              templateUrl : '../static/views/foremen.detail.html',
+              templateUrl : '../static/foremen/foremen.detail.html',
               controller : 'foremanDetailCtrl',
               resolve : {
                 authenticate : authenticate
@@ -77,7 +85,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('newForeman', {
                 url : '/new-foreman',
-                templateUrl : '../static/views/foreman.create.html',
+                templateUrl : '../static/foremen/foreman.create.html',
                 controller : 'newForemanCtrl',
                 resolve : {
                     authenticate : authenticate

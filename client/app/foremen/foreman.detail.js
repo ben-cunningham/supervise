@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lincorFeApp.controllers')
+angular.module('myApp.foremen')
   .controller('foremanDetailCtrl', ['$scope', '$stateParams', 'Foremen', 'Jobs',  function($scope, $stateParams, Foremen, Jobs) {
       $scope.foreman = Foremen.getForeman($stateParams.pk, function() {
           $scope.jobs = [];
