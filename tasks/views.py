@@ -4,23 +4,22 @@ from rest_framework.views import APIView
 from models import Job, ResultsCalculator, Quote
 from serializers import JobListSerializer, JobDetailSerializer, JobCreateSerializer, JobUpdateSerializer, QuoteListSerializer, QuoteDetailSerializer
 from employees.models import Employee, Estimator, Foreman
+from main.models import Team
 
 class JobList(generics.ListCreateAPIView):
+
 	def get_queryset(self):
 		user = Employee.objects.get(user=self.request.user)
 		employee = None
+		team_pk = self.kwargs['team_pk']
+		team = Team.objects.get(pk=team_pk)
 		try:
 			if(user.is_admin):
-				employee = Estimator.objects.get(user=self.request.user)
-			else:
-				employee = Foreman.objects.get(user=self.request.user)
+				return Jobs.objects.get(team=team)
 		except:
 			return None
 
-		if(employee.is_admin == True):
-			return Job.objects.all()
-		else:
-			return Job.objects.filter(foreman=employee)
+		return Job.objects.filter(team=team).filter(foreman=employee)
 
 	def get_serializer_class(self):
 		if self.request.method == 'GET':
