@@ -37,7 +37,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('quotes', {
                 url : '/quotes',
-                templateUrl : '../static/quotes/quotes.html',
+                templateUrl : '../static/quotes/quotes.list.html',
                 controller : 'QuotesCtrl',
                 resolve : {
                     authenticate : authenticate
@@ -53,7 +53,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('newQuote', {
                 url : '/new-quote',
-                templateUrl : '../static/quotes/new_quote.html',
+                templateUrl : '../static/quotes/quotes.create.html',
                 controller : 'NewQuoteCtrl',
                 resolve : {
                     authenticate : authenticate
@@ -61,7 +61,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('newJob', {
                 url : '/new-job?data&isQuote',
-                templateUrl : '../static/jobs/new-job.html',
+                templateUrl : '../static/jobs/jobs.create.html',
                 controller : 'NewJobCtrl',
                 resolve : {
                     authenticate : authenticate
@@ -69,7 +69,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('manageForemen', {
                 url : '/manage-foremen',
-                templateUrl : '../static/foremen/manage_foremen.html',
+                templateUrl : '../static/foremen/foremen.list.html',
                 controller : 'manageForemenCtrl',
                 resolve : {
                     authenticate : authenticate
@@ -93,7 +93,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('performance', {
                 url : '/performance',
-                templateUrl : '../static/views/performance.html',
+                templateUrl : '../static/performance/performance.html',
                 controller : 'PerformanceCtrl',
                 resolve : {
                     authenticate : authenticate
