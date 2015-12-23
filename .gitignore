@@ -4,3 +4,9 @@ venv
 staticfiles
 static/bower_components/*
 client/dist/*
+employees/migrations/*
+!employees/migrations/__init__.py
+main/migrations/*
+!main/migrations/__init__.py
+tasks/migrations/*
+!tasks/migrations/__init__.py
