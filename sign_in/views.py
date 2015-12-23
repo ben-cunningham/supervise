@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 
 from forms import LoginForm, SignUpForm
 from employees.models import Estimator
-from main.models import Organization
+from main.models import Team
 
 from rest_framework_jwt.settings import api_settings
 
@@ -37,7 +37,7 @@ def sign_up(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            company = Organization.objects.create(
+            company = Team.objects.create(
                 name = request.POST['company_name'],
             )
             company.save()

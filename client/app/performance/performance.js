@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lincorFeApp.controllers').controller('PerformanceCtrl', function($scope, Jobs, Estimators) {
+angular.module('myApp.performance').controller('PerformanceCtrl', function($scope, Jobs, Estimators) {
 
     $scope.labels = [];
     var data = [];

@@ -1,5 +1,5 @@
 from django.db import models
-from main.models import Organization, House
+from main.models import Team, House
 from employees.models import Estimator, Foreman
 
 JOB_CHOICES = (
@@ -23,7 +23,7 @@ class Quote(models.Model):
 
 class Job(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
-	company = models.ForeignKey(Organization, null=True, related_name='jobs')
+	team = models.ForeignKey(Team, null=True, related_name='jobs')
 	estimator = models.ForeignKey(Estimator, null=True, related_name='jobs')
 	foreman = models.ForeignKey(Foreman, null=True, related_name='jobs')
 	budget = models.IntegerField()

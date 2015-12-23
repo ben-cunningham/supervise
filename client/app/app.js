@@ -5,6 +5,7 @@ angular.module('lincorFeApp.services', []);
 angular.module('myApp.jobs', []);
 angular.module('myApp.quotes', []);
 angular.module('myApp.foremen', []);
+angular.module('myApp.performance', []);
 
 
 var myApp = angular
@@ -17,6 +18,7 @@ var myApp = angular
         'myApp.jobs',
         'myApp.quotes',
         'myApp.foremen',
+        'myApp.performance',
     ]);
 
 

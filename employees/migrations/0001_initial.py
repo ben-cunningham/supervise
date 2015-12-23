@@ -8,7 +8,6 @@ from django.conf import settings
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0017_auto_20151218_0432'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
@@ -28,7 +27,6 @@ class Migration(migrations.Migration):
             fields=[
                 ('employee_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='employees.Employee')),
                 ('avg_estimate', models.IntegerField(default=0)),
-                ('company', models.ForeignKey(related_name='estimators', to='main.Organization', null=True)),
             ],
             options={
             },

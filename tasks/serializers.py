@@ -38,6 +38,25 @@ class JobCreateSerializer(serializers.ModelSerializer):
 			'foreman',
 		)
 
+	def create(self, validated_data):
+		team_pk = self.kwargs['team_pk']
+		team = Team.objects.get(pk=team_pk)
+		try:
+			job = Job.objects.create(
+				team=team,
+				house=validated_data['house'],
+				budget=validated_data['budget'],
+				current_hours_spent=validated_data['current_hours_spent'],
+				completed=validated_data['completed'],
+				job_type=validated_data['job_type'],
+				estimator=validated_data['estimator'],
+				foreman=validated_data['foreman'],
+			)
+			job.save()
+			return job
+		except:
+			return None
+
 class JobUpdateSerializer(serializers.ModelSerializer):
 	job_type = serializers.ChoiceField(choices=JOB_CHOICES)
 
@@ -53,6 +72,7 @@ class JobUpdateSerializer(serializers.ModelSerializer):
 		  	'estimator',
 			'foreman',
 		)
+
 class JobDetailSerializer(serializers.ModelSerializer):
 	job_type = serializers.ChoiceField(choices=JOB_CHOICES)
 	estimator = EstimatorSerializer()
