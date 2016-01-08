@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lincorFeApp.controllers').controller('rootController', ['$scope', '$window',
+angular.module('lincorFeApp').controller('rootController', ['$scope', '$window',
     function($scope, $window) {
         $scope.logout = function() {
             $window.localStorage.clear();

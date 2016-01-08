@@ -42,6 +42,8 @@
               },
               success : function( data ) {
                 localStorage.setItem('token', data['token']);
+                localStorage.setItem('team', data['employee']['team']);
+                localStorage.setItem('is_admin', data['employee']['is_admin']);
                 window.location.replace("/");
               }
             });

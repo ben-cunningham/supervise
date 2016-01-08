@@ -1,12 +1,11 @@
 'use strict';
 
-angular.module('lincorFeApp.controllers', []);
 angular.module('lincorFeApp.services', []);
 angular.module('myApp.jobs', []);
 angular.module('myApp.quotes', []);
 angular.module('myApp.foremen', []);
 angular.module('myApp.performance', []);
-
+angular.module('myApp.teams', ['ngResource']);
 
 var myApp = angular
     .module('lincorFeApp', [
@@ -14,13 +13,48 @@ var myApp = angular
         'ui.router',
         'chart.js',
         'lincorFeApp.services',
-        'lincorFeApp.controllers',
         'myApp.jobs',
         'myApp.quotes',
         'myApp.foremen',
         'myApp.performance',
     ]);
 
+myApp.run(function($rootScope, $window) {
+    if(!$window.localStorage.token) {
+        $window.location.href = '/login';
+    }
+
+    if(!$window.localStorage.team) {
+        $window.location.href = '/login';
+    }
+
+    if(!$window.localStorage.is_admin) {
+        $window.location.href = '/login';
+    }
+
+
+
+    // if(!hasNecessaryCredentials()) {
+    //     // TODO: Try to re-authenticate?
+    //     $window.location.href = '/login';
+    // }
+});
+
+function hasNecessaryCredentials() {
+    if(!$window.localStorage.token) {
+        return false;
+    }
+
+    if(!$window.localStorage.team) {
+        return false;
+    }
+
+    if(!$window.localStorage.is_admin) {
+        return false;
+    }
+
+    return true;
+}
 
 myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {

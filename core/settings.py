@@ -63,6 +63,8 @@ AUTHENTICATION_BACKENDS = (
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA' : datetime.timedelta(days=14),
     'JWT_ALLOW_REFRESH': True,
+    'JWT_RESPONSE_PAYLOAD_HANDLER':
+    'sign_in.views.jwt_response_payload_handler',
 }
 
 ROOT_URLCONF = 'core.urls'

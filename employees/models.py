@@ -7,7 +7,6 @@ class Employee(models.Model):
 	user = models.OneToOneField(User, null=True)
 	team = models.ForeignKey(Team, null=True, related_name='estimators')
 
-
 class Foreman(Employee):
 	avg_profit = models.IntegerField(default=0)
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lincorFeApp.controllers').controller('NewJobCtrl', ['$scope', '$stateParams','Jobs', 'Estimators', 'Quote', 'House', 'Foremen',
+angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams','Jobs', 'Estimators', 'Quote', 'House', 'Foremen',
     function($scope, $stateParams, Jobs, Estimators, Quote, House, Foremen) {
         $scope.estimators = Estimators.getEstimators(function() {});
         $scope.foremen = Foremen.getForemen(function() {});

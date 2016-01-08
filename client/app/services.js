@@ -1,6 +1,6 @@
 'use strict';
 
-var myApp = angular.module('lincorFeApp.services', ['ngResource']);
+var myApp = angular.module('lincorFeApp.services', ['ngResource', 'myApp.teams']);
 
 var URL = "/api/";
 
@@ -33,9 +33,10 @@ myApp.factory('Authentication', function($resource, $window) {
     };
 });
 
-myApp.factory('Jobs', function($resource) {
+myApp.factory('Jobs', function($resource, Teams) {
     var jobs = [], initialized;
-    var resource = $resource(URL + 'jobs/:pk/', { pk :'@pk'}, {
+    var team = Teams.getTeam();
+    var resource = $resource(URL +'teams/' +team +'/' +'jobs/:pk/', { pk :'@pk'}, {
                         update : { method: 'PUT' }
                     });
 
@@ -86,12 +87,13 @@ myApp.factory('Jobs', function($resource) {
     };
 });
 
-myApp.factory('Quotes', function($resource) {
+myApp.factory('Quotes', function($resource, Teams) {
    var quotes = [], initialized;
+   var team = Teams.getTeam();
 
    var getQuotes = function(completion) {
         if (!initialized) {
-           quotes = $resource(URL +  'quotes/').query(completion);
+           quotes = $resource(URL +'teams/' +team +'/' +'quotes/').query(completion);
            initialized = true;
         } else {
             completion(quotes);

@@ -6,7 +6,7 @@ var job_type = {
   "h" : "hourly"
 };
 
-angular.module('lincorFeApp.controllers')
+angular.module('myApp.jobs')
   .controller('JobDetailCtrl', ['$scope', '$stateParams', 'Jobs', 'Estimator', '$state',
       function($scope, $stateParams, Jobs, Estimator, $state) {
           $scope.job = Jobs.getJob({ pk: $stateParams.pk }, function() {

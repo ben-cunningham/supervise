@@ -2,7 +2,6 @@ from models import House, Team
 from serializers import HouseSerializer, TeamSerializer
 from rest_framework import generics
 
-
 class TeamList(generics.ListCreateAPIView):
 	queryset = Team.objects.all()
 	serializer_class = TeamSerializer

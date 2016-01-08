@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from models import Foreman, Estimator
+from models import Foreman, Estimator, Employee
 
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -11,6 +11,18 @@ class UserSerializer(serializers.ModelSerializer):
 			'email',
 			'first_name',
 			'last_name'
+		)
+
+class EmployeeSerialzier(serializers.ModelSerializer):
+	user = UserSerializer()
+
+	class Meta:
+		model = Employee
+		fields = (
+			'pk',
+			'user',
+			'team',
+			'is_admin',
 		)
 
 class EstimatorSerializer(serializers.ModelSerializer):
