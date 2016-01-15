@@ -29,6 +29,7 @@ INSTALLED_APPS = (
     'sign_in',
     'employees',
     'tasks',
+    'invitation',
     'rest_framework',
     'corsheaders',
 )

@@ -6,8 +6,8 @@ angular.module('myApp.foremen')
       $scope.submit = function() {
           console.log($scope.foreman);
           Foremen.addForeman($scope.foreman, function() {
-              
-          })
+
+          });
       }
   }
 ]);
