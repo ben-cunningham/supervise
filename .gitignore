@@ -10,3 +10,6 @@ main/migrations/*
 !main/migrations/__init__.py
 tasks/migrations/*
 !tasks/migrations/__init__.py
+invitation/migrations/*
+!invitation/migrations/__init__.py
+

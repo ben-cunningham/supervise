@@ -9,17 +9,18 @@ from main.models import Team
 class JobList(generics.ListCreateAPIView):
 
 	def get_queryset(self):
-		user = Employee.objects.get(user=self.request.user)
-		employee = None
+		employee = Employee.objects.get(user=self.request.user)
 		team_pk = self.kwargs['team_pk']
 		team = Team.objects.get(pk=team_pk)
 		try:
-			if(user.is_admin):
+			if(employee.is_admin):
 				return Jobs.objects.get(team=team)
 		except:
 			return None
 
-		return Job.objects.filter(team=team).filter(foreman=employee)
+		# TODO: Downcast so I don't need to requery
+		foreman = Foreman.objects.get(user=self.request.user)
+		return Job.objects.filter(team=team).filter(foreman=foreman)
 
 	def get_serializer_class(self):
 		if self.request.method == 'GET':

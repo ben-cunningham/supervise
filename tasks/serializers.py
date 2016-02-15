@@ -2,6 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from models import Job, Quote, JOB_CHOICES, QUOTE_STATE
 from main.serializers import HouseSerializer
+from main.models import Team
 from employees.serializers import EstimatorSerializer, ForemanSerializer
 from employees.models import Estimator
 
@@ -39,9 +40,11 @@ class JobCreateSerializer(serializers.ModelSerializer):
 		)
 
 	def create(self, validated_data):
-		team_pk = self.kwargs['team_pk']
+		view = self.context['view']
+		team_pk = view.kwargs['team_pk']
 		team = Team.objects.get(pk=team_pk)
 		try:
+			print(validated_data)
 			job = Job.objects.create(
 				team=team,
 				house=validated_data['house'],

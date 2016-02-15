@@ -1,12 +1,10 @@
 'use strict';
 
 angular.module('myApp.foremen')
-  .controller('newForemanCtrl', ['$scope', 'Foremen', 'Jobs',  function($scope, Foremen, Jobs) {
-      $scope.foreman =  null;
+  .controller('newForemanCtrl', ['$scope', 'InviteForeman',  function($scope, InviteForeman) {
       $scope.submit = function() {
-          console.log($scope.foreman);
-          Foremen.addForeman($scope.foreman, function() {
-
+          InviteForeman.invite($scope.email, function() {
+              
           });
       }
   }

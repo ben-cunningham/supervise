@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('lincorFeApp.services', []);
-angular.module('myApp.jobs', []);
-angular.module('myApp.quotes', []);
-angular.module('myApp.foremen', []);
+angular.module('myApp.jobs', ['myApp.teams']);
+angular.module('myApp.quotes', ['myApp.teams']);
+angular.module('myApp.foremen', ['myApp.teams']);
 angular.module('myApp.performance', []);
 angular.module('myApp.teams', ['ngResource']);
 
