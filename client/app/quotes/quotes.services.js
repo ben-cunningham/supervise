@@ -17,13 +17,15 @@ angular.module('myApp.quotes').factory('Quotes', function($resource, Teams) {
         return quotes;
     };
 
-    var addQuote = function(quote) {
+    var addQuote = function(quote, success, error) {
         $resource(URL +'teams/' +team +'/' +'quotes/').save(quote).$promise.then(
             function(value) {
                 quotes.push(value);
+                success();
+                console.log("services")
             },
-            function( error ){
-                console.log(error);
+            function(error){
+                error();
             }
         );
     };

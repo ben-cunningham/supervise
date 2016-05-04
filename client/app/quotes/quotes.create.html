@@ -7,15 +7,16 @@
     <div class="existing-house">
         <label for="House"> House: </label>
         <select ng-model="house" id="House" ng-options="house.pk as house.address for house in houses">
-        </select> 
+        </select>
+        <br>
+        <button type="button" ng-click="toggleNewHouse()">Add a new house</button>
     </div>
     <div class="new-house">
         <label for="address"> Address: </label>
         <input type="text" ng-model="newHouse.address" id="address">
+        <br>
+        <button type="button" ng-click="toggleNewHouse()">Choose from existing houses</button>
     </div>
-    <button type="button" ng-click="toggleNewHouse()">
-        {{ showNewHouse ? 'Add a new house' : 'Choose from existing houses' }}
-    </button>
     <div class="submit">
         <input type="submit">
     </div>
