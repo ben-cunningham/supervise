@@ -8,43 +8,43 @@ from main.models import Team
 
 class JobList(generics.ListCreateAPIView):
 
-	def get_queryset(self):
-		employee = Employee.objects.get(user=self.request.user)
-		team_pk = self.kwargs['team_pk']
-		team = Team.objects.get(pk=team_pk)
-		try:
-			if(employee.is_admin):
-				return Jobs.objects.get(team=team)
-		except:
-			return None
+    def get_queryset(self):
+        employee = Employee.objects.get(user=self.request.user)
+        team_pk = self.kwargs['team_pk']
+        team = Team.objects.get(pk=team_pk)
+        try:
+            if(employee.is_admin):
+                return Jobs.objects.get(team=team)
+        except:
+            return None
 
-		# TODO: Downcast so I don't need to requery
-		foreman = Foreman.objects.get(user=self.request.user)
-		return Job.objects.filter(team=team).filter(foreman=foreman)
+        # TODO: Downcast so I don't need to requery
+        foreman = Foreman.objects.get(user=self.request.user)
+        return Job.objects.filter(team=team).filter(foreman=foreman)
 
-	def get_serializer_class(self):
-		if self.request.method == 'GET':
-			return JobListSerializer
-		else:
-			return JobCreateSerializer
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return JobListSerializer
+        else:
+            return JobCreateSerializer
 
 class JobDetail(generics.RetrieveUpdateDestroyAPIView):
-	queryset = Job.objects.all()
-	serializer_class = JobDetailSerializer
+    queryset = Job.objects.all()
+    serializer_class = JobDetailSerializer
 
-	def get_serializer_class(self):
-		if self.request.method == 'PUT':
-			return JobUpdateSerializer
-		else:
-			return JobDetailSerializer
+    def get_serializer_class(self):
+        if self.request.method == 'PUT':
+            return JobUpdateSerializer
+        else:
+            return JobDetailSerializer
 
 class QuoteList(generics.ListCreateAPIView):
-	queryset = Quote.objects.all()
-	serializer_class = QuoteListSerializer
+    queryset = Quote.objects.all()
+    serializer_class = QuoteListSerializer
 
 class QuoteDetail(generics.RetrieveUpdateDestroyAPIView):
-	queryset = Quote.objects.all()
-	serializer_class = QuoteDetailSerializer
+    queryset = Quote.objects.all()
+    serializer_class = QuoteDetailSerializer
 
 class results_calculator(APIView):
     def get(self, request, *args, **kw):
