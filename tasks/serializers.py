@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
 from models import Job, Quote, JOB_CHOICES, QUOTE_STATE
 from main.serializers import HouseSerializer
 from main.models import Team
@@ -50,11 +49,12 @@ class JobCreateSerializer(serializers.ModelSerializer):
                 house=validated_data['house'],
                 budget=validated_data['budget'],
                 current_hours_spent=validated_data['current_hours_spent'],
-                completed=validated_data['completed'],
                 job_type=validated_data['job_type'],
                 estimator=validated_data['estimator'],
                 foreman=validated_data['foreman'],
             )
+            if 'completed' in validated_data:
+                job.completed=validated_data['completed']
             job.save()
             return job
         except:
