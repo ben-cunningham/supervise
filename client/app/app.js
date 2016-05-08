@@ -63,14 +63,6 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('jobs', {
-                url : '/',
-                templateUrl : '../static/jobs/jobs.list.html',
-                controller : 'JobListCtrl',
-                resolve : {
-                    authenticate : authenticate
-                }
-            })
             .state('quotes', {
                 url : '/quotes',
                 templateUrl : '../static/quotes/quotes.list.html',
@@ -79,26 +71,10 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     authenticate : authenticate
                 }
             })
-            .state('jobs-detail', {
-                url : '/jobs/:pk',
-                templateUrl : '../static/jobs/jobs.detail.html',
-                controller : 'JobDetailCtrl',
-                resolve : {
-                    authenticate : authenticate
-                }
-            })
             .state('newQuote', {
                 url : '/new-quote',
                 templateUrl : '../static/quotes/quotes.create.html',
                 controller : 'NewQuoteCtrl',
-                resolve : {
-                    authenticate : authenticate
-                }
-            })
-            .state('newJob', {
-                url : '/new-job?data&isQuote',
-                templateUrl : '../static/jobs/jobs.create.html',
-                controller : 'NewJobCtrl',
                 resolve : {
                     authenticate : authenticate
                 }

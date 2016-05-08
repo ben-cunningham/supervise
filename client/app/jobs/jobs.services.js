@@ -17,8 +17,6 @@ angular.module('myApp.jobs').factory('Jobs', function($resource, Teams) {
         else {
             completion(jobs);
         }
-
-        console.log("KJobs" +jobs);
         return jobs;
     };
 
