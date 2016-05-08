@@ -9,14 +9,13 @@ from rest_framework.response import Response
 from rest_framework import status
 
 class JobList(generics.ListCreateAPIView):
-
     def get_queryset(self):
         employee = Employee.objects.get(user=self.request.user)
         team_pk = self.kwargs['team_pk']
         team = Team.objects.get(pk=team_pk)
         try:
-            if(employee.is_admin):
-                return Jobs.objects.filter(team=team)
+            if employee.is_admin:
+                return Job.objects.filter(team=team)
         except:
             return None
 
