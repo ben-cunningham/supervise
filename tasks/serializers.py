@@ -110,16 +110,16 @@ class QuoteListSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         request = self.context.get('request', None)
-        user = None
         try:
             estimator = Estimator.objects.get(user=request.user)
-            quote = Quote.objects.create(
+            quote_to_submit = Quote.objects.create(
                 quote=validated_data['quote'],
                 house=validated_data['house'],
                 estimator=estimator,
+                team=estimator.team,
             )
-            quote.save()
-            return quote
+            quote_to_submit.save()
+            return quote_to_submit
         except:
             return None
 

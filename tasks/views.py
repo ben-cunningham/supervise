@@ -1,10 +1,12 @@
-from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.views import APIView
 from models import Job, ResultsCalculator, Quote
 from serializers import JobListSerializer, JobDetailSerializer, JobCreateSerializer, JobUpdateSerializer, QuoteListSerializer, QuoteDetailSerializer
 from employees.models import Employee, Estimator, Foreman
 from main.models import Team
+
+from rest_framework.response import Response
+from rest_framework import status
 
 class JobList(generics.ListCreateAPIView):
 
@@ -14,7 +16,7 @@ class JobList(generics.ListCreateAPIView):
         team = Team.objects.get(pk=team_pk)
         try:
             if(employee.is_admin):
-                return Jobs.objects.get(team=team)
+                return Jobs.objects.filter(team=team)
         except:
             return None
 
@@ -39,7 +41,15 @@ class JobDetail(generics.RetrieveUpdateDestroyAPIView):
             return JobDetailSerializer
 
 class QuoteList(generics.ListCreateAPIView):
-    queryset = Quote.objects.all()
+    def get_queryset(self):
+        employee = Employee.objects.get(user=self.request.user)
+        team = Team.objects.get(pk=employee.team.pk)
+        try:
+            if not employee.is_admin:
+                return Response(status=status.HTTP_403_FORBIDDEN)
+            return Quote.objects.filter(team=team)
+        except:
+            return None
     serializer_class = QuoteListSerializer
 
 class QuoteDetail(generics.RetrieveUpdateDestroyAPIView):

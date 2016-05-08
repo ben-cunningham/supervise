@@ -20,6 +20,7 @@ class Quote(models.Model):
     state = models.IntegerField(choices=QUOTE_STATE, default=0)
     house = models.OneToOneField(House, null=True)
     estimator = models.ForeignKey(Estimator, null=True, related_name='quotes')
+    team = models.ForeignKey(Team, null=True, related_name='quotes')
 
 class Job(models.Model):
     created = models.DateTimeField(auto_now_add=True)
