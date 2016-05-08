@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('myApp.quotes').controller('NewQuoteCtrl', ['$scope', '$stateParams','Quotes', 'Houses', 'Estimators', '$window',
-    function($scope, $stateParams, Quotes, Houses, Estimators, $window) {
+angular.module('myApp.quotes').controller('NewQuoteCtrl', ['$scope', '$stateParams','Quotes', 'Houses', 'Estimators', '$location',
+    function($scope, $stateParams, Quotes, Houses, Estimators, $location) {
 
         $scope.showNewHouse = false;
 
@@ -41,7 +41,7 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl', ['$scope', '$statePara
         function addQuote(quote) {
             Quotes.addQuote(quote,
                 function() {
-                    $window.location.href = '/quotes'
+                    $location.path('/quotes');
                 },
                 function(error) {
                     handleQuoteError(error);
