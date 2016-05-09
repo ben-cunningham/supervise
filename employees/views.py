@@ -1,7 +1,7 @@
-from django.shortcuts import render
 from rest_framework import generics
 from serializers import EstimatorSerializer, ForemanSerializer
-from models import Estimator, Foreman
+from models import Estimator, Foreman, Employee
+from main.models import Team
 
 class EstimatorList(generics.ListCreateAPIView):
     queryset = Estimator.objects.all()
@@ -12,7 +12,16 @@ class EstimatorDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EstimatorSerializer
 
 class ForemanList(generics.ListCreateAPIView):
-    queryset = Foreman.objects.all()
+
+    def get_queryset(self):
+        employee = Employee.objects.get(user=self.request.user)
+        team = Team.objects.get(pk=employee.team.pk)
+        try:
+            if employee.is_admin:
+                return Foreman.objects.filter(team=team)
+        except:
+            return None
+
     serializer_class = ForemanSerializer
 
 class ForemanDetail(generics.RetrieveUpdateDestroyAPIView):
