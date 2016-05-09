@@ -7,7 +7,7 @@
         <div class="quotes">
             <tr ng-repeat="(index, quote) in quotes">
                 <td ng-if="quote.state == 0">
-                    {{ houses[index].address }}
+                    {{ quote.house.address }}
                     <div class="buttons">
                         <button class="won-bid" ng-click="bidAccepted(quote.pk)">
                             Quote Accepted
@@ -26,7 +26,7 @@
         <div class="quotes">
             <tr ng-repeat="(index, quote) in quotes">
                 <td ng-if="quote.state == 2">
-                    {{ houses[index].address }}
+                    {{ quote.house.address }}
                 </td>
             </tr>
         </div>

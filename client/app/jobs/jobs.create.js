@@ -39,10 +39,6 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                     );
                 };
             } else {
-                $scope.job = Jobs.getJob({ pk : pk }, function(job) {
-                    console.log(job);
-                });
-
                 $scope.submit = function() {
                     var job = {};
                     job.budget = $scope.job.budget;
@@ -58,9 +54,7 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                 };
             }
         } else {  // new job without quote
-            $scope.submit = function() {
-                Jobs.addJob($scope.job);
-            };
+            alert("No quote found!");
         }
     }
 ]);

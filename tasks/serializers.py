@@ -97,6 +97,7 @@ class JobDetailSerializer(serializers.ModelSerializer):
 
 class QuoteListSerializer(serializers.ModelSerializer):
     state = serializers.ChoiceField(choices=QUOTE_STATE, required=False)
+    house = HouseSerializer()
 
     class Meta:
         model = Quote
@@ -127,6 +128,7 @@ class QuoteListSerializer(serializers.ModelSerializer):
 class QuoteDetailSerializer(serializers.ModelSerializer):
     state = serializers.ChoiceField(choices=QUOTE_STATE, required=False)
     estimator = EstimatorSerializer()
+    house = HouseSerializer()
 
     class Meta:
         model = Quote
