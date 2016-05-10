@@ -1,8 +1,8 @@
 # Lincor-Site
 Web app for painting companies to manage foremen
 
-## TODO
+# To Run
 
-- split django project into seperate apps
-- add support for photos
-- account creation
+1. `git clone git@github.com:ben-cunningham/Lincor-Site.git`
+2. `cd Lincor-Site`
+3. `python manage.py runserver`
