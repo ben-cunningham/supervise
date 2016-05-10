@@ -31,6 +31,7 @@ INSTALLED_APPS = (
     'tasks',
     'invitation',
     'team',
+    'app',
     'rest_framework',
     'corsheaders',
 )

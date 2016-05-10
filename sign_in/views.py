@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from django.contrib.auth import authenticate
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
-from django.views.generic import TemplateView
 
 from forms import LoginForm, SignUpForm
 from employees.models import Estimator, Employee
@@ -14,9 +13,6 @@ from rest_framework_jwt.settings import api_settings
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
-
-class AppView(TemplateView):
-	template_name = 'index.html'
 
 def jwt_response_payload_handler(token, user=None, request=None):
 	employee = Employee.objects.get(user=user)

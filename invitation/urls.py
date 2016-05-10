@@ -3,7 +3,7 @@ import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = (
-    url(r'^invite/', views.invitation_view),
+    url(r'', views.invitation_view),
 )
 
 urlpatterns = format_suffix_patterns(urlpatterns)
