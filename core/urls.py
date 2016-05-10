@@ -4,6 +4,7 @@ urlpatterns = [
     url(r'api/', include('main.urls')),
     url(r'api/', include('employees.urls')),
     url(r'api/', include('tasks.urls')),
+    url(r'api/', include('team.urls')),
     url(r'', include('invitation.urls')),
     url(r'', include('sign_in.urls'))
 ]

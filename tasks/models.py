@@ -1,5 +1,6 @@
 from django.db import models
-from main.models import Team, House
+from main.models import House
+from team.models import Team
 from employees.models import Estimator, Foreman
 
 JOB_CHOICES = (

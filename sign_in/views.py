@@ -8,7 +8,7 @@ from django.views.generic import TemplateView
 from forms import LoginForm, SignUpForm
 from employees.models import Estimator, Employee
 from employees.serializers import EmployeeSerialzier
-from main.models import Team
+from team.models import Team
 
 from rest_framework_jwt.settings import api_settings
 

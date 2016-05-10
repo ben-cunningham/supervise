@@ -1,7 +1,7 @@
 from rest_framework import generics
 from serializers import EstimatorSerializer, ForemanSerializer
 from models import Estimator, Foreman, Employee
-from main.models import Team
+from team.models import Team
 
 class EstimatorList(generics.ListCreateAPIView):
     queryset = Estimator.objects.all()

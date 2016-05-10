@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from models import Job, ResultsCalculator, Quote
 from serializers import JobListSerializer, JobDetailSerializer, JobCreateSerializer, JobUpdateSerializer, QuoteListSerializer, QuoteDetailSerializer
 from employees.models import Employee, Estimator, Foreman
-from main.models import Team
+from team.models import Team
 
 from rest_framework.response import Response
 from rest_framework import status

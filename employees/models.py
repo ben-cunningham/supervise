@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from main.models import Team
+from team.models import Team
 
 class Employee(models.Model):
     is_admin = models.BooleanField(default=False)

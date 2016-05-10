@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from models import Job, Quote, JOB_CHOICES, QUOTE_STATE
 from main.serializers import HouseSerializer
-from main.models import Team
+from team.models import Team
 from employees.serializers import EstimatorSerializer, ForemanSerializer
 from employees.models import Estimator
 

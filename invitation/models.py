@@ -1,5 +1,5 @@
 from django.db import models
-from main.models import Team
+from team.models import Team
 import sendgrid
 import random
 import string
