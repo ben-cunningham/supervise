@@ -54,7 +54,7 @@ class JobCreateSerializer(serializers.ModelSerializer):
                 foreman=validated_data['foreman'],
             )
             if 'completed' in validated_data:
-                job.completed=validated_data['completed']
+                job.completed = validated_data['completed']
             job.save()
             return job
         except:
@@ -113,6 +113,8 @@ class QuoteListSerializer(serializers.ModelSerializer):
         request = self.context.get('request', None)
         try:
             estimator = Estimator.objects.get(user=request.user)
+            print request.FILES
+
             quote_to_submit = Quote.objects.create(
                 quote=validated_data['quote'],
                 house=validated_data['house'],

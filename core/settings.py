@@ -32,8 +32,10 @@ INSTALLED_APPS = (
     'invitation',
     'team',
     'app',
+    'image',
     'rest_framework',
     'corsheaders',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -44,7 +46,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	'corsheaders.middleware.CorsMiddleware',
+	# 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 )
 
@@ -78,22 +80,6 @@ CORS_ORIGIN_WHITELIST = (
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
-
 WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
@@ -106,7 +92,6 @@ DATABASES = {
         'PORT': '',
     }
 }
-
 
 LANGUAGE_CODE = 'en-us'
 
@@ -132,6 +117,18 @@ STATICFILES_DIRS = (
     SPA_INDEX,
 )
 
-TEMPLATE_DIRS = (
-    SPA_INDEX,
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [SPA_INDEX],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]

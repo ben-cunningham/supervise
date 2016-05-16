@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.postgres.fields import JSONField
+
 from main.models import House
 from team.models import Team
 from employees.models import Estimator, Foreman
@@ -22,6 +24,7 @@ class Quote(models.Model):
     house = models.OneToOneField(House, null=True)
     estimator = models.ForeignKey(Estimator, null=True, related_name='quotes')
     team = models.ForeignKey(Team, null=True, related_name='quotes')
+    images = JSONField(blank=True, null=True)
 
 class Job(models.Model):
     created = models.DateTimeField(auto_now_add=True)
@@ -37,6 +40,7 @@ class Job(models.Model):
     current_hours_spent = models.IntegerField()
     profit = models.IntegerField(default=0)
     quote = models.OneToOneField(Quote, null=True)
+    images = JSONField(blank=True, null=True)
 
     def calc_profit():
         return budget - current_hours_spend
