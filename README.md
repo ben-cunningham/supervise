@@ -5,4 +5,5 @@ Web app for painting companies to manage foremen
 
 1. `git clone git@github.com:ben-cunningham/Lincor-Site.git`
 2. `cd Lincor-Site`
-3. `python manage.py runserver`
+3. `pip install -r requirements.txt`
+4. `python manage.py runserver`
