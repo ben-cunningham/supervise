@@ -45,6 +45,17 @@ class Job(models.Model):
     def calc_profit():
         return budget - current_hours_spend
 
+    def __str__(self):
+        return "%s" % self.house.address
+
+    class Meta:
+        ordering = ('created',)
+
+class CheckIn(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    text = models.CharField(max_length=500)
+    job = models.ForeignKey(Job, related_name='check_ins')
+
     class Meta:
         ordering = ('created',)
 

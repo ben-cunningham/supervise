@@ -1,13 +1,48 @@
 from rest_framework import serializers
-from models import Job, Quote, JOB_CHOICES, QUOTE_STATE
+
+from models import (
+    Job,
+    Quote,
+    CheckIn,
+    JOB_CHOICES,
+    QUOTE_STATE
+)
+
 from main.serializers import HouseSerializer
 from team.models import Team
 from employees.serializers import EstimatorSerializer, ForemanSerializer
 from employees.models import Estimator
 
+
+class CheckInSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CheckIn
+        fields = (
+            'pk',
+            'created',
+            'text',
+            'job',
+        )
+
+    def create(self, validated_data):
+        view = self.context['view']
+        job_pk = view.kwargs['pk']
+        job = Job.objects.get(pk=self.kwargs.get(job_pk))
+        check_in = CheckIn.object.create(
+            text=validated_data['text'],
+            job=job,
+        )
+        check_in.save()
+        return check_in
+
+
 class JobListSerializer(serializers.ModelSerializer):
     job_type = serializers.ChoiceField(choices=JOB_CHOICES)
     house = HouseSerializer()
+    estimator = EstimatorSerializer()
+    foreman = ForemanSerializer()
+    check_ins = CheckInSerializer(many=True, required=False)
 
     class Meta:
         model = Job
@@ -20,6 +55,7 @@ class JobListSerializer(serializers.ModelSerializer):
             'job_type',
             'estimator',
             'foreman',
+            'check_ins',
         )
 
 class JobCreateSerializer(serializers.ModelSerializer):
@@ -62,25 +98,6 @@ class JobCreateSerializer(serializers.ModelSerializer):
 
 class JobUpdateSerializer(serializers.ModelSerializer):
     job_type = serializers.ChoiceField(choices=JOB_CHOICES)
-
-    class Meta:
-        model = Job
-        fields = (
-            'pk',
-            'house',
-            'budget',
-            'current_hours_spent',
-            'completed',
-            'job_type',
-            'estimator',
-            'foreman',
-        )
-
-class JobDetailSerializer(serializers.ModelSerializer):
-    job_type = serializers.ChoiceField(choices=JOB_CHOICES)
-    estimator = EstimatorSerializer()
-    foreman = ForemanSerializer()
-    house = HouseSerializer()
 
     class Meta:
         model = Job

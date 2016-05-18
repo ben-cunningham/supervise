@@ -1,8 +1,24 @@
 from rest_framework import generics
 from rest_framework.views import APIView
-from models import Job, ResultsCalculator, Quote
-from serializers import JobListSerializer, JobDetailSerializer, JobCreateSerializer, JobUpdateSerializer, QuoteListSerializer, QuoteDetailSerializer
-from employees.models import Employee, Estimator, Foreman
+from models import (
+    Job,
+    CheckIn,
+    ResultsCalculator,
+    Quote
+)
+from serializers import (
+    JobListSerializer,
+    JobCreateSerializer,
+    CheckInSerializer,
+    JobUpdateSerializer,
+    QuoteListSerializer,
+    QuoteDetailSerializer
+)
+from employees.models import (
+    Employee,
+    Estimator,
+    Foreman
+)
 from team.models import Team
 
 from rest_framework.response import Response
@@ -30,13 +46,12 @@ class JobList(generics.ListCreateAPIView):
 
 class JobDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Job.objects.all()
-    serializer_class = JobDetailSerializer
 
     def get_serializer_class(self):
         if self.request.method == 'PUT':
             return JobUpdateSerializer
         else:
-            return JobDetailSerializer
+            return JobListSerializer
 
 class QuoteList(generics.ListCreateAPIView):
     def get_queryset(self):
@@ -53,6 +68,16 @@ class QuoteList(generics.ListCreateAPIView):
 class QuoteDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Quote.objects.all()
     serializer_class = QuoteDetailSerializer
+
+
+class CheckIn(APIView):
+    def post(self, request, format=None):
+        check_in = CheckInSerializer(data=request.data)
+        if check_in.is_valid():
+            check_in.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 class results_calculator(APIView):
     def get(self, request, *args, **kw):
