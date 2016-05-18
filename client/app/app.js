@@ -10,6 +10,7 @@ angular.module('myApp.teams', ['ngResource']);
 var myApp = angular
     .module('lincorFeApp', [
         'ngResource',
+        'ui.bootstrap',
         'ui.router',
         'chart.js',
         'lincorFeApp.services',
