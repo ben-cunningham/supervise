@@ -35,7 +35,7 @@ INSTALLED_APPS = (
     'image',
     'rest_framework',
     'corsheaders',
-    'storages',
+    # 'storages',
 )
 
 MIDDLEWARE_CLASSES = (
