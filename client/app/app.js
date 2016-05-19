@@ -2,7 +2,7 @@
 
 angular.module('lincorFeApp.services', []);
 angular.module('myApp.jobs', ['myApp.teams']);
-angular.module('myApp.quotes', ['myApp.teams']);
+angular.module('myApp.quotes', ['myApp.teams', 'ngFileUpload']);
 angular.module('myApp.foremen', ['myApp.teams']);
 angular.module('myApp.performance', []);
 angular.module('myApp.teams', ['ngResource']);
@@ -125,6 +125,11 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         }
     }
 ]);
+
+myApp.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+}]);
 
 myApp.config(['ChartJsProvider',
     function(ChartJsProvider) {

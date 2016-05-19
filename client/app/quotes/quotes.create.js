@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('myApp.quotes').controller('NewQuoteCtrl', ['$scope', '$stateParams','Quotes', 'Houses', 'Estimators', '$location',
-    function($scope, $stateParams, Quotes, Houses, Estimators, $location) {
+angular.module('myApp.quotes').controller('NewQuoteCtrl',
+    ['$scope', '$stateParams','Quotes', 'Houses', 'Estimators', '$location', '$window', 'Upload',
+    function($scope, $stateParams, Quotes, Houses, Estimators, $location, $window, Upload) {
 
         $scope.showNewHouse = false;
 
@@ -24,33 +25,45 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl', ['$scope', '$statePara
             if($scope.showNewHouse){
                 Houses.addHouse($scope.newHouse, function(id) {
                     $scope.quote.house = id;
-                    addQuote($scope.quote);
+                    addQuote($scope.quote, $scope.files);
                 });
             }
             else {
                 $scope.quote.house = $scope.house;
-                addQuote($scope.quote);
+                addQuote($scope.quote, $scope.files);
             }
         };
 
         $scope.toggleNewHouse();
 
         $scope.quote = null;
-        $scope.houses = Houses.getHouses(function() {});1
+        $scope.houses = Houses.getHouses(function() {});
 
-        function addQuote(quote) {
-            Quotes.addQuote(quote,
-                function() {
-                    $location.path('/quotes');
-                },
-                function(error) {
-                    handleQuoteError(error);
-                }
-            );
-        };
-
-        function handleError(error) {
-            alert("Encountered error: " +error);
+        function addQuote(quote, images) {
+            var token = $window.localStorage.token;
+            if(!token) {
+                alert("need token");
+            }
+            Upload.upload({
+                url: '/api/upload/',
+                data: { key: images },
+                headers: { 'Authorization': 'JWT' +token }, // only for html5
+            }).then(
+                function(resp) {
+                    console.log(resp);
+                    // Quotes.addQuote(quote,
+                    //     function() {
+                    //         $location.path('/quotes');
+                    //     },
+                    //     function(error) {
+                    //         alert("Encountered error: " +error);
+                    //     });
+                }, function(resp) {
+                    console.log(resp);
+                    // handle error
+                }, function(evt) {
+                    console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total) + '% file :'+ evt.config.data.file.name);
+                });
         };
     }
 ]);

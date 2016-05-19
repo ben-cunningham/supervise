@@ -17,7 +17,12 @@
         <br>
         <button type="button" ng-click="toggleNewHouse()">Choose from existing houses</button>
     </div>
-    <div class="submit">
-        <input type="submit">
+    <div>
+        <span>Select any photos you want to upload</span>
+        <input type="file" ngf-select ng-model="files" name="file"
+               accept="image/*" ngf-max-size="2MB" required
+               ngf-multiple="true"
+               ngf-model-invalid="errorFile">
     </div>
+    <input type="submit">
 </form>

@@ -22,10 +22,20 @@ angular.module('myApp.quotes').factory('Quotes', function($resource, Teams) {
             function(value) {
                 quotes.push(value);
                 success();
-                console.log("services")
             },
             function(error){
                 error();
+            }
+        );
+    };
+
+    var uploadImages = function(images, success, error) {
+        $resource(URL + 'upload/').save(images).$promise.then(
+            function(urls) {
+                success(urls);
+            },
+            function(error) {
+                error(error);
             }
         );
     };
@@ -36,7 +46,8 @@ angular.module('myApp.quotes').factory('Quotes', function($resource, Teams) {
 
     return {
         getQuotes : getQuotes,
-        addQuote : addQuote
+        addQuote : addQuote,
+        uploadImages : uploadImages
     };
 });
 

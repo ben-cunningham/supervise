@@ -19,11 +19,10 @@ def hash_name(name):
 
 class ImageUpload(APIView):
     def post(self, request, format=None):
-        files = self.request.FILES.getlist('image')
+        files = self.request.FILES.getlist('key[0]')
         urls = []
         for f in files:
             urls.append(upload_to_s3(f))
-        print urls
 
         content = {
             'urls': [u for u in urls]
