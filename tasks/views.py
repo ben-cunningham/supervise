@@ -63,6 +63,7 @@ class QuoteList(generics.ListCreateAPIView):
             return Quote.objects.filter(team=team)
         except:
             return None
+
     serializer_class = QuoteListSerializer
 
 class QuoteDetail(generics.RetrieveUpdateDestroyAPIView):

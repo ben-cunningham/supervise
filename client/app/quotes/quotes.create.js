@@ -50,19 +50,19 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                 headers: { 'Authorization': 'JWT' +token }, // only for html5
             }).then(
                 function(resp) {
-                    console.log(resp);
-                    // Quotes.addQuote(quote,
-                    //     function() {
-                    //         $location.path('/quotes');
-                    //     },
-                    //     function(error) {
-                    //         alert("Encountered error: " +error);
-                    //     });
+                    quote.images = resp.data.urls;
+                    Quotes.addQuote(quote,
+                        function() {
+                            $location.path('/quotes');
+                        },
+                        function(error) {
+                            alert("Encountered error: " +error);
+                        });
                 }, function(resp) {
                     console.log(resp);
                     // handle error
                 }, function(evt) {
-                    console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total) + '% file :'+ evt.config.data.file.name);
+                    // console.log(evt);
                 });
         };
     }

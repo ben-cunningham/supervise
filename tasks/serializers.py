@@ -114,7 +114,7 @@ class JobUpdateSerializer(serializers.ModelSerializer):
 
 class QuoteListSerializer(serializers.ModelSerializer):
     state = serializers.ChoiceField(choices=QUOTE_STATE, required=False)
-    house = HouseSerializer()
+    # house = HouseSerializer()
 
     class Meta:
         model = Quote
@@ -124,19 +124,21 @@ class QuoteListSerializer(serializers.ModelSerializer):
             'state',
             'house',
             'estimator',
+            'images',
         )
 
     def create(self, validated_data):
         request = self.context.get('request', None)
         try:
             estimator = Estimator.objects.get(user=request.user)
-            print request.FILES
-
             quote_to_submit = Quote.objects.create(
                 quote=validated_data['quote'],
                 house=validated_data['house'],
                 estimator=estimator,
                 team=estimator.team,
+                images={
+                    'urls':validated_data['images']
+                },
             )
             quote_to_submit.save()
             return quote_to_submit
