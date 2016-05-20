@@ -12,7 +12,8 @@ from serializers import (
     CheckInSerializer,
     JobUpdateSerializer,
     QuoteListSerializer,
-    QuoteDetailSerializer
+    QuoteDetailSerializer,
+    QuoteCreateSerializer,
 )
 from employees.models import (
     Employee,
@@ -64,7 +65,11 @@ class QuoteList(generics.ListCreateAPIView):
         except:
             return None
 
-    serializer_class = QuoteListSerializer
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return QuoteListSerializer
+        else:
+            return QuoteCreateSerializer
 
 class QuoteDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Quote.objects.all()

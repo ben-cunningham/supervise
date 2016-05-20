@@ -114,7 +114,21 @@ class JobUpdateSerializer(serializers.ModelSerializer):
 
 class QuoteListSerializer(serializers.ModelSerializer):
     state = serializers.ChoiceField(choices=QUOTE_STATE, required=False)
-    # house = HouseSerializer()
+    house = HouseSerializer()
+
+    class Meta:
+        model = Quote
+        fields = (
+            'pk',
+            'quote',
+            'state',
+            'house',
+            'estimator',
+            'images',
+        )
+
+class QuoteCreateSerializer(serializers.ModelSerializer):
+    state = serializers.ChoiceField(choices=QUOTE_STATE, required=False)
 
     class Meta:
         model = Quote
