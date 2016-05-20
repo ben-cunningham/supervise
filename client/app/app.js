@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lincorFeApp.services', []);
-angular.module('myApp.jobs', ['myApp.teams']);
+angular.module('myApp.jobs', ['myApp.teams', 'ngSanitize']);
 angular.module('myApp.quotes', ['myApp.teams', 'ngFileUpload']);
 angular.module('myApp.foremen', ['myApp.teams']);
 angular.module('myApp.performance', []);
