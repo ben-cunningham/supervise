@@ -23,14 +23,13 @@ class CheckInSerializer(serializers.ModelSerializer):
             'pk',
             'created',
             'text',
-            'job',
         )
 
     def create(self, validated_data):
         view = self.context['view']
         job_pk = view.kwargs['pk']
-        job = Job.objects.get(pk=self.kwargs.get(job_pk))
-        check_in = CheckIn.object.create(
+        job = Job.objects.get(pk=job_pk)
+        check_in = CheckIn.objects.create(
             text=validated_data['text'],
             job=job,
         )

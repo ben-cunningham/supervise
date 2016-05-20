@@ -77,8 +77,9 @@ class QuoteDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CheckIn(APIView):
-    def post(self, request, format=None):
-        check_in = CheckInSerializer(data=request.data)
+    def post(self, request, pk, team_pk, format=None):
+        # print request.data
+        check_in = CheckInSerializer(data=request.data, context={'view': self})
         if check_in.is_valid():
             check_in.save()
             return Response(status=status.HTTP_201_CREATED)
