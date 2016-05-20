@@ -105,10 +105,6 @@ body {
 	margin: auto 5px;
 }
 
-table {
-	width: 300px;
-}
-
 /************* JOB LIST ***************/
 
 .jobs {
@@ -168,18 +164,6 @@ hr {
 
 /**************** QUOTES *******************/
 
-.buttons {
-
-}
-
-.buttons .won-bid {
-	height: 40px;
-	width: 80px;
-	background-color: mediumseagreen;
-}
-
-.buttons .lost-bid {
-	background-color: red;
-	height: 40px;
-	width: 80px;
+.borderless td, .borderless th {
+    border: none;
 }

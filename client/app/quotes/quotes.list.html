@@ -2,34 +2,34 @@
     <div class="category">
         Quotes
     </div>
-    <hr width=150 size=4 noshade>
-    <table>
+    <table class="table borderless">
         <div class="quotes">
             <tr ng-repeat="(index, quote) in quotes">
-                <td ng-if="quote.state == 0">
-                    {{ quote.house.address }}
-                    <div class="buttons">
-                        <button class="won-bid" ng-click="bidAccepted(quote.pk)">
-                            Quote Accepted
-                        </button>
-
-                        <button class="lost-bid" ng-click="bidDeclined(quote.pk)">
-                            Quote Not Accepted
-                        </button>
-                    </div>
-                </td>
+                <div ng-if="quote.state == 0">
+                    <td width="10%">
+                        <img ng-src="{{ quote.images.urls[0] }}" width="72">
+                    </td>
+                    <td width="20%">
+                        Address {{ quote.house.address }} <br>
+                        Quote: {{ quote.quote }}
+                    </td>
+                    <td>
+                       <button class="btn btn-success" ng-click="bidAccepted(quote.pk)">Quote Accepted</button>
+                        <br>
+                        <button class="btn btn-danger" ng-click="bidDeclined(quote.pk)">Quote Not Accepted</button>
+                    </td>
+                </div>
             </tr>
         </div>
      </table>
-     Rejected Quotes
-     <table>
-        <div class="quotes">
-            <tr ng-repeat="(index, quote) in quotes">
-                <td ng-if="quote.state == 2">
-                    {{ quote.house.address }}
-                </td>
-            </tr>
-        </div>
-     </table>
-
+     <!--Rejected Quotes-->
+     <!--<table>-->
+        <!--<div class="quotes">-->
+            <!--<tr ng-repeat="(index, quote) in quotes">-->
+                <!--<td ng-if="quote.state == 2">-->
+                    <!--{{ quote.house.address }}-->
+                <!--</td>-->
+            <!--</tr>-->
+        <!--</div>-->
+     <!--</table>-->
 </div>

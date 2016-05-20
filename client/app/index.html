@@ -17,22 +17,20 @@
     <body ng-app="lincorFeApp">
         {% verbatim %}
         <div class="app" ng-controller="rootController">
-            <div class="header">
+            <div class="navbar navbar-default">
                 <ul class="nav navbar-nav">
-                    <li class=""><a ui-sref="jobs">Jobs | </a></li>
-                    <li class=""><a ui-sref="quotes">Quotes | </a></li>
-                    <li class=""><a ui-sref="performance"> Performance </a></li>
-                </ul>
-                <span class="new-job">
-                    <div class="button"> <a href="">+</a></div>
-                    <div class="drop-down">
-                        <ul>
-                        <li> <a ui-sref="newQuote"> New Quote </a></li>
-                        <li> <a ui-sref="manageForemen"> Manage Foremen </a> </li>
-                        <li> <a href="javascript:;" ng-click="logout()"> Logout </a></li>
+                    <li class=""><a ui-sref="jobs">Jobs</a></li>
+                    <li class=""><a ui-sref="quotes">Quotes</a></li>
+                    <li class=""><a ui-sref="performance">Performance</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                            data-toggle="dropdown" role="button">Extra</a>
+                        <ul class="dropdown-menu">
+                            <li> <a ui-sref="newQuote"> New Quote </a></li>
+                            <li> <a ui-sref="manageForemen"> Manage Foremen </a> </li>
+                            <li> <a href="javascript:;" ng-click="logout()"> Logout </a></li>
                         </ul>
-                    </div>
-                </span>
+                    </li>
+                </ul>
             </div>
 
             <div ui-view></div>
