@@ -4,6 +4,7 @@ from models import (
     Job,
     Quote,
     CheckIn,
+
     JOB_CHOICES,
     QUOTE_STATE
 )
@@ -56,10 +57,12 @@ class JobListSerializer(serializers.ModelSerializer):
             'estimator',
             'foreman',
             'check_ins',
+            'images',
         )
 
 class JobCreateSerializer(serializers.ModelSerializer):
     job_type = serializers.ChoiceField(choices=JOB_CHOICES)
+    images = serializers.JSONField(required=False)
 
     class Meta:
         model = Job
@@ -72,6 +75,7 @@ class JobCreateSerializer(serializers.ModelSerializer):
             'job_type',
             'estimator',
             'foreman',
+            'images',
         )
 
     def create(self, validated_data):
@@ -88,6 +92,9 @@ class JobCreateSerializer(serializers.ModelSerializer):
                 job_type=validated_data['job_type'],
                 estimator=validated_data['estimator'],
                 foreman=validated_data['foreman'],
+                images={
+                    'urls': validated_data['images']
+                },
             )
             if 'completed' in validated_data:
                 job.completed = validated_data['completed']
@@ -110,6 +117,7 @@ class JobUpdateSerializer(serializers.ModelSerializer):
             'job_type',
             'estimator',
             'foreman',
+            'images',
         )
 
 class QuoteListSerializer(serializers.ModelSerializer):
@@ -173,4 +181,5 @@ class QuoteDetailSerializer(serializers.ModelSerializer):
             'state',
             'house',
             'estimator',
+            'images',
         )

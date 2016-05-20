@@ -2,26 +2,25 @@
     <div class="category">
         Quotes
     </div>
-    <table class="table borderless">
-        <div class="quotes">
-            <tr ng-repeat="(index, quote) in quotes">
-                <div ng-if="quote.state == 0">
-                    <td width="10%">
-                        <img ng-src="{{ quote.images.urls[0] }}" width="72">
-                    </td>
-                    <td width="20%">
-                        Address {{ quote.house.address }} <br>
-                        Quote: {{ quote.quote }}
-                    </td>
-                    <td>
-                       <button class="btn btn-success" ng-click="bidAccepted(quote.pk)">Quote Accepted</button>
-                        <br>
-                        <button class="btn btn-danger" ng-click="bidDeclined(quote.pk)">Quote Not Accepted</button>
-                    </td>
+    <div class="container">
+        <div ng-repeat="(index, quote) in quotes" class="row" ng-if="quote.state == 0">
+            <div>
+                <div class="col-sm-4" width="10%">
+                    <img ng-src="{{ quote.images.urls[0] }}" width="72">
                 </div>
-            </tr>
+                <div class="col-sm-4" width="20%">
+                    Address {{ quote.house.address }} <br>
+                    Quote: {{ quote.quote }}
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-success" ng-click="bidAccepted(quote.pk)">Quote Accepted</button>
+                    <br>
+                    <button class="btn btn-danger" ng-click="bidDeclined(quote.pk)">Quote Not Accepted</button>
+                </div>
+            </div>
+            </div>
         </div>
-     </table>
+    </div>
      <!--Rejected Quotes-->
      <!--<table>-->
         <!--<div class="quotes">-->

@@ -15,13 +15,13 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
         if(pk != null) {  //creating a job from a quote
             if($stateParams.isQuote === "y") {
                 quote = Quote.get({ pk: pk }, function() {
-                    var house = House.get({ pk: quote.house }, function() {
+                    var house = House.get({ pk: quote.house.pk }, function() {
                         $scope.job.house = house;
                         $scope.job.budget = quote.quote;
                         $scope.job.estimator = quote.estimator;
                     });
                 });
-
+                console.log(quote);
                 $scope.submit = function() {
                     Quote.update({ pk : pk}, {
                         state : 1
@@ -31,7 +31,8 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                             $scope.job.foreman = $scope.job.foreman.pk;
                             $scope.job.house = $scope.job.house.pk;
                             $scope.job.estimator = $scope.job.estimator.pk;
-                            Jobs.addJob($scope.job);
+                            $scope.job.images = quote.images.urls;
+                            Jobs.addJob($scope.job)
                         },
                         function(error) {
                             console.log('failure');
