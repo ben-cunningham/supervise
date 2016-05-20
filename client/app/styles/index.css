@@ -70,6 +70,10 @@ body {
 
 /*************** JOB DETAIL ******************/
 
+.job-detail h2 {
+    display: inline;
+}
+
 .body {
 	font-family: 'Lato', sans-serif;
 	padding-left: 10px;

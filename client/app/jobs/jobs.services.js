@@ -46,11 +46,26 @@ angular.module('myApp.jobs').factory('Jobs', function($resource, Teams) {
                 completion();
         }
     };
+    
+    var checkIn = function(pk, text, success, error) {
+        console.log(pk);
+        if(text) {
+            $resource(URL +'teams/' +team +'/' +'jobs/' +pk +'/check_in').save({ "text" :text}).$promise.then(
+                function(checkIn) {
+                    success(checkIn);
+                },
+                function(error) {
+                    error(error);
+                }
+            );
+        }
+    };
 
     return {
         getJobs : getJobs,
         addJob : addJob,
         getJob : getJob,
         updateJob : updateJob,
+        checkIn : checkIn,
     };
 });
