@@ -1,7 +1,7 @@
-<div class="job-detail">
+<div class="job-detail container">
     <div class="body">
         <div class="title">
-            {{ job.house.address }}
+            <h2> {{ job.house.address }} </h2>
             <div id="completed" ng-if="job.completed == true"></div>
             <div id="not-completed" ng-if="job.completed == false"></div>
         </div>
@@ -39,9 +39,26 @@
             <button class="btn btn-primary" ng-click="submitCheckIn()">Submit</button>
         </div>
     </div>
-    <div class="container" id="check-ins">
+    <div class="container pull-left" id="check-ins">
         <div ng-repeat="checkin in job.check_ins" class="row">
-            {{ checkin }}
+            <div class="col-md-1">
+                avatar
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-2">
+                        <b>User</b>
+                    </div>
+                    <div class="col-md-5">
+                        {{ checkin.created }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ checkin.text }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

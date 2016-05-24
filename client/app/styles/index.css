@@ -82,7 +82,6 @@ body {
 .title {
 	padding-top: 10px;
 	text-align: left;
-	font-size: 200%;
 }
 
 #completed {
@@ -107,6 +106,14 @@ body {
 	display: inline-block;
 	vertical-align: middle;
 	margin: auto 5px;
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 770px;
+        padding-left: 10px;
+        /*padding-right: 250px;*/
+    }
 }
 
 /************* JOB LIST ***************/
