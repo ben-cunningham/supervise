@@ -12,7 +12,6 @@ var myApp = angular
         'ngResource',
         'ui.bootstrap',
         'ui.router',
-        'chart.js',
         'lincorFeApp.services',
         'myApp.jobs',
         'myApp.quotes',
@@ -130,16 +129,3 @@ myApp.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }]);
-
-myApp.config(['ChartJsProvider',
-    function(ChartJsProvider) {
-         ChartJsProvider.setOptions({
-             colours: ['#FF5252', '#FF8A80'],
-             responsive: false
-         });
-
-         ChartJsProvider.setOptions('Line', {
-            datasetFill: false
-         });
-    }
-]);
