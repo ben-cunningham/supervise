@@ -1,34 +1,39 @@
 <div class="job-detail container">
     <div class="body">
-        <div class="title">
-            <h2> {{ job.house.address }} </h2>
-            <div id="completed" ng-if="job.completed == true"></div>
-            <div id="not-completed" ng-if="job.completed == false"></div>
-        </div>
-        <div class="detail">
-            <div>
-                Budget: <b> {{ job.budget }} </b>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="{{ job.images.urls[0] }}" width="72">
+                </div>
+                <div class="col-md-9 pull-left">
+                    <div class="title">
+                        <h2> {{ job.house.address }} </h2>
+                        <div id="completed" ng-if="job.completed == true"></div>
+                        <div id="not-completed" ng-if="job.completed == false"></div>
+                    </div>
+                </div>
             </div>
-            <div>
-                Hours Spent: <b> {{ job.current_hours_spent }} </b>
+            <div class="detail">
+                <div>
+                    Budget: <b> {{ job.budget }} </b>
+                </div>
+                <div>
+                    Hours Spent: <b> {{ job.current_hours_spent }} </b>
+                </div>
+                <div>
+                    Estimator: <b> {{ job.estimator.user.first_name }} {{ job.estimator.user.last_name }}  </b>
+                </div>
+                <div>
+                    Job Type: <b> {{ job_type }} </b>
+                </div>
+                <div>
+                    Foreman: <b> {{ }} </b>
+                </div>
             </div>
-            <div>
-                Estimator: <b> {{ job.estimator.user.first_name }} {{ job.estimator.user.last_name }}  </b>
-            </div>
-            <div>
-                Job Type: <b> {{ job_type }} </b>
-            </div>
-            <div>
-                Foreman: <b> {{ }} </b>
-            </div>
+            <button class="btn btn-default" ng-click="editJob()">Edit</button>
         </div>
     </div>
-
-    <canvas id="doughnut" class="chart chart-doughnut" data="data"
-      labels="labels" width="200" height="200"></canvas>
-
-    <button class="btn btn-default" ng-click="editJob()">Edit</button>
-
+    <h2>Supplies</h2>
     <br>
     <br>
     <h2>Check-Ins</h2> <button class="btn btn-default" ng-click="textareashow = !textareashow">Add</button>
