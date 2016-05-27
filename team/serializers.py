@@ -10,5 +10,6 @@ class TeamSerializer(serializers.ModelSerializer):
         fields = (
             'pk',
             'name',
+            # 'avatar',
             # 'jobs',
         )
