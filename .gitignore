@@ -12,6 +12,8 @@ tasks/migrations/*
 !tasks/migrations/__init__.py
 invitation/migrations/*
 !invitation/migrations/__init__.py
+team/migrations/*
+!team/migrations/__init__.py
 
 .idea/workspace.xml
 .idea/tasks.xml
