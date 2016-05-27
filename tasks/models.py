@@ -18,16 +18,6 @@ QUOTE_STATE = (
     (2, 'Rejected')
 )
 
-class CheckedOutMaterial(models.Model):
-    quantity = models.PositiveIntegerField()
-    material = models.ForeignKey(Material, null=True, related_name='checked_out_materials')
-
-class Material(models.Model):
-    name = models.CharField(max_length=100)
-    total_quantity = models.PositiveIntegerField()
-    units = models.CharField(choices=UNIT_CHOICES)
-    team = models.ForeignKey(Team, null=True, related_name='materials')
-
 class Quote(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     quote = models.IntegerField()
@@ -69,6 +59,17 @@ class CheckIn(models.Model):
 
     class Meta:
         ordering = ('created',)
+
+class Material(models.Model):
+    name = models.CharField(max_length=100)
+    total_quantity = models.PositiveIntegerField()
+    units = models.CharField(choices=UNIT_CHOICES, max_length=10)
+    team = models.ForeignKey(Team, null=True, related_name='materials')
+
+class CheckedOutMaterial(models.Model):
+    quantity = models.PositiveIntegerField()
+    material = models.ForeignKey(Material, null=True, related_name='checked_out_materials')
+    job = models.ForeignKey(Job, null=True, related_name='materials')
 
 class ResultsCalculator(object):
     def __init__(self, *args, **kw):

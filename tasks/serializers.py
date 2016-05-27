@@ -14,7 +14,6 @@ from team.models import Team
 from employees.serializers import EstimatorSerializer, ForemanSerializer
 from employees.models import Estimator
 
-
 class CheckInSerializer(serializers.ModelSerializer):
 
     class Meta:

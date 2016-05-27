@@ -1,11 +1,13 @@
 from rest_framework import generics
 from rest_framework.views import APIView
+
 from models import (
     Job,
     CheckIn,
     ResultsCalculator,
     Quote
 )
+
 from serializers import (
     JobListSerializer,
     JobCreateSerializer,
@@ -15,11 +17,18 @@ from serializers import (
     QuoteDetailSerializer,
     QuoteCreateSerializer,
 )
+
 from employees.models import (
     Employee,
     Estimator,
     Foreman
 )
+
+from material_serializers import (
+    CheckedOutMaterialSerializer,
+    MaterialSerializer,
+)
+
 from team.models import Team
 
 from rest_framework.response import Response
@@ -77,14 +86,35 @@ class QuoteDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CheckIn(APIView):
+
     def post(self, request, pk, team_pk, format=None):
-        # print request.data
         check_in = CheckInSerializer(data=request.data, context={'view': self})
         if check_in.is_valid():
             check_in.save()
             return Response(status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
+class Material(APIView):
+    """
+    Add a material to a team's inventory
+    """
+    def post(self, request, pk, team_pk, format=None):
+        material = MaterialSerializer(data=request.data, context={'view': self})
+        if material.is_valid():
+            material.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class CheckedOutMaterial(APIView):
+    """
+    Checkout a material for a given job
+    """
+    def post(self, request, pk, team_pk, format=None):
+        material = CheckedOutMaterialSerializer(data=request.data, context={'view': self})
+        if material.is_valid():
+            material.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class results_calculator(APIView):
     def get(self, request, *args, **kw):
