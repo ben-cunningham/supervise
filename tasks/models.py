@@ -4,6 +4,7 @@ from django.contrib.postgres.fields import JSONField
 from main.models import House
 from team.models import Team
 from employees.models import Estimator, Foreman
+from units import UNIT_CHOICES
 
 JOB_CHOICES = (
     ('p', 'Paint'),
@@ -16,6 +17,16 @@ QUOTE_STATE = (
     (1, 'Accepted'),
     (2, 'Rejected')
 )
+
+class CheckedOutMaterial(models.Model):
+    quantity = models.PositiveIntegerField()
+    material = models.ForeignKey(Material, null=True, related_name='checked_out_materials')
+
+class Material(models.Model):
+    name = models.CharField(max_length=100)
+    total_quantity = models.PositiveIntegerField()
+    units = models.CharField(choices=UNIT_CHOICES)
+    team = models.ForeignKey(Team, null=True, related_name='materials')
 
 class Quote(models.Model):
     created = models.DateTimeField(auto_now_add=True)
