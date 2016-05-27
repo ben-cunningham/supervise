@@ -21,6 +21,7 @@ QUOTE_STATE = (
 class Quote(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     quote = models.IntegerField()
+    description = models.TextField()
     state = models.IntegerField(choices=QUOTE_STATE, default=0)
     house = models.OneToOneField(House, null=True)
     estimator = models.ForeignKey(Estimator, null=True, related_name='quotes')
@@ -33,6 +34,7 @@ class Job(models.Model):
     estimator = models.ForeignKey(Estimator, null=True, related_name='jobs')
     foreman = models.ForeignKey(Foreman, null=True, related_name='jobs')
     budget = models.IntegerField()
+    description = models.TextField()
     job_type = models.CharField(choices=JOB_CHOICES,
                                 default='h',
                                 max_length=100)

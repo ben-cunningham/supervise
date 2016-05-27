@@ -68,6 +68,7 @@ class JobCreateSerializer(serializers.ModelSerializer):
             'pk',
             'house',
             'budget',
+            'description',
             'current_hours_spent',
             'completed',
             'job_type',
@@ -86,6 +87,7 @@ class JobCreateSerializer(serializers.ModelSerializer):
                 team=team,
                 house=validated_data['house'],
                 budget=validated_data['budget'],
+                description=validated_data['description'],
                 current_hours_spent=validated_data['current_hours_spent'],
                 job_type=validated_data['job_type'],
                 estimator=validated_data['estimator'],
@@ -110,6 +112,7 @@ class JobUpdateSerializer(serializers.ModelSerializer):
             'pk',
             'house',
             'budget',
+            'description',
             'current_hours_spent',
             'completed',
             'job_type',
@@ -143,6 +146,7 @@ class QuoteCreateSerializer(serializers.ModelSerializer):
             'quote',
             'state',
             'house',
+            'description',
             'estimator',
             'images',
         )
@@ -154,6 +158,7 @@ class QuoteCreateSerializer(serializers.ModelSerializer):
             quote_to_submit = Quote.objects.create(
                 quote=validated_data['quote'],
                 house=validated_data['house'],
+                description=validated_data['description'],
                 estimator=estimator,
                 team=estimator.team,
                 images={
@@ -177,6 +182,7 @@ class QuoteDetailSerializer(serializers.ModelSerializer):
             'pk',
             'quote',
             'state',
+            'description',
             'house',
             'estimator',
             'images',
