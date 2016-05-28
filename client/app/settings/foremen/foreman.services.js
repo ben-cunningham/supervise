@@ -2,7 +2,7 @@
 
 var URL = "/api/";
 
-angular.module('myApp.foremen')
+angular.module('myApp.settings')
     .factory('InviteForeman', function($resource, Teams) {
         var team = Teams.getTeam();
         var invite = function(email) {

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.foremen')
+angular.module('myApp.settings')
   .controller('foremanDetailCtrl', ['$scope', '$stateParams', 'Foremen', 'Jobs',  function($scope, $stateParams, Foremen, Jobs) {
       $scope.foreman = Foremen.getForeman($stateParams.pk, function() {
           $scope.jobs = [];

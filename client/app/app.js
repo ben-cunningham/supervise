@@ -3,7 +3,7 @@
 angular.module('lincorFeApp.services', []);
 angular.module('myApp.jobs', ['myApp.teams', 'ngSanitize']);
 angular.module('myApp.quotes', ['myApp.teams', 'ngFileUpload']);
-angular.module('myApp.foremen', ['myApp.teams']);
+angular.module('myApp.settings', ['myApp.teams']);
 angular.module('myApp.performance', []);
 angular.module('myApp.teams', ['ngResource']);
 
@@ -15,7 +15,7 @@ var myApp = angular
         'lincorFeApp.services',
         'myApp.jobs',
         'myApp.quotes',
-        'myApp.foremen',
+        'myApp.settings',
         'myApp.performance',
     ]);
 
@@ -79,34 +79,42 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     authenticate : authenticate
                 }
             })
-            .state('manageForemen', {
+            .state('performance', {
+                url : '/performance',
+                templateUrl : '../static/performance/performance.html',
+                controller : 'PerformanceCtrl',
+                resolve : {
+                    authenticate : authenticate
+                }
+            })
+            .state('settings', {
+                url: '/settings',
+                templateUrl : '../static/settings/settings.html'
+            })
+            .state('settings.team', {
+                url: '/team',
+                templateUrl: '../static/settings/team.html',
+            })
+            .state('settings.manageForemen', {
                 url : '/manage-foremen',
-                templateUrl : '../static/foremen/foremen.list.html',
+                templateUrl : '../static/settings/foremen/foremen.list.html',
                 controller : 'manageForemenCtrl',
                 resolve : {
                     authenticate : authenticate
                 }
             })
-            .state('foremanDetail', {
+            .state('settings.foremanDetail', {
               url : '/foremen/:pk',
-              templateUrl : '../static/foremen/foremen.detail.html',
+              templateUrl : '../static/settings/foremen/foremen.detail.html',
               controller : 'foremanDetailCtrl',
               resolve : {
                 authenticate : authenticate
               }
             })
-            .state('newForeman', {
+            .state('settings.newForeman', {
                 url : '/new-foreman',
-                templateUrl : '../static/foremen/foreman.create.html',
+                templateUrl : '../static/settings/foremen/foreman.create.html',
                 controller : 'newForemanCtrl',
-                resolve : {
-                    authenticate : authenticate
-                }
-            })
-            .state('performance', {
-                url : '/performance',
-                templateUrl : '../static/performance/performance.html',
-                controller : 'PerformanceCtrl',
                 resolve : {
                     authenticate : authenticate
                 }
