@@ -1,11 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <div class="list-group">
-                <a ui-sref="settings.team" class="list-group-item"> Personal </a>
-                <a ui-sref="settings.team" class="list-group-item active"> Team </a>
-                <a ui-sref="settings.manageForemen" class="list-group-item"> Foremen </a>
-                <a ui-sref="settings.inventory" class="list-group-item"> Inventory </a>
+            <div class="list-group" ng-controller="sidebarController">
+                <a ui-sref="settings.personal" class="list-group-item"
+                   ng-class="{ active: isActive('/settings/personal')}"> Personal </a>
+                <a ui-sref="settings.team" class="list-group-item"
+                   ng-class="{ active: isActive('/settings/team')}"> Team </a>
+                <a ui-sref="settings.manageForemen" class="list-group-item"
+                   ng-class="{ active: isActive('/settings/manage-foremen')}"> Foremen </a>
+                <a ui-sref="settings.inventory" class="list-group-item"
+                   ng-class="{ active: isActive('/settings/inventory')}"> Inventory </a>
             </div>
         </div>
         <div class="col-md-9">
