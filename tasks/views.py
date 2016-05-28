@@ -105,6 +105,11 @@ class Material(APIView):
             return Response(status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
+    def get(self, request, pk, team_pk, format=None):
+        materials = Material.objects.all()
+        serializer = MaterialSerializer(materials, many=True)
+        return Response(serializer.data)
+
 class CheckedOutMaterial(APIView):
     """
     Checkout a material for a given job
