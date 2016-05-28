@@ -11,7 +11,7 @@ urlpatterns = (
     url(r'^teams/(?P<team_pk>[0-9]+)/quotes/$', views.QuoteList.as_view()),
     url(r'^teams/(?P<team_pk>[0-9]+)/quotes/(?P<pk>[0-9]+)/$', views.QuoteDetail.as_view()),
 
-    url(r'^teams/(?P<team_pk>[0-9]+)/material$', views.Material.as_view()),
+    url(r'^teams/(?P<team_pk>[0-9]+)/material/$', views.MaterialView.as_view()),
     url(r'^teams/(?P<team_pk>[0-9]+)/results/$', views.results_calculator.as_view()),
 )
 

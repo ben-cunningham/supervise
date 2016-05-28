@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from models import (
     Job,
     CheckIn,
+    Material,
     ResultsCalculator,
     Quote
 )
@@ -94,18 +95,18 @@ class CheckIn(APIView):
             return Response(status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-class Material(APIView):
+class MaterialView(APIView):
     """
     Add a material to a team's inventory
     """
-    def post(self, request, pk, team_pk, format=None):
+    def post(self, request, team_pk, format=None):
         material = MaterialSerializer(data=request.data, context={'view': self})
         if material.is_valid():
             material.save()
             return Response(status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    def get(self, request, pk, team_pk, format=None):
+    def get(self, request, team_pk, format=None):
         materials = Material.objects.all()
         serializer = MaterialSerializer(materials, many=True)
         return Response(serializer.data)
