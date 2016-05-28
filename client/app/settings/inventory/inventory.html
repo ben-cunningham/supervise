@@ -1,1 +1,24 @@
-{{ items }}
+<div class="inventory">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="col-md-6 pull-left nopadding">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-default">Add</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div ng-repeat="(index, item) in items" class="row">
+                    <div>
+                        <div class="col-sm-4" width="20%">
+                            {{ item }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

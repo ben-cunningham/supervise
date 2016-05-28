@@ -12,7 +12,6 @@ angular.module('myApp.settings')
 
         var getList = function(completion) {
             var jobs = resource.query(completion);
-            console.log(jobs);
             return jobs;
         };
 
