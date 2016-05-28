@@ -95,6 +95,14 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 url: '/team',
                 templateUrl: '../static/settings/team.html',
             })
+            .state('settings.inventory', {
+                url: '/inventory',
+                templateUrl: '../static/settings/inventory/inventory.html',
+                controller: 'InventoryController',
+                resolve: {
+                    authenticate : authenticate
+                }
+            })
             .state('settings.manageForemen', {
                 url : '/manage-foremen',
                 templateUrl : '../static/settings/foremen/foremen.list.html',
