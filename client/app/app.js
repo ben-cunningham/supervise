@@ -3,7 +3,7 @@
 angular.module('lincorFeApp.services', []);
 angular.module('myApp.jobs', ['myApp.teams', 'ngSanitize']);
 angular.module('myApp.quotes', ['myApp.teams', 'ngFileUpload']);
-angular.module('myApp.settings', ['myApp.teams']);
+angular.module('myApp.settings', ['myApp.teams', 'ui.bootstrap']);
 angular.module('myApp.performance', []);
 angular.module('myApp.teams', ['ngResource']);
 

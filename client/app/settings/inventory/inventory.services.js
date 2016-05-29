@@ -15,8 +15,20 @@ angular.module('myApp.settings')
             return jobs;
         };
 
+        var addItem = function(item, completion) {
+            resource.save(item).$promise.then(
+                function(value){
+                    completion(value);
+                },
+                function( error ){
+                    alert('error');
+                }
+            );
+        };
+
         return {
             getList : getList,
+            addItem : addItem,
         };
     });
 
