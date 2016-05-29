@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'api/', include('tasks.urls')),
     url(r'api/', include('team.urls')),
     url(r'api/', include('image.urls')),
-    url(r'invite/', include('invitation.urls')),
+    url(r'invite', include('invitation.urls')),
     url(r'login/?', include('sign_in.urls')),
     url(r'', include('app.urls'))
 ]
