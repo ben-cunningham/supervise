@@ -10,15 +10,26 @@
             <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-            <div class="container">
-                <div ng-repeat="(index, item) in items" class="row">
-                    <div>
-                        <div class="col-sm-4" width="20%">
-                            {{ item }}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <table class="table">
+                <thead>
+                    <th>Name</th>
+                    <th>Total Quantity</th>
+                    <th>Stock Level</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(index, item) in items">
+                        <td>
+                            {{ item.name }}
+                        </td>
+                        <td>
+                            {{ item.total_quantity }}
+                        </td>
+                        <td>
+                            Progress
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
