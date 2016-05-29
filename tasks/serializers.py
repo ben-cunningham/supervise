@@ -138,6 +138,7 @@ class QuoteListSerializer(serializers.ModelSerializer):
 
 class QuoteCreateSerializer(serializers.ModelSerializer):
     state = serializers.ChoiceField(choices=QUOTE_STATE, required=False)
+    description = serializers.CharField(required=False)
 
     class Meta:
         model = Quote
@@ -158,7 +159,7 @@ class QuoteCreateSerializer(serializers.ModelSerializer):
             quote_to_submit = Quote.objects.create(
                 quote=validated_data['quote'],
                 house=validated_data['house'],
-                description=validated_data['description'],
+                # description=validated_data['description'],
                 estimator=estimator,
                 team=estimator.team,
                 images={

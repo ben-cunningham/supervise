@@ -21,7 +21,7 @@ QUOTE_STATE = (
 class Quote(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     quote = models.IntegerField()
-    description = models.TextField()
+    description = models.TextField(default="")
     state = models.IntegerField(choices=QUOTE_STATE, default=0)
     house = models.OneToOneField(House, null=True)
     estimator = models.ForeignKey(Estimator, null=True, related_name='quotes')
