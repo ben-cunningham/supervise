@@ -19,6 +19,7 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                         $scope.job.house = house;
                         $scope.job.budget = quote.quote;
                         $scope.job.estimator = quote.estimator;
+                        $scope.job.description = quote.description;
                     });
                 });
                 console.log(quote);
@@ -49,6 +50,7 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                     job.house = $scope.job.house.pk;
                     job.foreman = $scope.job.foreman.pk;
                     job.estimator = $scope.job.estimator.pk;
+                    job.description = $scope.job.description;
                     Jobs.updateJob(pk, job, function() {
 
                     });
