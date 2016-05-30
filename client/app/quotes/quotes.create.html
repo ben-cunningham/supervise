@@ -24,6 +24,12 @@
                 class="btn btn-default">Choose from existing houses</button>
     </div>
     <div class="row">
+        <div class="form-group col-md-5">
+            <textarea class="form-control" placeholder="Enter a description..."
+                      rows="5" ng-model="quote.description"></textarea>
+        </div>
+    </div>
+    <div class="row">
         <div class="form-group col-md-3">
             <label>Select any photos you want to upload</label>
             <input type="file" ngf-select ng-model="files" name="file"
