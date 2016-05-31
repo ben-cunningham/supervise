@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4>Enter a new item</h4>
+</div>
+<div class="modal-body">
+    <table class="table">
+        <thead>
+            <th>Name</th>
+            <th>Remaining <br>Quantity</th>
+            <th>Quantity to<br> check-out</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="(index, item) in items">
+                <td>
+                    {{ item.name }}
+                </td>
+                <td>
+                    {{ item.total_quantity }}
+                </td>
+                <td>
+                    Progress
+                </td>
+                <td>
+                    <button class="btn"></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">Done</button>
+</div>
