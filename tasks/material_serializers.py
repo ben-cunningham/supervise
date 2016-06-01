@@ -28,10 +28,9 @@ class CheckedOutMaterialSerializer(serializers.ModelSerializer):
         view = self.context['view']
         job_pk = view.kwargs['pk']
         job = Job.objects.get(pk=job_pk)
-        material = Material.objects.get(pk=validated_data['material'])
         checked_out_material = CheckedOutMaterial.objects.create(
-            name=validated_data['quantity'],
-            material=material,
+            quantity=validated_data['quantity'],
+            material=validated_data['material'],
             job=job,
         )
 
