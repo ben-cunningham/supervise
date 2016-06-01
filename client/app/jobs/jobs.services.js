@@ -46,6 +46,19 @@ angular.module('myApp.jobs').factory('Jobs', function($resource, Teams) {
                 completion();
         }
     };
+
+    var checkOut = function(pk, item, success, error) {
+        if(item) {
+            $resource(URL +'teams/' +team +'/' +'jobs/' +pk +'/checked_out_material').save(item).$promise.then(
+                function(item) {
+                    success(item);
+                },
+                function(error) {
+                    error(error);
+                }
+            );
+        }
+    }
     
     var checkIn = function(pk, text, success, error) {
         console.log(pk);
@@ -67,5 +80,6 @@ angular.module('myApp.jobs').factory('Jobs', function($resource, Teams) {
         getJob : getJob,
         updateJob : updateJob,
         checkIn : checkIn,
+        checkOut : checkOut,
     };
 });

@@ -10,6 +10,7 @@ angular.module('myApp.jobs')
   .controller('JobDetailCtrl', ['$scope', '$stateParams', 'Jobs', 'Estimator', '$state', '$uibModal',
       function($scope, $stateParams, Jobs, Estimator, $state, $uibModal) {
           $scope.job = Jobs.getJob({ pk: $stateParams.pk }, function() {
+              console.log($scope.job);
               $scope.data = [$scope.job.current_hours_spent, $scope.job.budget];
               $scope.job_type = job_type[$scope.job.job_type];
           });
@@ -35,7 +36,12 @@ angular.module('myApp.jobs')
               var modalInstance = $uibModal.open({
                   animation: true,
                   templateUrl: '../static/jobs/CheckOutModal.html',
-                  controller: 'ModalController'
+                  controller: 'ModalController',
+                  resolve : {
+                      job : function () {
+                              return $scope.job;
+                      }
+                  }
               });
 
               modalInstance.result.then(function (item) {
@@ -46,13 +52,25 @@ angular.module('myApp.jobs')
   ]);
 
 angular.module('myApp.jobs')
-    .controller('ModalController', function ($scope, $uibModalInstance, Inventory) {
+    .controller('ModalController', function ($scope, $uibModalInstance, job, Inventory, Jobs) {
         $scope.items = Inventory.getList(function() {
             
         });
 
         $scope.checkOut = function(item, quantity) {
-            Inventory.addItem()
+
+            var itemToPost = {
+                "material" : item.pk,
+                "quantity" : quantity
+            };
+
+            Jobs.checkOut(job.pk, itemToPost,
+                function(item) {
+
+                }, function(error) {
+
+                }
+            );
         };
 
         $scope.ok = function () {

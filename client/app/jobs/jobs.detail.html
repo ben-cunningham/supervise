@@ -55,12 +55,12 @@
                 </thead>
                 <tbody>
                     <tr></tr>
-                    <tr ng-repeat="(index, item) in job.checked_out_materials">
+                    <tr ng-repeat="(index, item) in job.materials">
                         <td>
-                            {{ item.name }}
+                            {{ item.material.name }}
                         </td>
                         <td>
-                            {{ item.total_quantity }}
+                            {{ item.quantity }}
                         </td>
                         <td>
                             Progress
