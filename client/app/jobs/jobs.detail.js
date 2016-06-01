@@ -51,6 +51,10 @@ angular.module('myApp.jobs')
             
         });
 
+        $scope.checkOut = function(item, quantity) {
+            Inventory.addItem()
+        };
+
         $scope.ok = function () {
 
             $uibModalInstance.close();

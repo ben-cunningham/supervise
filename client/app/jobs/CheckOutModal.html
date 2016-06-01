@@ -11,17 +11,17 @@
         </thead>
         <tbody>
             <tr ng-repeat="(index, item) in items">
-                <td>
+                <td class="col-md-4">
                     {{ item.name }}
                 </td>
-                <td>
+                <td class="col-lg-2">
                     {{ item.total_quantity }}
                 </td>
-                <td>
-                    Progress
+                <td class="col-md-2">
+                    <input type="number" class="form-control" ng-model="check_out_quantity">
                 </td>
                 <td>
-                    <button class="btn"></button>
+                    <button class="btn btn-success" ng-click="checkOut(item, check_out_quantity)">Check out</button>
                 </td>
             </tr>
         </tbody>
