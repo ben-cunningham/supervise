@@ -26,7 +26,7 @@ from employees.models import (
 )
 
 from material_serializers import (
-    CheckedOutMaterialSerializer,
+    CreateCheckedOutMaterialSerializer,
     MaterialSerializer,
 )
 
@@ -116,7 +116,7 @@ class CheckedOutMaterial(APIView):
     Checkout a material for a given job
     """
     def post(self, request, pk, team_pk, format=None):
-        material = CheckedOutMaterialSerializer(data=request.data, context={'view': self})
+        material = CreateCheckedOutMaterialSerializer(data=request.data, context={'view': self})
         if material.is_valid():
             material.save()
             return Response(status=status.HTTP_201_CREATED)

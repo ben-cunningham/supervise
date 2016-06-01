@@ -13,33 +13,9 @@ from team.models import (
 from units import UNIT_CHOICES
 
 
-class CheckedOutMaterialSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = CheckedOutMaterial
-        fields = (
-            'pk',
-            'quantity',
-            'material',
-            'job',
-        )
-
-    def create(self, validated_data):
-        view = self.context['view']
-        job_pk = view.kwargs['pk']
-        job = Job.objects.get(pk=job_pk)
-        checked_out_material = CheckedOutMaterial.objects.create(
-            quantity=validated_data['quantity'],
-            material=validated_data['material'],
-            job=job,
-        )
-
-        return checked_out_material
-
 class MaterialSerializer(serializers.ModelSerializer):
     units = serializers.ChoiceField(choices=UNIT_CHOICES)
     team = serializers.PrimaryKeyRelatedField(required=False, read_only=True)
-    checked_out_materials = CheckedOutMaterialSerializer(many=True, required=False)
 
     class Meta:
         model = Material
@@ -65,3 +41,39 @@ class MaterialSerializer(serializers.ModelSerializer):
         )
 
         return material
+
+
+class CheckedOutMaterialSerializer(serializers.ModelSerializer):
+    material = MaterialSerializer()
+
+    class Meta:
+        model = CheckedOutMaterial
+        fields = (
+            'pk',
+            'quantity',
+            'material',
+            'job',
+        )
+
+class CreateCheckedOutMaterialSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CheckedOutMaterial
+        fields = (
+            'pk',
+            'quantity',
+            'material',
+            'job',
+        )
+
+    def create(self, validated_data):
+        view = self.context['view']
+        job_pk = view.kwargs['pk']
+        job = Job.objects.get(pk=job_pk)
+        checked_out_material = CheckedOutMaterial.objects.create(
+            quantity=validated_data['quantity'],
+            material=validated_data['material'],
+            job=job,
+        )
+
+        return checked_out_material
