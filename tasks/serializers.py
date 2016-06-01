@@ -9,6 +9,8 @@ from models import (
     QUOTE_STATE
 )
 
+from material_serializers import CheckedOutMaterialSerializer
+
 from main.serializers import HouseSerializer
 from team.models import Team
 from employees.serializers import EstimatorSerializer, ForemanSerializer
@@ -42,6 +44,7 @@ class JobListSerializer(serializers.ModelSerializer):
     estimator = EstimatorSerializer()
     foreman = ForemanSerializer()
     check_ins = CheckInSerializer(many=True, required=False)
+    materials = CheckedOutMaterialSerializer(many=True)
 
     class Meta:
         model = Job
@@ -55,6 +58,7 @@ class JobListSerializer(serializers.ModelSerializer):
             'estimator',
             'foreman',
             'check_ins',
+            'materials',
             'images',
         )
 
