@@ -1,15 +1,37 @@
-<div>
-	Current Employees:
-
-	<div ng-repeat="foreman in foremen">
-		<div class="foremanLink">
-			<a ui-sref="settings.foremanDetail({ pk: {{ foreman.pk }} })">
-				{{ foreman.user.first_name }} {{ foreman.user.last_name }}
-			</a>
-		</div>
-	</div>
-</div>
-<br>
-<div>
-	<a ui-sref="settings.newForeman">Add a new foreman</a>
+<div class="foremen">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="col-md-6 pull-left nopadding">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-default" ui-sref="settings.newForeman">Add</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <th>Name</th>
+					<th>Title</th>
+					<th>Email</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="foreman in foremen">
+                        <td>
+                            <a ui-sref="settings.foremanDetail({ pk: {{ foreman.pk }} })">
+								{{ foreman.user.first_name }} {{ foreman.user.last_name }}
+							</a>
+                        </td>
+						<td>
+                            Foreman
+                        </td>
+						<td>
+                            {{ foreman.user.email }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
