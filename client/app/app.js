@@ -127,7 +127,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 authenticate : authenticate
               }
             })
-            .state('settings.newForeman', {
+            .state('newForeman', {
                 url : '/new-foreman',
                 templateUrl : '../static/settings/foremen/foreman.create.html',
                 controller : 'newForemanCtrl',
