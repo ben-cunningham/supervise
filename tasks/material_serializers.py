@@ -16,6 +16,7 @@ from units import UNIT_CHOICES
 class MaterialSerializer(serializers.ModelSerializer):
     units = serializers.ChoiceField(choices=UNIT_CHOICES)
     team = serializers.PrimaryKeyRelatedField(required=False, read_only=True)
+    checked_out_materials = serializers.PrimaryKeyRelatedField(many=True, required=False, read_only=True)
 
     class Meta:
         model = Material
