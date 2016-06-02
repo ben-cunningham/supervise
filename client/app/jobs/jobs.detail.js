@@ -10,7 +10,7 @@ angular.module('myApp.jobs')
   .controller('JobDetailCtrl', ['$scope', '$stateParams', 'Jobs', 'Estimator', '$state', '$uibModal',
       function($scope, $stateParams, Jobs, Estimator, $state, $uibModal) {
           $scope.job = Jobs.getJob({ pk: $stateParams.pk }, function() {
-              console.log($scope.job);
+              $scope.supplies = $scope.job.materials;
               $scope.data = [$scope.job.current_hours_spent, $scope.job.budget];
               $scope.job_type = job_type[$scope.job.job_type];
           });
@@ -36,7 +36,7 @@ angular.module('myApp.jobs')
               var modalInstance = $uibModal.open({
                   animation: true,
                   templateUrl: '../static/jobs/CheckOutModal.html',
-                  controller: 'ModalController',
+                  controller: 'CheckOutModalController',
                   resolve : {
                       job : function () {
                               return $scope.job;
@@ -44,15 +44,17 @@ angular.module('myApp.jobs')
                   }
               });
 
-              modalInstance.result.then(function (item) {
-
+              modalInstance.result.then(function (items) {
+                  $scope.supplies = $scope.supplies.concat(items);
               });
           }
       }
   ]);
 
 angular.module('myApp.jobs')
-    .controller('ModalController', function ($scope, $uibModalInstance, job, Inventory, Jobs) {
+    .controller('CheckOutModalController', function ($scope, $uibModalInstance, job, Inventory, Jobs) {
+        var newItems = [];
+
         $scope.items = Inventory.getList(function() {
             
         });
@@ -66,7 +68,7 @@ angular.module('myApp.jobs')
 
             Jobs.checkOut(job.pk, itemToPost,
                 function(item) {
-
+                    newItems.push(item);
                 }, function(error) {
 
                 }
@@ -74,8 +76,7 @@ angular.module('myApp.jobs')
         };
 
         $scope.ok = function () {
-
-            $uibModalInstance.close();
+            $uibModalInstance.close(newItems);
         };
 
         $scope.cancel = function () {
