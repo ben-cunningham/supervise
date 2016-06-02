@@ -3,7 +3,7 @@
 
 	<div ng-repeat="foreman in foremen">
 		<div class="foremanLink">
-			<a ui-sref="foremanDetail({ pk: {{ foreman.pk }} })">
+			<a ui-sref="settings.foremanDetail({ pk: {{ foreman.pk }} })">
 				{{ foreman.user.first_name }} {{ foreman.user.last_name }}
 			</a>
 		</div>
