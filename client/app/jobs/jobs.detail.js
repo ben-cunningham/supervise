@@ -11,6 +11,7 @@ angular.module('myApp.jobs')
       function($scope, $stateParams, Jobs, Estimator, $state, $uibModal) {
           $scope.job = Jobs.getJob({ pk: $stateParams.pk }, function() {
               $scope.supplies = $scope.job.materials;
+              $scope.checkIns = $scope.job.check_ins;
               $scope.data = [$scope.job.current_hours_spent, $scope.job.budget];
               $scope.job_type = job_type[$scope.job.job_type];
           });
@@ -25,7 +26,7 @@ angular.module('myApp.jobs')
           $scope.submitCheckIn = function() {
               Jobs.checkIn($scope.job.pk, $scope.checkInText,
                   function(checkIn) {
-
+                      $scope.checkIns.unshift(checkIn);
                   }, function(error) {
 
                  });
