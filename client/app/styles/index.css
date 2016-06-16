@@ -1,75 +1,9 @@
 /*@import url(http://nicholastodor.com/sf/usesf.css);*/
 
-.header {
-    background-color: #B03E3E;
-    width: 100%;
-    height: 50px;
-    font-family: 'Lato';
-    text-align: center;
-}
-
-
-.header a {
-    text-decoration: none;
-    color: white;
-    font-size: 150%;
-}
-
 body {
     background-color: #EBEBEB;
     margin: 0 !important;
     padding: 0 !important;
-}
-
-.header ul {
-	margin: 0 auto;
-	padding-top: 10px;
-    display: inline-block;
-}
-
-.header .nav li {
-	display: inline;
-}
-
-.header .new-job {
-    font-size: 150%;
-    padding-right: 10px;
-    float: right;
-    position: relative;
-}
-
-.new-job .drop-down {
-    right: 8px;
-    top: 50px;
-    position: absolute;
-    width: 200px;
-    background-color: white;
-    padding-bottom: 10px;
-    font-family: 'Lato';
-    font-size: 10pt;
-    text-align: left;
-    -moz-box-shadow: 0 0 3px #808080;
-    -webkit-box-shadow: 0 0 3px #808080;
-    box-shadow: 0 0 3px #808080;
-}
-
-.new-job .drop-down a {
-    color: #808080;
-}
-
-.new-job .drop-down li:hover {
-    background-color: #CCCCCC;
-}
-
-.new-job .drop-down ul {
-    list-style-type: none;
-    padding-left: 10px;
-    margin: 0;
-}
-
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
 }
 
 /*************** JOB DETAIL ******************/
@@ -86,30 +20,6 @@ body {
 .title {
 	padding-top: 10px;
 	text-align: left;
-}
-
-#completed {
-	width: 15px;
-    height: 15px;
-    -webkit-border-radius: 7.5px;
-    -moz-border-radius: 7.5px;
-    border-radius: 7.5px;
-	background-color: #00A300;
-	display: inline-block;
-	vertical-align: middle;
-	margin: auto 5px;
-}
-
-#not-completed {
-	width: 15px;
-    height: 15px;
-    -webkit-border-radius: 7.5px;
-    -moz-border-radius: 7.5px;
-    border-radius: 7.5px;
-	background-color: #FFCC00;
-	display: inline-block;
-	vertical-align: middle;
-	margin: auto 5px;
 }
 
 @media (min-width: 1200px) {
