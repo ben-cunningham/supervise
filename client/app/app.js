@@ -19,7 +19,7 @@ var myApp = angular
         'myApp.performance',
     ]);
 
-myApp.run(function($rootScope, $window) {
+myApp.run(function($rootScope, $window, $http) {
     if(!$window.localStorage.token) {
         $window.location.href = '/login';
     }
@@ -32,29 +32,16 @@ myApp.run(function($rootScope, $window) {
         $window.location.href = '/login';
     }
 
+    $http({
+        method: 'GET',
+        url: 'verify-token/'
+    }).then(function successCallback(response) {
 
-
-    // if(!hasNecessaryCredentials()) {
-    //     // TODO: Try to re-authenticate?
-    //     $window.location.href = '/login';
-    // }
+    }, function errorCallback(response) {
+        $window.localStorage.clear();
+        $window.location.href = '/login';
+    });
 });
-
-function hasNecessaryCredentials() {
-    if(!$window.localStorage.token) {
-        return false;
-    }
-
-    if(!$window.localStorage.team) {
-        return false;
-    }
-
-    if(!$window.localStorage.is_admin) {
-        return false;
-    }
-
-    return true;
-}
 
 myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {
