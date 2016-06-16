@@ -1,100 +1,103 @@
-<div class="job-detail container">
+<div class="job-detail">
     <div class="body">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <img ng-src="{{ job.images.urls[0] }}" width="72">
-                </div>
-                <div class="col-md-9 pull-left">
-                    <div class="title">
-                        <h2> {{ job.house.address }} </h2>
-                        <div id="completed" ng-if="job.completed == true"></div>
-                        <div id="not-completed" ng-if="job.completed == false"></div>
+        <div class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="image col-md-4">
+                        <img ng-src="{{ job.images.urls[0] }}" width="180">
                     </div>
+                    <div class="address col-md-8">
+                        <h2>
+                            {{ job.house.address }}
+                            <button class="btn btn-default" ng-click="editJob()">Edit</button>
+                        </h2>
+                    </div>
+
                 </div>
             </div>
+        </div>
+        <div class="container">
             <div class="detail">
-                <div>
-                    Budget: <b> {{ job.budget }} </b>
+                <div class="property">
+                    Budget: <b> ${{ job.budget }} </b>
                 </div>
-                <div>
+                <div class="property">
                     Hours Spent: <b> {{ job.current_hours_spent }} </b>
                 </div>
-                <div>
+                <div class="property">
                     Estimator: <b> {{ job.estimator.user.first_name }} {{ job.estimator.user.last_name }}  </b>
                 </div>
-                <div>
+                <div class="property">
                     Job Type: <b> {{ job_type }} </b>
                 </div>
-                <div>
+                <div class="property">
                     Foreman: <b> {{ job.foreman.user.first_name }} {{ job.foreman.user.last_name }} </b>
                 </div>
             </div>
-            <button class="btn btn-default" ng-click="editJob()">Edit</button>
-        </div>
-    </div>
-    <h2>Supplies</h2>
-    <br>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="col-md-6 pull-left nopadding">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <div class="pull-right">
-                <button class="btn btn-default" ng-click="open()">Add</button>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="panel-body">
-            <table class="table">
-                <thead>
-                    <th>Item</th>
-                    <th>Current Stock</th>
-                    <th>Original Quantity</th>
-                    <th>Replace Soon?</th>
-                </thead>
-                <tbody>
-                    <tr></tr>
-                    <tr ng-repeat="(index, item) in supplies">
-                        <td>
-                            {{ item.material.name }}
-                        </td>
-                        <td>
-                            {{ item.quantity }}
-                        </td>
-                        <td>
-                            Progress
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <h2>Check-Ins</h2> <button class="btn btn-default" ng-click="textareashow = !textareashow">Add</button>
-    <br>
-    <div class="row" ng-show="textareashow">
-        <div>
-            <textarea class="form-control" rows="5" placeholder="Check-In" ng-model="checkInText"></textarea>
-            <button class="btn btn-primary" ng-click="submitCheckIn()">Submit</button>
-        </div>
-    </div>
-    <div class="container pull-left" id="check-ins">
-        <div ng-repeat="checkin in job.check_ins" class="row">
-            <div class="col-md-1">
-                avatar
-            </div>
-            <div class="col-md-10">
-                <div class="row">
-                    <div class="col-md-2">
-                        <b>User</b>
+            <h2>Supplies</h2>
+            <br>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="col-md-6 pull-left nopadding">
+                        <input type="text" class="form-control" placeholder="Search">
                     </div>
-                    <div class="col-md-5">
-                        {{ checkin.created }}
+                    <div class="pull-right">
+                        <button class="btn btn-default" ng-click="open()">Add</button>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        {{ checkin.text }}
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <th>Item</th>
+                            <th>Current Stock</th>
+                            <th>Original Quantity</th>
+                            <th>Replace Soon?</th>
+                        </thead>
+                        <tbody>
+                            <tr></tr>
+                            <tr ng-repeat="(index, item) in supplies">
+                                <td>
+                                    {{ item.material.name }}
+                                </td>
+                                <td>
+                                    {{ item.quantity }}
+                                </td>
+                                <td>
+                                    Progress
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h2>Check-Ins</h2> <button class="btn btn-default" ng-click="textareashow = !textareashow">Add</button>
+            <br>
+            <div class="row" ng-show="textareashow">
+                <div>
+                    <textarea class="form-control" rows="5" placeholder="Check-In" ng-model="checkInText"></textarea>
+                    <button class="btn btn-primary" ng-click="submitCheckIn()">Submit</button>
+                </div>
+            </div>
+            <div class="container pull-left" id="check-ins">
+                <div ng-repeat="checkin in job.check_ins" class="row">
+                    <div class="col-md-1">
+                        avatar
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <b>User</b>
+                            </div>
+                            <div class="col-md-5">
+                                {{ checkin.created }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ checkin.text }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

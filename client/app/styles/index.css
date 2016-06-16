@@ -1,20 +1,75 @@
 /*@import url(http://nicholastodor.com/sf/usesf.css);*/
 
 body {
-    background-color: #EBEBEB;
-    margin: 0 !important;
-    padding: 0 !important;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.navbar {
+    margin-bottom: 0;
+    background-color: #122b40;
+}
+
+.navbar-nav>li>a {
+    color: white !important;
+    font-size: medium;
 }
 
 /*************** JOB DETAIL ******************/
 
-.job-detail h2 {
-    display: inline;
+.job-detail .container {
+    padding-top: 0;
 }
 
-.body {
-	font-family: 'Lato', sans-serif;
-	padding-left: 10px;
+.job-detail .banner {
+    background-color: #d9d9d9;
+    height: 120px;
+    position: relative;
+}
+
+.job-detail .col-md-4,
+.job-detail .col-md-8 {
+    height: 100%;
+}
+
+.job-detail .banner .row {
+    height: 100px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 650px;
+}
+
+.job-detail .banner .row .address h2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.job-detail .banner .row .image {
+    top: 50%;
+    height: 100px;
+    margin-top: -50px;
+}
+
+.job-detail .banner .row .image img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.job-detail .container {
+    width: 100%;
+}
+
+.job-detail .detail {
+    margin-top: 20px;
+}
+
+.job-detail .detail .property {
+    font-size: large;
+    line-height: 2em;
 }
 
 .title {
