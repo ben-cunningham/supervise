@@ -27,7 +27,7 @@
                     Job Type: <b> {{ job_type }} </b>
                 </div>
                 <div>
-                    Foreman: <b> {{ }} </b>
+                    Foreman: <b> {{ job.foreman.user.first_name }} {{ job.foreman.user.last_name }} </b>
                 </div>
             </div>
             <button class="btn btn-default" ng-click="editJob()">Edit</button>
