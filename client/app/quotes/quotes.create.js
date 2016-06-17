@@ -4,20 +4,7 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
     ['$scope', '$stateParams','Quotes', 'Houses', 'Estimators', '$location', '$window', 'Upload',
     function($scope, $stateParams, Quotes, Houses, Estimators, $location, $window, Upload) {
 
-        $scope.showNewHouse = false;
-
-        $scope.toggleNewHouse = function() {
-            $scope.showNewHouse = !$scope.showNewHouse;
-
-            if($scope.showNewHouse){
-                angular.element('.new-house').show();
-                angular.element('.existing-house').hide();
-            }
-            else {
-                angular.element('.new-house').hide();
-                angular.element('.existing-house').show();
-            }
-        };
+        $scope.showNewHouse = true;
 
         $scope.createQuote = function() {
             // User wants to add a new house
@@ -33,9 +20,7 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                 addQuote($scope.quote, $scope.files);
             }
         };
-
-        $scope.toggleNewHouse();
-
+        
         $scope.quote = null;
         $scope.houses = Houses.getHouses(function() {});
 

@@ -3,18 +3,18 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 Address
-                <button type="button" ng-click="toggleNewHouse()" class="btn btn-default">Add a new house</button>
+                <button type="button" ng-click="showNewHouse = !showNewHouse" class="btn btn-default">Add a new address</button>
             </div>
             <ul class="list-group">
                 <li class="list-group-item">
-                    <div class="row existing-house">
+                    <div class="row existing-house" ng-show="showNewHouse==false">
                         <div class="form-group col-md-3">
                             <select ng-model="house" id="House" class="form-control"
                                 ng-options="house.pk as house.address for house in houses">
                             </select>
                         </div>
                     </div>
-                    <div class="row new-house">
+                    <div class="row new-house" ng-show="showNewHouse==true">
                         <div class="form-group col-md-7">
                             <input type="text" ng-model="newHouse.address.line1"
                                    class="form-control" placeholder="Line 1">
