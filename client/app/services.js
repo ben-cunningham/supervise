@@ -155,7 +155,7 @@ myApp.factory('sessionInjector', ['$window', '$location', function($window, $loc
         },
 
         responseError : function(rejection) {
-            $location.path('/');
+            return $q.reject(response);
         }
     };
     return sessionInjector;
