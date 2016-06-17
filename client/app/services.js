@@ -100,46 +100,6 @@ myApp.factory('Foremen', function($resource) {
    };
 });
 
-myApp.factory('Houses', function($resource) {
-    var houses = [], initialized;
-
-    var getHouses = function(completion) {
-        if (!initialized) {
-           houses = $resource(URL + 'houses/').query(completion);
-           initialized = true;
-        }
-        else {
-            completion(houses);
-        }
-
-        return houses;
-    };
-
-    var addHouse = function(house, completion) {
-        $resource(URL + 'houses/').save(house).$promise.then(
-            function(value){
-                houses.push(value);
-                completion(value.pk);
-            },
-            function(error){
-                alert('error');
-            }
-        );
-    };
-
-    return {
-        getHouses : getHouses,
-        addHouse : addHouse
-    };
-});
-
-myApp.factory('House', function($resource) {
-    return $resource(URL + 'houses/:pk/', { pk : '@pk' }, {
-        update : { method: 'PUT' },
-        delete : { method: 'DELETE' }
-    });
-});
-
 myApp.config(function($resourceProvider) {
   $resourceProvider.defaults.stripTrailingSlashes = false;
 });
