@@ -1,41 +1,68 @@
 <form role="form" ng-submit="createQuote()">
-    <div class="row">
-        <div class="form-group col-md-3">
-            <input type="number" id="address" ng-model="quote.quote"
-                   class="form-control" placeholder="Quote Price">
-        </div>
-    </div>
-
-    <div class="row existing-house">
-        <div class="form-group col-md-3">
-            <select ng-model="house" id="House" class="form-control"
-                ng-options="house.pk as house.address for house in houses">
-            </select>
-        </div>
-        <button type="button" ng-click="toggleNewHouse()" class="btn btn-default">Add a new house</button>
-    </div>
-
-    <div class="row new-house">
-        <div class="form-group col-md-3">
-                <input type="text" ng-model="newHouse.address" id="address"
-                       class="form-control" placeholder="Address">
-        </div>
-            <button type="button" ng-click="toggleNewHouse()"
-                class="btn btn-default">Choose from existing houses</button>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-5">
-            <textarea class="form-control" placeholder="Enter a description..."
-                      rows="5" ng-model="quote.description"></textarea>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-3">
-            <label>Select any photos you want to upload</label>
-            <input type="file" ngf-select ng-model="files" name="file"
-                   accept="image/*" ngf-max-size="2MB" required
-                   ngf-multiple="true"
-                   ngf-model-invalid="errorFile">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Address
+                <button type="button" ng-click="toggleNewHouse()" class="btn btn-default">Add a new house</button>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row existing-house">
+                        <div class="form-group col-md-3">
+                            <select ng-model="house" id="House" class="form-control"
+                                ng-options="house.pk as house.address for house in houses">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row new-house">
+                        <div class="form-group col-md-7">
+                            <input type="text" ng-model="newHouse.address.line1"
+                                   class="form-control" placeholder="Line 1">
+                        </div>
+                        <div class="form-group col-md-7">
+                            <input type="text" ng-model="newHouse.address.line2"
+                                   class="form-control" placeholder="Line 2">
+                        </div>
+                        <div class="form-group col-md-7">
+                            <input type="text" ng-model="newHouse.address.city"
+                                   class="form-control" placeholder="City">
+                        </div>
+                        <div class="form-group col-md-7">
+                            <input type="text" ng-model="newHouse.address.state"
+                                   class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group col-md-7">
+                            <input type="text" ng-model="newHouse.address.country"
+                                   class="form-control" placeholder="Country">
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Enter a description..."
+                                      rows="5" ng-model="quote.description"></textarea>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <input type="number" ng-model="quote.quote"
+                                   class="form-control" placeholder="Quote Price">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label>Select any photos you want to upload</label>
+                            <input type="file" ngf-select ng-model="files" name="file"
+                                   accept="image/*" ngf-max-size="2MB" required
+                                   ngf-multiple="true"
+                                   ngf-model-invalid="errorFile">
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 
