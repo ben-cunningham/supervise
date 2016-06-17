@@ -1,7 +1,4 @@
 from django.contrib import admin
-from models import Job, Quote, CheckIn, Material
+from models import House
 
-admin.site.register(Job)
-admin.site.register(Quote)
-admin.site.register(CheckIn)
-admin.site.register(Material)
+admin.site.register(House)
