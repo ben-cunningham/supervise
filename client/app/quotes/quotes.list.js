@@ -4,7 +4,6 @@ angular.module('myApp.quotes').controller('QuotesCtrl', ['$scope','Quotes', 'Hou
     function($scope, Quotes, House, Quote, Jobs,  $state) {
 
         $scope.quotes = Quotes.getQuotes(function(quotes) {
-            console.log(quotes);
         });
 
         $scope.bidAccepted = function(pk) {

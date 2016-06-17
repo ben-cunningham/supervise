@@ -3,23 +3,28 @@
         Quotes
     </div>
     <div class="container pull-left">
-        <div ng-repeat="(index, quote) in quotes" class="row" ng-if="quote.state == 0">
-            <div>
-                <div class="col-sm-4" width="10%">
-                    <img ng-src="{{ quote.images.urls[0] }}" width="72">
-                </div>
-                <div class="col-sm-4" width="20%">
-                    Address {{ quote.house.address }} <br>
-                    Quote: {{ quote.quote }}
-                </div>
-                <div class="col-sm-4">
-                    <button class="btn btn-success" ng-click="bidAccepted(quote.pk)">Quote Accepted</button>
-                    <br>
-                    <button class="btn btn-danger" ng-click="bidDeclined(quote.pk)">Quote Not Accepted</button>
-                </div>
-            </div>
-            </div>
-        </div>
+        <table class="table">
+            <tbody>
+                <tr ng-repeat="(index, quote) in quotes" class="row" ng-if="quote.state == 0"
+                    ng-mouseenter="hover=true" ng-mouseleave="hover=false">
+                    <td>
+                        <div>
+                            <div class="col-md-2">
+                                <img ng-src="{{ quote.images.urls[0] }}" width="100">
+                            </div>
+                            <div class="address col-md-4">
+                                {{ quote.house.address }} <br>
+                                {{ quote.quote }}
+                            </div>
+                            <div class="buttons col-md-5" ng-show="hover">
+                                <button class="btn btn-success" ng-click="bidAccepted(quote.pk)">Accepted</button>
+                                <button class="btn btn-danger" ng-click="bidDeclined(quote.pk)">Declined</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
      <!--Rejected Quotes-->
      <div class="container pull-left">
