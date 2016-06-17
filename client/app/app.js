@@ -33,10 +33,13 @@ myApp.run(function($rootScope, $window, $http) {
     }
 
     $http({
-        method: 'GET',
-        url: 'verify-token/'
+        method: 'POST',
+        url: 'api/verify-token/',
+        data: {
+            'token' : $window.localStorage.token
+        }
     }).then(function successCallback(response) {
-
+        console.log(response);
     }, function errorCallback(response) {
         $window.localStorage.clear();
         $window.location.href = '/login';
