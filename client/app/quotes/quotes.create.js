@@ -20,7 +20,7 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                 addQuote($scope.quote, $scope.files);
             }
         };
-        
+
         $scope.quote = null;
         $scope.houses = Houses.getHouses(function() {});
 

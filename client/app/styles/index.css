@@ -141,6 +141,12 @@ hr {
     font-size: large;
 }
 
+/*************** QUOTE CREATE ********************/
+
+.quote-create textarea {
+    max-width: 90%;
+}
+
 /**************** PERFORMANCE *******************/
 
 .container {
