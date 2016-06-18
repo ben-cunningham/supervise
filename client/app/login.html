@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <html>
     <head>
         <title> Lincor </title>
@@ -17,16 +19,37 @@
               });
             }
         </script>
+        <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <form role="post">
-            {% csrf_token %}
-            {{ form }}
-            <button type="button" onclick="onSubmit()">Submit</button>
-        </form>
-        Or
-        <div class="sign-in">
-            <a href="/login/sign_up">Click here to sign up</button>
+        <div class="login">
+            <div class="navbar navbar-default">
+            </div>
+            <div class="container">
+                <div class="inner-container">
+                    <form role="post">
+                        <span class="title">Sign In</span>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                {{ form.username }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                {{ form.password }}
+                            </div>
+                        </div>
+                        <button type="button" onclick="onSubmit()" class="btn btn-submit">Submit</button>
+                        {% csrf_token %}
+                    </form>
+                    Or
+                    <div class="sign-in">
+                        <a href="/login/sign_up">Click here to sign up</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
     <script>

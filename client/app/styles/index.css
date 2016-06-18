@@ -15,6 +15,23 @@ body {
     font-size: medium;
 }
 
+/*************** LOGIN ******************/
+
+.login .container {
+    margin: 20px auto;
+    background-color: lightgrey;
+    padding: 20px;
+}
+
+.login .container .title {
+    font-size: 3em;
+}
+
+.login .container .inner-container {
+    margin: 0 auto;
+    width: 50%;
+}
+
 /*************** JOB DETAIL ******************/
 
 .job-detail .container {
