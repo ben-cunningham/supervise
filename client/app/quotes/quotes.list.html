@@ -13,8 +13,15 @@
                                 <img ng-src="{{ quote.images.urls[0] }}" width="100">
                             </div>
                             <div class="address col-md-4">
-                                {{ quote.house.address }} <br>
-                                {{ quote.quote }}
+                                <div class="line1">
+                                    {{ quote.house.address.line1 }}
+                                </div>
+                                <div class="city">
+                                    {{ quote.house.address.city }}, {{ quote.house.address.state }}
+                                </div>
+                                <div class="quote">
+                                    ${{ quote.quote }}
+                                </div>
                             </div>
                             <div class="buttons col-md-5" ng-show="hover">
                                 <button class="btn btn-success" ng-click="bidAccepted(quote.pk)">Accepted</button>
