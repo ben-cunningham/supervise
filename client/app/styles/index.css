@@ -23,6 +23,18 @@ body {
     padding: 20px;
 }
 
+.login .user-input {
+    padding: 0;
+}
+
+.login form {
+    width: 100%;
+}
+
+.login form input {
+    max-width: 100%;
+}
+
 .login .container .title {
     font-size: 3em;
 }
@@ -31,6 +43,10 @@ body {
     margin: 0 auto;
     width: 50%;
 }
+
+/*************** SIGN-UP ******************/
+
+
 
 /*************** JOB DETAIL ******************/
 

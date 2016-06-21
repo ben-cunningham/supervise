@@ -1,16 +1,24 @@
+{% load staticfiles %}
+{% load css %}
+
 <html>
     <head>
         <title> Lincor </title>
+        <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/index.css' %}">
     </head>
     <body>
-        <form action="/login/sign_up/" method="post">
-            {% csrf_token %}
-            {% for field in form %}
-                <div class="field">
-                    {{ field.label_tag }} {{ field }}
-                </div>
-            {% endfor %}
-            <input type="submit">
-        </form>
+        <div class="navbar navbar-default"></div>
+        <div class="container">
+            <form action="/login/sign_up/" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="field form-group">
+                        {{ field.label_tag }} {{ field | css:"form-control" }}
+                    </div>
+                {% endfor %}
+                <input type="submit">
+            </form>
+        </div>
     </body>
 </html>
