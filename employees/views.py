@@ -2,8 +2,17 @@ from rest_framework.views import APIView
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from serializers import EstimatorSerializer, ForemanSerializer
-from models import Estimator, Foreman, Employee
+from serializers import (
+    EstimatorSerializer,
+    ForemanSerializer,
+    EmployeeSerialzier
+)
+
+from models import (
+    Estimator,
+    Foreman,
+    Employee
+)
 from team.models import Team
 
 
@@ -42,7 +51,9 @@ class Me(APIView):
     """
 
     def get(self, request, format=None):
-        pass
+        employee = Employee.objects.get(user=request.user)
+        serialized = EmployeeSerialzier(employee)
+        return Response(serialized.data, status=200)
 
     def post(self, request, format=None):
         pass
