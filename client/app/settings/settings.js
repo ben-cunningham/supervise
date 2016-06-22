@@ -3,6 +3,6 @@
 angular.module('myApp.settings')
     .controller('sidebarController', ['$scope','$location',  function($scope, $location) {
         $scope.isActive = function(viewLocation) {
-            return viewLocation == $location.path();
+            return $location.path().includes(viewLocation);
         }
     }]);

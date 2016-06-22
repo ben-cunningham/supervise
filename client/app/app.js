@@ -89,6 +89,14 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     authenticate: authenticate
                 }
             })
+            .state('settings.personalEdit', {
+                url: '/personal/edit',
+                templateUrl : '../static/settings/personal/edit.html',
+                controller: 'EditPersonalSettingsController',
+                resolve: {
+                    authenticate: authenticate
+                }
+            })
             .state('settings.team', {
                 url: '/team',
                 templateUrl: '../static/settings/team.html',
