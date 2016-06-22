@@ -4,7 +4,7 @@ angular.module('myApp.settings')
     .factory('Profile', function($resource) {
 
         var getProfile = function(completion) {
-            var me = $resource('/api/me').query(completion);
+            var me = $resource('/api/me').get(completion);
             return me;
         };
 
