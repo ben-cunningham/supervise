@@ -55,5 +55,11 @@ class Me(APIView):
         serialized = EmployeeSerialzier(employee)
         return Response(serialized.data, status=200)
 
-    def post(self, request, format=None):
-        pass
+    def put(self, request, format=None):
+        employee = Employee.objects.get(user=request.user)
+        serializer = EmployeeSerialzier(employee, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response(status=status.HTTP_400_BAD_REQUEST)
