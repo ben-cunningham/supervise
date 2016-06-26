@@ -1,4 +1,4 @@
-<form role="form" ng-submit="createQuote()" class="quote-create">
+<form role="form" class="quote-create">
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -67,8 +67,10 @@
                     </div>
                 </li>
             </ul>
+             <div class="panel-footer">
+                <button class="btn btn-primary pull-right" ng-click="createQuote()">Submit</button>
+                <div class="clearfix"></div>
+            </div>
         </div>
     </div>
-
-    <input type="submit" class="btn btn-primary">
 </form>
