@@ -5,7 +5,7 @@
     <div class="postings" ng-repeat="job in jobs | filter: { completed : false }">
         <div>
             <a ui-sref="jobs-detail({ pk: {{ job.pk }}})">
-                <img ng-src="{{ job.images.urls[0] }}" height="72"> {{ job.house.address }}
+                <img ng-src="{{ job.images.urls[0] }}" height="72"> {{ job.house.address.line1 }}
             </a>
         </div>
     </div>
@@ -14,6 +14,6 @@
         Completed
     </div>
     <div class="postings" ng-repeat="job in jobs | filter: { completed : true }">
-        <a ui-sref="jobs-detail({ pk: job.pk })"> {{ job.house.address }} </a>
+        <a ui-sref="jobs-detail({ pk: job.pk })"> {{ job.house.address.line1 }} </a>
     </div> 
 </div>

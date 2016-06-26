@@ -8,8 +8,15 @@
                     </div>
                     <div class="address col-md-8">
                         <h2>
-                            {{ job.house.address }}
-                            <button class="btn btn-default" ng-click="editJob()">Edit</button>
+                            <div>
+                                <span>{{ job.house.address.line1 }}</span>
+                            </div>
+                            <div>
+                                <span>{{ job.house.address.city }}</span>
+                                <span>{{ job.house.address.state }}</span>
+                                <button class="btn btn-default" ng-click="editJob()">Edit</button>
+                            </div>
+
                         </h2>
                     </div>
 
