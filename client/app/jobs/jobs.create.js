@@ -23,7 +23,7 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                         $scope.job.description = quote.description;
                     });
                 });
-                console.log(quote);
+
                 $scope.submit = function() {
                     Quote.update({ pk : pk}, {
                         state : 1
@@ -42,6 +42,7 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                     );
                 };
             } else {
+
                 $scope.submit = function() {
                     var job = {};
                     job.budget = $scope.job.budget;
