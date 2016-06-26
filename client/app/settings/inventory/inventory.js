@@ -24,17 +24,17 @@ angular.module('myApp.settings')
 angular.module('myApp.settings')
     .controller('ModalController', function ($scope, $uibModalInstance) {
 
-      $scope.ok = function () {
-          var item = {
-              'name' : $scope.name,
-              'total_quantity' : $scope.total_quantity,
-              'units' : $scope.units,
-          }
+        $scope.ok = function () {
+            var item = {
+                'name' : $scope.name,
+                'total_quantity' : $scope.total_quantity,
+                'units' : $scope.units,
+            }
 
-          $uibModalInstance.close(item);
-      };
+            $uibModalInstance.close(item);
+        };
 
-      $scope.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
-      };
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
 });
