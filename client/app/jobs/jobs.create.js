@@ -25,23 +25,31 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                 });
 
                 $scope.submit = function() {
-                    Quote.update({ pk : pk}, {
-                        state : 1
-                    }).$promise.then(
-                        function(value) {
-                            quote.state = 1;
-                            $scope.job.foreman = $scope.job.foreman.pk;
-                            $scope.job.house = $scope.job.house.pk;
-                            $scope.job.estimator = $scope.job.estimator.pk;
-                            $scope.job.images = quote.images.urls;
-                            Jobs.addJob($scope.job)
-                        },
-                        function(error) {
-                            console.log('failure');
-                        }
-                    );
+                    if($scope.job.foreman) // if a foreman is being assigned to the job
+                        $scope.job.foreman = $scope.job.foreman.pk;
+
+                    $scope.job.house = $scope.job.house.pk;
+                    $scope.job.estimator = $scope.job.estimator.pk;
+                    $scope.job.images = quote.images.urls;
+
+                    Jobs.addJob($scope.job, function() {
+
+                        Quote.update({ pk : pk}, {
+                            state : 1
+                        }).$promise.then(
+                            function(value) {
+                                quote.state = 1;
+                            },
+                            function(error) {
+                                console.log('failure');
+                            }
+                        );
+                    }, function() {
+
+                    })
                 };
-            } else {
+            }
+            else {
 
                 $scope.submit = function() {
                     var job = {};

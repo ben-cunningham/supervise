@@ -20,13 +20,14 @@ angular.module('myApp.jobs').factory('Jobs', function($resource, Teams) {
         return jobs;
     };
 
-    var addJob = function(job) {
+    var addJob = function(job, completion, errorCompletion) {
         resource.save(job).$promise.then(
             function( value ){
-                console.log(value);
                 jobs.push(value);
+                completion();
             },
-            function( error ){
+            function(error) {
+                errorCompletion();
                 alert('error');
             }
         );
