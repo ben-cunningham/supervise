@@ -91,7 +91,11 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             })
             .state('settings.team', {
                 url: '/team',
-                templateUrl: '../static/settings/team.html',
+                templateUrl: '../static/settings/team/teamSettings.html',
+                controller: 'TeamSettingsController',
+                resolve: {
+                    authenticate: authenticate
+                }
             })
             .state('settings.inventory', {
                 url: '/inventory',

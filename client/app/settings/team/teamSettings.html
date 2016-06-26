@@ -1,11 +1,20 @@
 <div class="personal">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <button class="btn btn-default pull-right" ng-click="edit()">Edit</button>
             <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-
+            <form>
+                <div class="form-group">
+                    <label class="">Company Name</label>
+                    <input type="text" class="form-control" ng-model="team.name"
+                        ng-change="onChange('username', profile.user.username)">
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-primary pull-right" ng-click="submit()">Submit</button>
+            <div class="clearfix"></div>
         </div>
     </div>
 </div>
