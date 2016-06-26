@@ -45,13 +45,19 @@ app.factory('Houses', function($resource, Teams) {
         );
     };
 
+    var getHouse = function(pk, completion) {
+        return $resource(URL + 'teams/' +team +'/houses/' +pk+'/').get(completion);
+    };
+
     return {
         getHouses : getHouses,
+        getHouse : getHouse,
         addHouse : addHouse
     };
 });
 
 app.factory('House', function($resource) {
+    var URL = '/api';
     return $resource(URL + '/houses/:pk/', { pk : '@pk' }, {
         update : { method: 'PUT' },
         delete : { method: 'DELETE' }

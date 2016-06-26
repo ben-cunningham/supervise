@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams','Jobs', 'Estimators', 'Quote', 'House', 'Foremen',
-    function($scope, $stateParams, Jobs, Estimators, Quote, House, Foremen) {
+angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams','Jobs', 'Estimators', 'Quote', 'Houses', 'Foremen',
+    function($scope, $stateParams, Jobs, Estimators, Quote, Houses, Foremen) {
         $scope.estimators = Estimators.getEstimators(function() {});
         $scope.foremen = Foremen.getForemen(function() {});
         $scope.job = {};
@@ -15,8 +15,9 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
         if(pk != null) {  //creating a job from a quote
             if($stateParams.isQuote === "y") {
                 quote = Quote.get({ pk: pk }, function() {
-                    var house = House.get({ pk: quote.house.pk }, function() {
+                    var house = Houses.getHouse(quote.house.pk, function() {
                         $scope.job.house = house;
+                        console.log(house);
                         $scope.job.budget = quote.quote;
                         $scope.job.estimator = quote.estimator;
                         $scope.job.description = quote.description;
