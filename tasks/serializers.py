@@ -86,22 +86,10 @@ class JobCreateSerializer(serializers.ModelSerializer):
         team_pk = view.kwargs['team_pk']
         team = Team.objects.get(pk=team_pk)
         try:
-            print(validated_data)
-            job = Job.objects.create(
-                team=team,
-                house=validated_data['house'],
-                budget=validated_data['budget'],
-                description=validated_data['description'],
-                current_hours_spent=validated_data['current_hours_spent'],
-                job_type=validated_data['job_type'],
-                estimator=validated_data['estimator'],
-                foreman=validated_data['foreman'],
-                images={
-                    'urls': validated_data['images']
-                },
-            )
-            if 'completed' in validated_data:
-                job.completed = validated_data['completed']
+            urls = validated_data.pop('images')
+            job = Job.objects.create(**validated_data)
+            job.team = team
+            job.images = {'urls': urls}
             job.save()
             return job
         except:
