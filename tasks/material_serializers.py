@@ -33,7 +33,6 @@ class MaterialSerializer(serializers.ModelSerializer):
         view = self.context['view']
         team_pk = view.kwargs['team_pk']
         team = Team.objects.get(pk=team_pk)
-        print validated_data
         material = Material.objects.create(
             name=validated_data['name'],
             total_quantity=validated_data['total_quantity'],
