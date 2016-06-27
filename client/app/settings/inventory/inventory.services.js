@@ -26,9 +26,15 @@ angular.module('myApp.settings')
             );
         };
 
+        var getUnitList = function(completion) {
+            var units = $resource(URL +'teams/' +team +'/unit_list').query(completion);
+            return units;
+        };
+
         return {
             getList : getList,
             addItem : addItem,
+            getUnitList: getUnitList,
         };
     });
 

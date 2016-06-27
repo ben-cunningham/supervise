@@ -12,8 +12,7 @@
                    ng-model="total_quantity" placeholder="Total Quantity">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control"
-                   ng-model="units" placeholder="Units (cms, lbs)">
+           <select ng-options="unit[0] as unit[1] for unit in unitsList" ng-model="units" class="form-control"></select>
         </div>
     </form>
 </div>

@@ -3,13 +3,21 @@
 angular.module('myApp.settings')
   .controller('InventoryController', ['$scope','Inventory', '$uibModal',  function($scope, Inventory, $uibModal) {
       $scope.items = Inventory.getList();
+      $scope.units = Inventory.getUnitList(function() {
+
+      });
 
       $scope.open = function() {
 
           var modalInstance = $uibModal.open({
               animation: true,
               templateUrl: '../static/settings/inventory/modal.html',
-              controller: 'ModalController'
+              controller: 'ModalController',
+              resolve: {
+                units: function () {
+                  return $scope.units;
+                }
+              }
           });
 
           modalInstance.result.then(function (item) {
@@ -22,7 +30,8 @@ angular.module('myApp.settings')
 ]);
 
 angular.module('myApp.settings')
-    .controller('ModalController', function ($scope, $uibModalInstance) {
+    .controller('ModalController', function ($scope, $uibModalInstance, units) {
+        $scope.unitsList = units;
 
         $scope.ok = function () {
             var item = {
