@@ -131,7 +131,6 @@ class UnitList(APIView):
 
     def get(self, request, team_pk):
         units = UNIT_CHOICES
-        print units
         return Response(units, status=status.HTTP_200_OK)
 
 class results_calculator(APIView):
