@@ -13,6 +13,7 @@ urlpatterns = (
 
     url(r'^teams/(?P<team_pk>[0-9]+)/material/$', views.MaterialView.as_view()),
     url(r'^teams/(?P<team_pk>[0-9]+)/results/$', views.results_calculator.as_view()),
+    url(r'^teams/(?P<team_pk>[0-9]+)/unit_list', views.UnitList.as_view()),
 )
 
 urlpatterns = format_suffix_patterns(urlpatterns)

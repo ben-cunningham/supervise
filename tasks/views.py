@@ -30,6 +30,8 @@ from material_serializers import (
     MaterialSerializer,
 )
 
+from units import UNIT_CHOICES
+
 from team.models import Team
 
 from rest_framework.response import Response
@@ -121,6 +123,16 @@ class CheckedOutMaterial(APIView):
             material.save()
             return Response(status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class UnitList(APIView):
+    """
+    Return a list of the possible unit choices
+    """
+
+    def get(self, request, team_pk):
+        units = UNIT_CHOICES
+        print units
+        return Response(units, status=status.HTTP_200_OK)
 
 class results_calculator(APIView):
     def get(self, request, *args, **kw):
