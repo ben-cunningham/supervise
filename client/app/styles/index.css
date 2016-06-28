@@ -15,6 +15,11 @@ body {
     font-size: medium;
 }
 
+.no-padding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 /*************** LOGIN ******************/
 
 .login .container {
@@ -54,8 +59,17 @@ body {
 
 /*************** JOB DETAIL ******************/
 
+.job-detail {
+    word-wrap: break-word;
+}
+
 .job-detail .container {
     padding-top: 0;
+}
+
+.job-detail img {
+    width: 100%;
+    padding: 0;
 }
 
 .job-detail .banner {

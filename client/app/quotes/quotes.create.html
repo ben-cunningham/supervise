@@ -61,8 +61,21 @@
                             <label>Select any photos you want to upload</label>
                             <input type="file" ngf-select ng-model="files" name="file"
                                    accept="image/*" ngf-max-size="2MB" required
-                                   ngf-multiple="true"
+                                   ngf-multiple="true" classs="form-control" ng-change="readURLs(this)"
                                    ngf-model-invalid="errorFile">
+                        </div>
+                    </div>
+                    <div ng-if="images">
+                        <div class="row" ng-repeat="image in images">
+                            <div class="col-md-4">
+                                <img class="img-responsive" ng-src="{{ image[0] }}">
+                            </div>
+                            <div class="col-md-4">
+                                <img class="img-responsive" ng-src="{{ image[1] }}">
+                            </div>
+                            <div class="col-md-4">
+                                <img class="img-responsive" ng-src="{{ image[2] }}">
+                            </div>
                         </div>
                     </div>
                 </li>

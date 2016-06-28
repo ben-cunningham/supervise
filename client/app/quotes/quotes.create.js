@@ -23,6 +23,32 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
 
         $scope.quote = null;
         $scope.houses = Houses.getHouses(function() {});
+        $scope.images = [];
+
+        $scope.readURLs = function(input) {
+
+            if (input.files) {
+                var tuple = [];
+                var count = 0;
+
+                for (var i = 0; i <= input.files.length; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        
+                        tuple.push(e.target.result);
+                        count++;
+                        if (count % 3 == 0) {
+                            $scope.images.push(tuple);
+                            tuple = [];
+                        }
+                    };
+
+                    reader.readAsDataURL(input.files[i]);
+                    reader = new FileReader();
+                }
+            }
+        };
 
         function addQuote(quote, images) {
             var token = $window.localStorage.token;
