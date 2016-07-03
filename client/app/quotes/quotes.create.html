@@ -67,14 +67,23 @@
                     </div>
                     <div ng-if="images">
                         <div class="row" ng-repeat="image in images">
-                            <div class="col-md-4">
-                                <img class="img-responsive" ng-src="{{ image[0] }}">
+                            <div class="col-md-4 selected">
+                                <a href="#">
+                                    <img class="img-responsive" ng-src="{{ image[0] }}"
+                                         ng-click="didSelectImage(this)">
+                                </a>
                             </div>
                             <div class="col-md-4">
-                                <img class="img-responsive" ng-src="{{ image[1] }}">
+                                <a href="#">
+                                    <img class="img-responsive" ng-src="{{ image[1] }}"
+                                        ng-click="didSelectImage(this)">
+                                </a>
                             </div>
                             <div class="col-md-4">
-                                <img class="img-responsive" ng-src="{{ image[2] }}">
+                                <a href="#">
+                                    <img class="img-responsive" ng-src="{{ image[2] }}"
+                                        ng-click="didSelectImage(this)">
+                                </a>
                             </div>
                         </div>
                     </div>
