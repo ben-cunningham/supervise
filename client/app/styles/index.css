@@ -198,6 +198,10 @@ hr {
     max-width: 90%;
 }
 
+.quote-create .selected {
+    border: 4px solid #021a40;
+}
+
 /**************** PERFORMANCE *******************/
 
 .container {

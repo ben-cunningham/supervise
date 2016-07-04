@@ -1,5 +1,7 @@
 'use strict';
 
+angular.module('myApp.quotes').directive('imagePreview', ImagePreview);
+
 angular.module('myApp.quotes').controller('NewQuoteCtrl',
     ['$scope', '$stateParams','Quotes', 'Houses', 'Estimators', '$location', '$window', 'Upload',
     function($scope, $stateParams, Quotes, Houses, Estimators, $location, $window, Upload) {
@@ -49,6 +51,10 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                 }
             }
         };
+        
+        $scope.didSelectImage = function (image) {
+            console.log(image);
+        };
 
         function addQuote(quote, images) {
             var token = $window.localStorage.token;
@@ -78,3 +84,27 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
         };
     }
 ]);
+
+function ImagePreview() {
+    return {
+        restrict: 'A',
+        template: '<img class="img-responsive" ng-src="{{ imgURL }}">',
+        replace: true,
+        scope: {
+            model: '='
+        },
+        transclude: true,
+        link: function (scope, element, attrs) {
+            scope.imgURL = attrs.imgSrc;
+            element.bind('click', function () {
+                
+                var selectedEl = angular.element(document.querySelector(".selected"));
+                if(selectedEl) {
+                    selectedEl.removeClass("selected");
+                }
+
+                element.addClass("selected");
+            });
+        }
+    };
+}
