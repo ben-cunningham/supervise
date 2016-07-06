@@ -1,10 +1,8 @@
 'use strict';
 
-angular.module('myApp.quotes').directive('imagePreview', ImagePreview);
-
 angular.module('myApp.quotes').controller('NewQuoteCtrl',
-    ['$scope', '$stateParams','Quotes', 'Houses', 'Estimators', '$location', '$window', 'Upload',
-    function($scope, $stateParams, Quotes, Houses, Estimators, $location, $window, Upload) {
+    ['$scope', '$stateParams','Quotes', 'Houses', 'Estimators', '$location', '$window', 'Upload', 'Images',
+    function($scope, $stateParams, Quotes, Houses, Estimators, $location, $window, Upload, Images) {
 
         $scope.showNewHouse = true;
 
@@ -39,6 +37,7 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                     reader.onload = function (e) {
                         
                         tuple.push(e.target.result);
+                        // $scope.images.push(e.target.result);
                         count++;
                         if (count % 3 == 0) {
                             $scope.images.push(tuple);
@@ -82,18 +81,25 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                     // console.log(evt);
                 });
         };
+
+        function getThumbnail() {
+            var thumbnail = Images.getThumbnail();
+            var image = (parseInt(thumbnail.outerindex) * 3) + parseInt(thumbnail.innerIndex);
+            return image;
+        }
     }
 ]);
 
-function ImagePreview() {
+angular.module('myApp.quotes').directive('imagePreview', ImagePreview);
+
+ImagePreview.$inject = ['Images'];
+
+function ImagePreview(Images) {
     return {
-        restrict: 'A',
+        restrict: 'EA',
         template: '<img class="img-responsive" ng-src="{{ imgURL }}">',
         replace: true,
-        scope: {
-            model: '='
-        },
-        transclude: true,
+        scope: {},
         link: function (scope, element, attrs) {
             scope.imgURL = attrs.imgSrc;
             element.bind('click', function () {
@@ -104,6 +110,11 @@ function ImagePreview() {
                 }
 
                 element.addClass("selected");
+                Images.setThumbnail({
+                    outer: attrs.outerindex,
+                    inner: attrs.innerindex,
+                });
+
             });
         }
     };

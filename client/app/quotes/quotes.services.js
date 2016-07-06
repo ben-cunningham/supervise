@@ -59,3 +59,33 @@ angular.module('myApp.quotes').factory('Quote', function($resource, Teams) {
         delete : { method: 'DELETE' }
     });
 });
+
+angular.module('myApp.quotes').factory('Images', Images);
+
+function Images() {
+    var thumbnail = null;
+    var images = [];
+
+    return {
+        getThumbnail: getThumbnail,
+        setThumbnail: setThumbnail,
+        getImages: getImages,
+        addImage: addImage,
+    }
+
+    function setThumbnail(_thumbnail) {
+        thumbnail = _thumbnail;
+    }
+
+    function getThumbnail() {
+        return thumbnail;
+    }
+
+    function getImages() {
+        return images;
+    }
+
+    function addImage(image) {
+        images.push(image);
+    }
+};
