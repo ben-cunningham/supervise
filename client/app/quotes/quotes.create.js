@@ -50,16 +50,13 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                 }
             }
         };
-        
-        $scope.didSelectImage = function (image) {
-            console.log(image);
-        };
 
         function addQuote(quote, images) {
             var token = $window.localStorage.token;
             if(!token) {
                 alert("need token");
             }
+
             Upload.upload({
                 url: '/api/upload/',
                 data: { key: images },
