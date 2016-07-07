@@ -29,3 +29,14 @@ class ImageUpload(APIView):
         }
 
         return Response(content, status=status.HTTP_201_CREATED)
+
+class ThumbnailUpload(APIView):
+
+    def post(self, request, format=None):
+        image = self.request.FILES.get('image')
+        url = upload_to_s3(image)
+        content = {
+            'thumbnail': url
+        }
+
+        return Response(content, status=status.HTTP_201_CREATED)
