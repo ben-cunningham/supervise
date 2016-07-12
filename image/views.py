@@ -33,6 +33,7 @@ class ImageUpload(APIView):
 class ThumbnailUpload(APIView):
 
     def post(self, request, format=None):
+        print self.request.FILES
         image = self.request.FILES.get('image')
         url = upload_to_s3(image)
         content = {

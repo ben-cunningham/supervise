@@ -126,6 +126,7 @@ class QuoteListSerializer(serializers.ModelSerializer):
             'house',
             'estimator',
             'images',
+            'thumbnail'
         )
 
 class QuoteCreateSerializer(serializers.ModelSerializer):
@@ -142,6 +143,7 @@ class QuoteCreateSerializer(serializers.ModelSerializer):
             'description',
             'estimator',
             'images',
+            'thumbnail',
         )
 
     def create(self, validated_data):
@@ -155,8 +157,9 @@ class QuoteCreateSerializer(serializers.ModelSerializer):
                 estimator=estimator,
                 team=estimator.team,
                 images={
-                    'urls':validated_data['images']
+                    'urls': validated_data['images']
                 },
+                thumbnail=validated_data['thumbnail'],
             )
             quote_to_submit.save()
             return quote_to_submit

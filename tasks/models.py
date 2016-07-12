@@ -27,6 +27,7 @@ class Quote(models.Model):
     estimator = models.ForeignKey(Estimator, null=True, related_name='quotes')
     team = models.ForeignKey(Team, null=True, related_name='quotes')
     images = JSONField(blank=True, null=True)
+    thumbnail = models.URLField(null=True)
 
 class Job(models.Model):
     created = models.DateTimeField(auto_now_add=True)
