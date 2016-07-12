@@ -25,28 +25,35 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
         $scope.houses = Houses.getHouses(function() {});
         $scope.images = [];
 
-        $scope.readURLs = function(input) {
+        $scope.readURLs = function($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event) {
 
-            if (input.files) {
+            var input = $files.slice();
+
+            if (input) {
                 var tuple = [];
                 var count = 0;
 
-                for (var i = 0; i <= input.files.length; i++) {
+                for (var i = 0; i <= input.length; i++) {
                     var reader = new FileReader();
 
-                    reader.onload = function (e) {
-                        
-                        tuple.push(e.target.result);
-                        // $scope.images.push(e.target.result);
-                        count++;
-                        if (count % 3 == 0) {
-                            $scope.images.push(tuple);
-                            tuple = [];
-                        }
-                    };
+                    reader.onload = (function(theFile) {
+                        return function (e) {
 
-                    reader.readAsDataURL(input.files[i]);
-                    reader = new FileReader();
+                            tuple.push(e.target.result);
+                            count++;
+
+                            if (count % 3 == 0) {
+                                $scope.images.push(tuple);
+                                tuple = [];
+                            }
+
+                            if(count == input.length) {
+                                $scope.$apply();
+                            }
+                        }
+                    })(input[i]);
+
+                    reader.readAsDataURL(input[i]);
                 }
             }
         };
@@ -57,20 +64,46 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                 alert("need token");
             }
 
+            console.log(images);
+
             Upload.upload({
                 url: '/api/upload/',
                 data: { key: images },
                 headers: { 'Authorization': 'JWT' +token }, // only for html5
             }).then(
+
                 function(resp) {
-                    quote.images = resp.data.urls;
-                    Quotes.addQuote(quote,
-                        function() {
-                            $location.path('/quotes');
-                        },
-                        function(error) {
-                            alert("Encountered error: " +error);
+                    // console.log(resp);
+
+                    var thumbnailIndex = getThumbnail();
+                    console.log(images);
+                    console.log(thumbnailIndex);
+
+                    Upload.upload({
+                        url: '/api/upload_thumbnail',
+                        data: { image: images[thumbnailIndex] },
+                        headers: { 'Authorization': 'JWT' +token },
+                    }).then(
+
+                        function(thumbResp) {
+
+                            quote.images = resp.data.urls;
+                            quote.thumbnail = thumbResp.data.thumbnail;
+
+                            Quotes.addQuote(quote,
+                                function() {
+                                    $location.path('/quotes');
+                                },
+                                function(error) {
+                                    alert("Encountered error: " +error);
+                                });
+                        }, function(resp) {
+                            console.log(resp);
+                            // handle error
+                        }, function(evt) {
+                            // console.log(evt);
                         });
+
                 }, function(resp) {
                     console.log(resp);
                     // handle error
@@ -81,7 +114,7 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
 
         function getThumbnail() {
             var thumbnail = Images.getThumbnail();
-            var image = (parseInt(thumbnail.outerindex) * 3) + parseInt(thumbnail.innerIndex);
+            var image = (parseInt(thumbnail.outer) * 3) + parseInt(thumbnail.inner);
             return image;
         }
     }

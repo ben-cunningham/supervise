@@ -61,11 +61,11 @@
                             <label>Select any photos you want to upload</label>
                             <input type="file" ngf-select ng-model="files" name="file"
                                    accept="image/*" ngf-max-size="2MB" required
-                                   ngf-multiple="true" classs="form-control" ng-change="readURLs(this)"
+                                   ngf-multiple="true" classs="form-control" ngf-change="readURLs($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
                                    ngf-model-invalid="errorFile">
                         </div>
                     </div>
-                    <div ng-if="images">
+                    <!--<div ng-if="images">-->
                         <div class="row" ng-repeat="imageTuple in images">
                             <div class="col-md-4" ng-repeat="image in imageTuple">
                                 <a href="#">
@@ -74,7 +74,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    <!--</div>-->
                 </li>
             </ul>
              <div class="panel-footer">
