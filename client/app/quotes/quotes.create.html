@@ -17,42 +17,48 @@
                     <div class="row new-house" ng-show="showNewHouse==true">
                         <div class="form-group col-md-7">
                             <input type="text" ng-model="newHouse.address.line1"
-                                   class="form-control" placeholder="Line 1">
+                                   class="form-control" placeholder="Line 1"
+                                    ng-init="newHouse.address.line1=''">
                             <div class="error">
                                 <span ng-bind="line1Error" id="line1Error"></span>
                             </div>
                         </div>
                         <div class="form-group col-md-7">
                             <input type="text" ng-model="newHouse.address.line2"
-                                   class="form-control" placeholder="Line 2">
+                                   class="form-control" placeholder="Line 2"
+                                   ng-init="newHouse.address.line2=''">
                             <div class="error">
                                 <span ng-bind="line2Error" id="line2Error"></span>
                             </div>
                         </div>
                         <div class="form-group col-md-7">
                             <input type="text" ng-model="newHouse.address.city"
-                                   class="form-control" placeholder="City">
+                                   class="form-control" placeholder="City"
+                                   ng-init="newHouse.address.city=''">
                             <div class="error">
                                 <span ng-bind="cityError" id="cityError"></span>
                             </div>
                         </div>
                         <div class="form-group col-md-7">
                             <input type="text" ng-model="newHouse.address.state"
-                                   class="form-control" placeholder="State">
+                                   class="form-control" placeholder="State"
+                                   ng-init="newHouse.address.state=''">
                             <div class="error">
                                 <span ng-bind="stateError" id="stateError"></span>
                             </div>
                         </div>
                         <div class="form-group col-md-7">
                             <input type="text" ng-model="newHouse.address.zip"
-                                   class="form-control" placeholder="Zip">
+                                   class="form-control" placeholder="Zip"
+                                   ng-init="newHouse.address.zip=''">
                             <div class="error">
                                 <span ng-bind="zipError" id="zipError"></span>
                             </div>
                         </div>
                         <div class="form-group col-md-7">
                             <input type="text" ng-model="newHouse.address.country"
-                                   class="form-control" placeholder="Country">
+                                   class="form-control" placeholder="Country"
+                                   ng-init="newHouse.address.country=''">
                             <div class="error">
                                 <span ng-bind="countryError" id="countryError"></span>
                             </div>

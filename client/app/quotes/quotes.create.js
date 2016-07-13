@@ -9,6 +9,11 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
         $scope.createQuote = function() {
             // User wants to add a new house
             // instead of selecting an existing one
+
+            if(!isValid()) {
+                return;
+            }
+
             if($scope.showNewHouse){
                 Houses.addHouse($scope.newHouse, function(id) {
                     $scope.quote.house = id;
@@ -21,7 +26,7 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
             }
         };
 
-        $scope.quote = null;
+        $scope.quote = {};
         $scope.houses = Houses.getHouses(function() {});
         $scope.images = [];
 
@@ -111,6 +116,43 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                     // console.log(evt);
                 });
         };
+
+        function isValid() {
+
+            var valid = true;
+
+            if ($scope.newHouse.address.line1.length < 1) {
+                $scope.line1Error = "You must enter a value";
+                valid = false;
+            }
+
+            if ($scope.newHouse.address.city.length < 1) {
+                $scope.cityError = "You must enter a value";
+                valid = false;
+            }
+
+            if ($scope.newHouse.address.state.length != 2) {
+                $scope.stateError = "State initials must be two characters long";
+                valid = false;
+            }
+
+            if ($scope.newHouse.address.zip.length != 6 || $scope.newHouse.address.zip.length != 5) {
+                $scope.stateError = "Not a valid zip code";
+                valid = false;
+            }
+
+            if ($scope.newHouse.address.country.length < 1) {
+                $scope.countryError = "You must enter a value";
+                valid = false;
+            }
+
+            if (!$scope.quote.price) {
+                $scope.quoteError = "You must enter a value";
+                valid = false;
+            }
+
+            return valid;
+        }
 
         function getThumbnail() {
             var thumbnail = Images.getThumbnail();
