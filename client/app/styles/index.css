@@ -20,6 +20,12 @@ body {
     margin: 0 !important;
 }
 
+.error {
+    color: red;
+    padding-left: 3px;
+    padding-top: 3px;
+}
+
 /*************** LOGIN ******************/
 
 .login .container {
