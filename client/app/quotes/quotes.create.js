@@ -125,6 +125,9 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                 $scope.line1Error = "You must enter a value";
                 valid = false;
             }
+            else {
+                $scope.line1Error = "";
+            }
 
             if ($scope.newHouse.address.city.length < 1) {
                 $scope.cityError = "You must enter a value";

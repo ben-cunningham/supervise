@@ -69,5 +69,16 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
         } else {  // new job without quote
             alert("No quote found!");
         }
+
+        function isValid() {
+            var valid = true;
+
+            if () {
+
+            }
+
+
+            return valid;
+        }
     }
 ]);
