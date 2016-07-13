@@ -25,6 +25,11 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                 });
 
                 $scope.submit = function() {
+
+                    if(!isValid()) {
+                        return;
+                    }
+
                     if($scope.job.foreman) // if a foreman is being assigned to the job
                         $scope.job.foreman = $scope.job.foreman.pk;
 
@@ -52,6 +57,11 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
             else {
 
                 $scope.submit = function() {
+
+                    if(!isValid()) {
+                        return;
+                    }
+
                     var job = {};
                     job.budget = $scope.job.budget;
                     job.completed = $scope.job.completed;
@@ -73,8 +83,22 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
         function isValid() {
             var valid = true;
 
-            if () {
+            if (!$scope.job.budget) {
 
+                $scope.budgetError = "This field is required";
+                valid = false;
+            } else {
+
+                $scope.budgetError = "";
+            }
+
+            if (!$scope.job.current_hours_spent) {
+
+                $scope.currentHoursSpentError = "This field is required.";
+                valid = false;
+            } else {
+
+                $scope.currentHoursSpentError = "";
             }
 
 
