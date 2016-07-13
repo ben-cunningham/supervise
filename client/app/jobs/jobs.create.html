@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="budget"> Budget </label>
-                            <input type="text" id="budget" ng-model="job.budget" class="form-control">
+                            <input type="number" id="budget" ng-model="job.budget" class="form-control">
                             <div class="error">
                                 <span ng-bind="budgetError" id="budgetError"></span>
                             </div>
@@ -32,7 +32,7 @@
 
                         <div class="form-group col-md-12">
                             <label for="current_hours_spent"> Current no. of hours spent </label>
-                            <input type="text" id="current_hours_spent" ng-model="job.current_hours_spent" class="form-control">
+                            <input type="number" id="current_hours_spent" ng-model="job.current_hours_spent" class="form-control">
                             <div class="error">
                                 <span ng-bind="currentHoursSpentError" id="currentHoursSpentError"></span>
                             </div>
