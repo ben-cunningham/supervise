@@ -2,7 +2,7 @@
     <div class="category">
         On-Going
     </div>
-    <div class="postings" ng-repeat="job in jobs | filter: { completed : false }">
+    <div class="postings" ng-repeat="job in jobs">
         <div>
             <a ui-sref="jobs-detail({ pk: {{ job.pk }}})">
                 <img ng-src="{{ job.images.urls[0] }}" height="72"> {{ job.house.address.line1 }}
@@ -10,10 +10,12 @@
         </div>
     </div>
 
-    <div class="category">
+    <div class="completed" ng-if="hasCompleted">
+        <div class="category">
         Completed
-    </div>
-    <div class="postings" ng-repeat="job in jobs | filter: { completed : true }">
-        <a ui-sref="jobs-detail({ pk: job.pk })"> {{ job.house.address.line1 }} </a>
+        </div>
+        <div class="postings" ng-repeat="job in completedJobs">
+            <a ui-sref="jobs-detail({ pk: job.pk })"> {{ job.house.address.line1 }} </a>
+        </div>
     </div> 
 </div>
