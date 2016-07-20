@@ -10,14 +10,21 @@ angular.module('myApp.jobs').factory('Jobs', function($resource, Teams) {
                     });
 
     var getJobs = function(completion, shouldReload) {
+
         if (!initialized || shouldReload) {
-           jobs = resource.query(completion);
-           initialized = true;
+
+           resource.query(function(response) {
+
+               if(response) {
+                   completion(response);
+               }
+
+           });
         }
         else {
+
             completion(jobs);
-        }
-        return jobs;
+        };
     };
 
     var addJob = function(job, completion, errorCompletion) {
