@@ -166,7 +166,11 @@ body {
     line-height: 2em;
 }
 
-.job-detail .check-ins>.row {
+.job-detail .check-ins .heading {
+    font-size: 2em;
+}
+
+.job-detail .check-in-list>.row {
     padding-bottom: 20px;
 }
 

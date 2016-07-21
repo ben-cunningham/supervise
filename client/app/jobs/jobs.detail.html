@@ -78,31 +78,36 @@
                     </table>
                 </div>
             </div>
-            <h2>Check-Ins</h2> <button class="btn btn-default" ng-click="textareashow = !textareashow">Add</button>
-            <br>
-            <div class="row" ng-show="textareashow">
-                <div>
-                    <textarea class="form-control" rows="5" placeholder="Check-In" ng-model="checkInText"></textarea>
-                    <button class="btn btn-primary" ng-click="submitCheckIn()">Submit</button>
+            <div class="check-ins">
+                <div class="">
+                    <span class="heading">Check-Ins</span>
+                    <button class="btn btn-default " ng-click="textareashow = !textareashow">Add</button>
                 </div>
-            </div>
-            <div class="check-ins pull-left">
-                <div ng-repeat="checkin in job.check_ins" class="row">
-                    <div class="col-md-1">
-                        avatar
+                <br>
+                <div class="row" ng-show="textareashow">
+                    <div>
+                        <textarea class="form-control" rows="5" placeholder="Check-In" ng-model="checkInText"></textarea>
+                        <button class="btn btn-primary" ng-click="submitCheckIn()">Submit</button>
                     </div>
-                    <div class="col-md-10">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <b>User</b>
-                            </div>
-                            <div class="col-md-5">
-                                {{ checkin.created }}
-                            </div>
+                </div>
+                <div class="check-in-list pull-left">
+                    <div ng-repeat="checkin in job.check_ins" class="row">
+                        <div class="col-md-1">
+                            avatar
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                {{ checkin.text }}
+                        <div class="col-md-10">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <b>User</b>
+                                </div>
+                                <div class="col-md-5">
+                                    {{ checkin.created }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{ checkin.text }}
+                                </div>
                             </div>
                         </div>
                     </div>
