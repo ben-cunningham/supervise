@@ -168,6 +168,15 @@ body {
 
 .job-detail .check-ins .heading {
     font-size: 2em;
+    position: relative;
+}
+
+.job-detail .check-ins .heading button {
+    vertical-align: middle;
+    margin-left: 8px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .job-detail .check-in-list>.row {
