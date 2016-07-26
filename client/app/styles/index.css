@@ -115,17 +115,20 @@ body {
     position: relative;
 }
 
-.job-detail .col-md-4,
-.job-detail .col-md-8 {
+.job-detail .col-md-5,
+.job-detail .col-md-7 {
     height: 100%;
 }
 
 .job-detail .banner .row {
-    height: 100px;
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    width: 650px;
+    height: 100%;
+}
+
+.job-detail .banner .row .parent-container {
+    margin: 0 auto;
+    height: 100%;
+    width: 66%;
+    overflow: auto;
 }
 
 .job-detail .banner .row .address {
@@ -142,15 +145,14 @@ body {
 }
 
 .job-detail .banner .row .image {
-    top: 50%;
-    margin-top: -50px;
+    text-align: right;
 }
 
 .job-detail .banner .row .image img {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+    width: auto;
+    max-width:100%;
+    max-height:100%;
+
 }
 
 .job-detail .container {

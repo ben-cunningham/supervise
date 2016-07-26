@@ -1,12 +1,12 @@
 <div class="job-detail">
     <div class="body">
         <div class="banner">
-            <div class="container">
-                <div class="row">
-                    <div class="image col-md-4">
-                        <img ng-src="{{ job.images.urls[0] }}" width="180">
+            <div class="row">
+                <div class="parent-container">
+                    <div class="image col-md-5">
+                        <img ng-src="{{ job.images.urls[0] }}">
                     </div>
-                    <div class="address col-md-8">
+                    <div class="address col-md-7">
                         <div class="address-container">
                             <div>
                                 <span>{{ job.house.address.line1 }}</span>
@@ -19,7 +19,6 @@
 
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
