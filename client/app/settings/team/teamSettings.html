@@ -11,6 +11,24 @@
                         ng-change="onChange('username', profile.user.username)">
                 </div>
             </form>
+            <table class="table">
+                <thead>
+                    <th>Name</th>
+					<th>Email</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="estimator in estimators">
+                        <td>
+                            <a ui-sref="settings.foremanDetail({ pk: {{ estimator.pk }} })">
+								{{ estimator.user.first_name }} {{ estimator.user.last_name }}
+							</a>
+                        </td>
+						<td>
+                            {{ estimator.user.email }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="panel-footer">
             <button class="btn btn-primary pull-right" ng-click="submit()">Submit</button>

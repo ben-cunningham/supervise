@@ -28,5 +28,42 @@ angular.module('myApp.settings')
         };
     });
 
+(function() {
+    angular.module('myApp.settings')
+    .factory('Estimators', Estimator);
+
+    function Estimator($resource, Teams) {
+        var team = Teams.getTeam();
+        var resource = $resource(URL +'teams/' +team +'/estimators/', null, {
+            update: {method: 'PUT'},
+        });
+
+        var getEstimators = function(completion) {
+
+            resource.query(function(response) {
+
+                if(response) {
+
+                    completion(response);
+                }
+            });
+        };
+
+        // var editTeam = function(data, completion, errorCompletion) {
+        //     resource.update(data).$promise.then(
+        //         function(profile){
+        //             completion(profile);
+        //         },
+        //         function(error){
+        //             errorCompletion(error);
+        //         }
+        //     );
+        // }
+
+        return {
+            getEstimators : getEstimators,
+        };
+    }
+})();
 
 

@@ -1,13 +1,18 @@
 'use strict';
 
 angular.module('myApp.settings')
-    .controller('TeamSettingsController', ['$scope', '$state', 'Team',  function($scope, $state, Team) {
-        $scope.team = Team.getTeam(function() {
-            console.log($scope.team);
-        });
+    .controller('TeamSettingsController', ['$scope', '$state', 'Team', 'Estimators',
+        function($scope, $state, Team, Estimators) {
 
-        $scope.onChange = function(property, name) {
+            $scope.team = Team.getTeam(function() {
+            });
 
-        };
+            $scope.onChange = function(property, name) {
 
+            };
+
+            Estimators.getEstimators(function (response) {
+
+                $scope.estimators = response;
+            });
     }]);
