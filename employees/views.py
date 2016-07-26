@@ -17,8 +17,16 @@ from team.models import Team
 
 
 class EstimatorList(generics.ListCreateAPIView):
-    queryset = Estimator.objects.all()
     serializer_class = EstimatorSerializer
+
+    def get_queryset(self):
+        employee = Employee.objects.get(user=self.request.user)
+        team = Team.objects.get(pk=employee.team.pk)
+        try:
+            if employee.is_admin:
+                return Estimator.objects.filter(team=team)
+        except:
+            return None
 
 
 class EstimatorDetail(generics.RetrieveUpdateDestroyAPIView):
