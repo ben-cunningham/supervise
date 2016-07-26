@@ -31,13 +31,19 @@
                     Hours Spent: <b> {{ job.current_hours_spent }} </b>
                 </div>
                 <div class="property">
-                    Estimator: <b> {{ job.estimator.user.first_name }} {{ job.estimator.user.last_name }}  </b>
+                    Estimator:
+                    <a ui-sref="settings.foremanDetail({ pk: job.foreman.pk })">
+                        {{ job.estimator.user.first_name }} {{ job.estimator.user.last_name }}
+                    </a>
                 </div>
                 <div class="property">
                     Job Type: <b> {{ job_type }} </b>
                 </div>
                 <div class="property">
-                    Foreman: <b> {{ job.foreman.user.first_name }} {{ job.foreman.user.last_name }} </b>
+                    Foreman:
+                    <a ui-sref="settings.foremanDetail({ pk: job.foreman.pk })">
+                        {{ job.foreman.user.first_name }} {{ job.foreman.user.last_name }}
+                    </a>
                 </div>
             </div>
             <h2>Supplies</h2>
