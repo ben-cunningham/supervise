@@ -60,46 +60,6 @@ myApp.factory('Estimator', function($resource) {
     });
 });
 
-myApp.factory('Foremen', function($resource) {
-   var foremen = [], initialized;
-   var resource = $resource(URL + 'foreman/:pk/', { pk :'@pk'});
-
-   var getForemen = function(completion) {
-       if(!initialized) {
-           foremen = resource.query(completion);
-           initialized = true;
-       }
-       else {
-         if(completion)
-            completion(foremen);
-       }
-       return foremen;
-   };
-
-   var getForeman = function(pk, completion) {
-       return resource.get({ pk : pk }, completion);
-   };
-
-   var addForeman = function(data, completion) {
-       resource.save(data).$promise.then(
-           function(value) {
-               foremen.push(value);
-               if(completion)
-                   completion();
-           },
-           function(error) {
-               alert(error);
-           }
-       );
-   }
-
-   return {
-     getForemen : getForemen,
-     getForeman : getForeman,
-     addForeman : addForeman
-   };
-});
-
 myApp.config(function($resourceProvider) {
   $resourceProvider.defaults.stripTrailingSlashes = false;
 });
