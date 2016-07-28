@@ -34,7 +34,7 @@ angular.module('myApp.settings')
 
     function Estimator($resource, Teams) {
         var team = Teams.getTeam();
-        var resource = $resource(URL +'teams/' +team +'/estimators/', null, {
+        var resource = $resource(URL +'teams/' +team +'/estimators/:pk/', null, {
             update: {method: 'PUT'},
         });
 
@@ -49,19 +49,23 @@ angular.module('myApp.settings')
             });
         };
 
-        // var editTeam = function(data, completion, errorCompletion) {
-        //     resource.update(data).$promise.then(
-        //         function(profile){
-        //             completion(profile);
-        //         },
-        //         function(error){
-        //             errorCompletion(error);
-        //         }
-        //     );
-        // }
+        var getEstimator = function(pk, completion, errorCompletion) {
+
+            resource.get({ pk : pk}, function(data) {
+
+                if (data) {
+                    
+                    completion(data);
+                } else {
+
+                    errorCompletion()
+                }
+            });
+        }
 
         return {
             getEstimators : getEstimators,
+            getEstimator: getEstimator
         };
     }
 })();

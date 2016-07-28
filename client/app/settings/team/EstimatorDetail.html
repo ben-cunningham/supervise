@@ -1,0 +1,11 @@
+<div class="estimator-detail">
+    <div class="row">
+        <span>{{ estimator.user.first_name }} {{ estimator.user.last_name }}
+    </div>
+    <div class="row">
+        <span>Jobs</span>
+        <div ng-repeat="job in estimator.jobs">
+            {{ job }}
+        </div>
+    </div>
+</div>

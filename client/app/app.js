@@ -99,6 +99,14 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     authenticate: authenticate
                 }
             })
+            .state('settings.estimatorDetail', {
+                url: '/team/estimators/:pk',
+                templateUrl: '../static/settings/team/EstimatorDetail.html',
+                controller: 'EstimatorDetailController',
+                resolve: {
+                    authenticate: authenticate
+                }
+            })
             .state('settings.inventory', {
                 url: '/inventory',
                 templateUrl: '../static/settings/inventory/inventory.html',
