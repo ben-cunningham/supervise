@@ -40,8 +40,9 @@ angular.module('myApp.jobs').factory('Jobs', function($resource, Teams) {
         );
     };
 
-    var getJob = function(data, completion) {
-        return resource.get({ pk : data.pk}, function() {
+    var getJob = function(pk, completion) {
+
+        return resource.get({ pk : pk}, function() {
             completion();
             initialized = false;
         });

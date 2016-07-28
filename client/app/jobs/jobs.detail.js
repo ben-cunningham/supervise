@@ -9,7 +9,8 @@ var job_type = {
 angular.module('myApp.jobs')
   .controller('JobDetailCtrl', ['$scope', '$stateParams', 'Jobs', 'Estimator', '$state', '$uibModal',
       function($scope, $stateParams, Jobs, Estimator, $state, $uibModal) {
-          $scope.job = Jobs.getJob({ pk: $stateParams.pk }, function() {
+          
+          $scope.job = Jobs.getJob($stateParams.pk, function() {
               $scope.supplies = $scope.job.materials;
               $scope.checkIns = $scope.job.check_ins;
               $scope.data = [$scope.job.current_hours_spent, $scope.job.budget];
