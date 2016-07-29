@@ -17,7 +17,6 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                 quote = Quote.get({ pk: pk }, function() {
                     var house = Houses.getHouse(quote.house.pk, function() {
                         $scope.job.house = house;
-                        console.log(house);
                         $scope.job.budget = quote.quote;
                         $scope.job.estimator = quote.estimator;
                         $scope.job.description = quote.description;
