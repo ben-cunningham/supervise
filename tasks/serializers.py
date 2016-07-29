@@ -60,6 +60,7 @@ class JobListSerializer(serializers.ModelSerializer):
             'check_ins',
             'materials',
             'images',
+            'description',
         )
 
 class JobCreateSerializer(serializers.ModelSerializer):
