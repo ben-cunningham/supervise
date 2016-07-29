@@ -139,7 +139,7 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                 valid = false;
             }
 
-            if ($scope.newHouse.address.zip.length != 6 || $scope.newHouse.address.zip.length != 5) {
+            if ($scope.newHouse.address.zip.length != 6 && $scope.newHouse.address.zip.length != 5) {
                 $scope.zipError = "Not a valid zip code";
                 valid = false;
             }
@@ -149,7 +149,7 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
                 valid = false;
             }
 
-            if (!$scope.quote.price) {
+            if (!$scope.quote.quote) {
                 $scope.quoteError = "You must enter a value";
                 valid = false;
             }
