@@ -2,7 +2,11 @@
 
 angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams','Jobs', 'Estimators', 'Quote', 'Houses', 'Foremen',
     function($scope, $stateParams, Jobs, Estimators, Quote, Houses, Foremen) {
-        $scope.estimators = Estimators.getEstimators(function() {});
+
+        Estimators.getEstimators(function(response) {
+            $scope.estimators = response;
+        });
+
         $scope.foremen = Foremen.getForemen(function() {});
         $scope.job = {};
 
