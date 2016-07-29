@@ -49,12 +49,9 @@ class HouseSerializer(serializers.ModelSerializer):
             )
 
             if 'line2' in validated_data['address']:
-                address.zip = validated_data['address']['line2']
+                address.line2 = validated_data['address']['line2']
 
             address.save()
-
-            print address
-            print team
 
             house = House.objects.create(
                 address=address,
