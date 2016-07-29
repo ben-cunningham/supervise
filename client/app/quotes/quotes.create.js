@@ -140,7 +140,7 @@ angular.module('myApp.quotes').controller('NewQuoteCtrl',
             }
 
             if ($scope.newHouse.address.zip.length != 6 || $scope.newHouse.address.zip.length != 5) {
-                $scope.stateError = "Not a valid zip code";
+                $scope.zipError = "Not a valid zip code";
                 valid = false;
             }
 
