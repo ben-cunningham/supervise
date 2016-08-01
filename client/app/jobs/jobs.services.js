@@ -42,8 +42,13 @@ angular.module('myApp.jobs').factory('Jobs', function($resource, Teams) {
 
     var getJob = function(pk, completion) {
 
-        return resource.get({ pk : pk}, function() {
-            completion();
+        resource.get({ pk : pk}, function(response) {
+
+            if (response) {
+
+                completion(response);
+            }
+
             initialized = false;
         });
     };

@@ -58,6 +58,12 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                 };
             }
             else {
+                
+                Jobs.getJob(pk, function(response) {
+
+                    $scope.job = response;
+                });
+
 
                 $scope.submit = function() {
 
