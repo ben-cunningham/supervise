@@ -8,15 +8,15 @@
                     </div>
                     <div class="address col-md-7">
                         <div class="address-container">
-                            <div>
-                                <span>{{ job.house.address.line1 }}</span>
-                            </div>
-                            <div>
-                                <span>{{ job.house.address.city }}</span>
-                                <span>{{ job.house.address.state }}</span>
-                                <button class="btn btn-default" ng-click="editJob()">Edit</button>
-                            </div>
-
+                            <a href="#" ng-click="editJob()">
+                                <div>
+                                    <span>{{ job.house.address.line1 }}</span>
+                                </div>
+                                <div>
+                                    <span>{{ job.house.address.city }}</span>
+                                    <span>{{ job.house.address.state }}</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

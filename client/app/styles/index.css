@@ -131,6 +131,10 @@ body {
     overflow: auto;
 }
 
+.job-detail .banner a {
+    color: #515151;
+}
+
 .job-detail .banner .row .address {
     position: relative;
 }

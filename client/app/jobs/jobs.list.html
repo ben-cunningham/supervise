@@ -12,10 +12,14 @@
 
     <div class="completed" ng-if="hasCompleted">
         <div class="category">
-        Completed
+            Completed
         </div>
         <div class="postings" ng-repeat="job in completedJobs">
-            <a ui-sref="jobs-detail({ pk: job.pk })"> {{ job.house.address.line1 }} </a>
+            <div>
+                <a ui-sref="jobs-detail({ pk: {{ job.pk }}})">
+                    <img ng-src="{{ job.images.urls[0] }}" height="72"> {{ job.house.address.line1 }}
+                </a>
+            </div>
         </div>
     </div> 
 </div>
