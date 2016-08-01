@@ -157,10 +157,7 @@ body {
 
 .job-detail .container {
     width: 100%;
-}
-
-.job-detail .detail {
-    margin-top: 20px;
+    padding-top: 20px;
 }
 
 .job-detail .detail .property {
