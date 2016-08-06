@@ -182,6 +182,10 @@ body {
     transform: translateY(-50%);
 }
 
+.job-detail .check-ins .check-in button {
+    margin-top: 5px;
+}
+
 .job-detail .check-in-list>.row {
     padding-bottom: 20px;
 }
@@ -260,6 +264,31 @@ hr {
 .quote-create .selected {
     border: 4px solid #021a40;
 }
+
+/**************** Foreman Invite *******************/
+
+.foreman-invite {
+
+}
+
+.foreman-invite .title {
+    padding-top: 50px;
+    margin: 0 auto;
+    max-width: 50%;
+    width: 50%;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.foreman-invite .container {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.foreman-invite .container button {
+    display: inline-block;
+}
+
 
 /**************** PERFORMANCE *******************/
 

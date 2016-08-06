@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('myApp.settings')
-  .controller('newForemanCtrl', ['$scope', 'InviteForeman',  function($scope, InviteForeman) {
+  .controller('newForemanCtrl', ['$scope', 'Foremen',  function($scope, Foremen) {
       $scope.submit = function() {
-          InviteForeman.invite($scope.email, function() {
+          Foremen.inviteForeman($scope.email, function() {
               
           });
       }
