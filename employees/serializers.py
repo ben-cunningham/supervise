@@ -23,6 +23,7 @@ class EmployeeSerialzier(serializers.ModelSerializer):
             'user',
             'team',
             'is_admin',
+            'avatar',
         )
 
 class EstimatorSerializer(serializers.ModelSerializer):

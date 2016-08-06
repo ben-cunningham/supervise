@@ -6,6 +6,7 @@ class Employee(models.Model):
     is_admin = models.BooleanField(default=False)
     user = models.OneToOneField(User, null=True)
     team = models.ForeignKey(Team, null=True, related_name='estimators')
+    avatar = models.URLField(max_length=200)
 
 class Foreman(Employee):
     avg_profit = models.IntegerField(default=0)
