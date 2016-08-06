@@ -1,18 +1,33 @@
+{% load staticfiles %}
+{% load css %}
+
 <html>
     <head>
         <title> Lincor </title>
     </head>
+    <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
     <body>
-        <form action="/invite/" method="post">
-            {% csrf_token %}
-            {% for field in form %}
-                <div class="field">
-                    {{ field.label_tag }} {{ field }}
-                </div>
-            {% endfor %}
-            <input type="hidden" name="invite_uid" id="hidden_uid">
-            <input type="submit" value="Submit" />
-        </form>
+        <div class="foreman-signup">
+            <div class="navbar navbar-default">
+            </div>
+            <div class="container">
+                <form action="/invite/" method="post">
+                    {% csrf_token %}
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        {% for field in form %}
+                            <div class="form-group">
+                                {{ field.label_tag }} {{ field | css:"form-control" }}
+                            </div>
+                        {% endfor %}
+                        <input type="hidden" name="invite_uid" id="hidden_uid">
+                        <input type="submit" value="Submit" class="btn btn-submit"
+                            style="width: 100%;"/>
+                    </div>
+                    <div class="col-md-3"></div>
+                </form>
+            </div>
+        </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
