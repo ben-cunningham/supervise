@@ -10,6 +10,20 @@ body {
     background-color: #122b40;
 }
 
+.navbar .avatar {
+    margin: auto;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+
+.navbar .navbar-brand>img {
+    height: 100%;
+    padding: 10px;
+    width: auto;
+}
+
 .navbar-nav>li>a {
     color: white !important;
     font-size: medium;
