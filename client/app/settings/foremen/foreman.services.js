@@ -47,14 +47,14 @@
            );
        }
 
-        var inviteForeman = function(email) {
+        var inviteForeman = function(email, completion) {
             var data = {
                 "email" : email
             };
 
             $resource(URL +'teams/' +team +'/invite').save(data).$promise.then(
                 function( value ){
-                    console.log(value);
+                    completion(value);
                 },
                 function( error ){
                     alert('error');
