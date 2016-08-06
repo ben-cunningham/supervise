@@ -36,6 +36,7 @@ from team.models import Team
 
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.exceptions import PermissionDenied
 
 class JobList(generics.ListCreateAPIView):
     def get_queryset(self):
@@ -48,8 +49,8 @@ class JobList(generics.ListCreateAPIView):
             return None
 
         # TODO: Downcast so I don't need to requery
-        foreman = Foreman.objects.get(user=self.request.user)
-        return Job.objects.filter(team=team).filter(foreman=foreman)
+        # foreman = Foreman.objects.get(user=self.request.user)
+        return Job.objects.filter(team=team)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -70,12 +71,11 @@ class QuoteList(generics.ListCreateAPIView):
     def get_queryset(self):
         employee = Employee.objects.get(user=self.request.user)
         team = Team.objects.get(pk=employee.team.pk)
-        try:
-            if not employee.is_admin:
-                return Response(status=status.HTTP_403_FORBIDDEN)
+
+        if employee.is_admin:
             return Quote.objects.filter(team=team)
-        except:
-            return None
+
+        raise PermissionDenied({"message": "You don't have permission to access"})
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
