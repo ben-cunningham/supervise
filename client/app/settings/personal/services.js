@@ -10,7 +10,14 @@ angular.module('myApp.settings')
         });
 
         var getProfile = function(completion) {
-            var me = resource.get(completion);
+            var me = resource.get(function(response) {
+
+                if (response) {
+
+                    completion(response);
+                }
+            });
+
             return me;
         };
 
