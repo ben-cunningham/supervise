@@ -12,7 +12,7 @@ angular.module('myApp.settings')
     }]);
 
 angular.module('myApp.settings')
-    .controller('EditPersonalSettingsController', ['$scope', 'Profile', '$state',  function($scope, Profile, $state) {
+    .controller('EditPersonalSettingsController', ['$scope', 'Profile', 'Upload', '$window',  function($scope, Profile, Upload, $window) {
         var data = {
             user : {
 
@@ -41,6 +41,43 @@ angular.module('myApp.settings')
                     break;
             }
         };
+
+        $scope.readURL = function() {
+
+            var token = $window.localStorage.token;
+
+            if(!token) {
+                alert("need token");
+            }
+
+            Upload.upload({
+                url: '/api/upload/',
+                data: { key: $scope.avatar },
+                headers: { 'Authorization': 'JWT' +token }, // only for html5
+            }).then(
+                function(resp) {
+
+                    var data = {
+                        avatar: resp.data.urls
+                    };
+
+                    Profile.editProfile(data,
+                        function(response) {
+
+
+
+                        }, function() {
+
+                    });
+
+                }, function(resp) {
+                    console.log(resp);
+                    // handle error
+                }, function(evt) {
+                    // console.log(evt);
+                });
+
+        }
 
         $scope.submit = function() {
             console.log(data);

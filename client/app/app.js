@@ -4,7 +4,7 @@ angular.module('lincorFeApp.services', []);
 angular.module('myApp.shared', []);
 angular.module('myApp.jobs', ['myApp.teams', 'ngSanitize', 'ui.bootstrap', 'myApp.settings']);
 angular.module('myApp.quotes', ['myApp.teams', 'ngFileUpload']);
-angular.module('myApp.settings', ['myApp.teams', 'ui.bootstrap']);
+angular.module('myApp.settings', ['myApp.teams', 'ui.bootstrap', 'ngFileUpload']);
 angular.module('myApp.performance', []);
 angular.module('myApp.teams', ['ngResource']);
 

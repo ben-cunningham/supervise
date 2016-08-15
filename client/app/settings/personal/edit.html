@@ -6,20 +6,46 @@
         </div>
         <div class="panel-body">
             <form>
-                <div class="form-group">
-                    <label class="">Username</label>
-                    <input type="text" class="form-control" ng-model="profile.user.username"
-                        ng-change="onChange('username', profile.user.username)">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="">Username</label>
+                            <input type="text" class="form-control" ng-model="profile.user.username"
+                                ng-change="onChange('username', profile.user.username)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <a href="#" ng-click="updateAvatar" ngf-select
+                               ng-model="avatar" name="file"
+                               accept="image/*" ngf-max-size="2MB"
+                               ngf-change="readURL($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
+                               ngf-model-invalid="errorFile">
+                                <div class="avatar">
+                                    <div class="overlay">
+                                        <span>Edit</span>
+                                    </div>
+                                    <img ng-src="{{ profile.avatar }}">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="">First Name</label>
-                    <input type="text" class="form-control" ng-model="profile.user.first_name"
-                        ng-change="onChange('firstName', profile.user.first_name)">
-                </div>
-                <div class="form-group">
-                    <label class="">Last Name</label>
-                    <input type="text" class="form-control" ng-model="profile.user.last_name"
-                        ng-change="onChange('lastName', profile.user.last_name)">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div clas="form-group">
+                            <label class="">First Name</label>
+                            <input type="text" class="form-control" ng-model="profile.user.first_name"
+                                ng-change="onChange('firstName', profile.user.first_name)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="">Last Name</label>
+                            <input type="text" class="form-control" ng-model="profile.user.last_name"
+                                ng-change="onChange('lastName', profile.user.last_name)">
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="">Email</label>

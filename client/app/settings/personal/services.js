@@ -5,7 +5,7 @@ angular.module('myApp.settings')
 
         var resource = $resource('/api/me', null, {
             update: {
-                method: 'PUT'
+                method: 'PATCH'
             }
         });
 
