@@ -39,6 +39,7 @@ class EstimatorSerializer(serializers.ModelSerializer):
             'avg_estimate',
             'jobs',
             'is_admin',
+            'avatar',
         )
 
     def create(self, validated_data):
@@ -70,7 +71,8 @@ class ForemanSerializer(serializers.ModelSerializer):
             'pk',
             'user',
             'jobs',
-            'is_admin'
+            'is_admin',
+            'avatar',
         )
 
     def create(self, validated_data):
