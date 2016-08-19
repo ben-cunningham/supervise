@@ -9,11 +9,12 @@ angular.module('myApp.jobs').factory('Jobs', function($resource, Teams) {
                         update : { method: 'PUT' }
                     });
 
-    var getJobs = function(completion, shouldReload) {
+    var getJobs = function(parameters, completion, shouldReload) {
 
+        
         if (!initialized || shouldReload) {
 
-           resource.query(function(response) {
+           resource.query(parameters, function(response) {
 
                if(response) {
                    completion(response);
