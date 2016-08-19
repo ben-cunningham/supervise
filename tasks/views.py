@@ -42,15 +42,29 @@ class JobList(generics.ListCreateAPIView):
     def get_queryset(self):
         employee = Employee.objects.get(user=self.request.user)
         team = employee.team
-        try:
-            if employee.is_admin:
-                return Job.objects.filter(team=team)
-        except:
-            return None
+        # try:
+        #     if employee.is_admin:
+        #         return Job.objects.filter(team=team)
+        # except:
+        #     return None
 
         # TODO: Downcast so I don't need to requery
         # foreman = Foreman.objects.get(user=self.request.user)
-        return Job.objects.filter(team=team)
+        # return Job.objects.filter(team=team)
+
+        queryset = Job.objects.filter(team=team)
+
+        estimator_pk = self.request.query_params.get('estimator', None)
+        if estimator_pk is not None:
+            estimator = Estimator.objects.get(pk=estimator_pk)
+            queryset = queryset.filter(estimator=estimator)
+
+        foreman_pk = self.request.query_params.get('foreman', None)
+        if foreman_pk is not None:
+            foreman = Estimator.objects.get(pk=estimator_pk)
+            queryset = queryset.filter(foreman=foreman)
+
+        return queryset
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
