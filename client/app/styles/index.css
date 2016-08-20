@@ -271,8 +271,9 @@ hr {
 }
 
 .quotes .row .buttons button {
-    width: 75px;
-    margin: 5px;
+    /*width: 75px;*/
+    /*margin: 5px;*/
+    max-width: 100px;
 }
 
 .quotes .row .address {

@@ -52,20 +52,18 @@ angular.module('myApp.settings')
 
             Upload.upload({
                 url: '/api/upload/',
-                data: { key: $scope.avatar },
+                data: { key: [$scope.avatar] },
                 headers: { 'Authorization': 'JWT' +token }, // only for html5
             }).then(
                 function(resp) {
-
                     var data = {
-                        avatar: resp.data.urls
+                        avatar: resp.data.urls[0]
                     };
 
                     Profile.editProfile(data,
                         function(response) {
 
-
-
+                            
                         }, function() {
 
                     });
