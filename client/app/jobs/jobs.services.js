@@ -59,10 +59,20 @@ angular.module('myApp.jobs').factory('Jobs', function($resource, Teams) {
     };
 
     var updateJob = function(pk, job, completion) {
+
         if(job) {
-            resource.update({ pk : pk}, job);
-            if(completion)
-                completion();
+
+            resource.update({ pk : pk}, job).$promise.then(
+
+                function(profile){
+
+                    completion(profile);
+                },
+                function(error){
+
+                    errorCompletion(error);
+                }
+            );;
         }
     };
 
