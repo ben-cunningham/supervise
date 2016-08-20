@@ -140,13 +140,13 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 }
             })
 
-        function authenticate($q, $window, $location, $timeout) {
+        function authenticate($q, $window, $timeout) {
             if($window.localStorage.token) {
                 return $q.when();
             } else {
                 $timeout(function() {
                     $window.location.href = '/login';
-                })
+                });
                 return $q.reject();
             }
         }
