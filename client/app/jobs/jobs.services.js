@@ -16,7 +16,11 @@ angular.module('myApp.jobs').factory('Jobs', function($resource, Teams) {
 
            resource.query(parameters, function(response) {
 
-               if(response) {
+               if(response.error) {
+                   console.log(response);
+               }
+
+               else if(response) {
                    completion(response);
                }
 
