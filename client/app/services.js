@@ -64,7 +64,7 @@ myApp.config(function($resourceProvider) {
   $resourceProvider.defaults.stripTrailingSlashes = false;
 });
 
-myApp.factory('sessionInjector', ['$window', '$location', function($window, $location) {
+myApp.factory('sessionInjector', ['$window', '$q', function($window, $q) {
     var sessionInjector = {
         request: function(config) {
             var token = $window.localStorage.token;
@@ -75,7 +75,7 @@ myApp.factory('sessionInjector', ['$window', '$location', function($window, $loc
         },
 
         responseError : function(rejection) {
-            return $q.reject(response);
+            return $q.reject(rejection);
         }
     };
     return sessionInjector;
