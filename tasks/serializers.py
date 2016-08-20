@@ -13,10 +13,12 @@ from material_serializers import CheckedOutMaterialSerializer
 
 from main.serializers import HouseSerializer
 from team.models import Team
-from employees.serializers import EstimatorSerializer, ForemanSerializer
-from employees.models import Estimator
+from employees.serializers import EstimatorSerializer, ForemanSerializer, EmployeeSerialzier
+from employees.models import Estimator, Employee
 
 class CheckInSerializer(serializers.ModelSerializer):
+
+    foreman = EmployeeSerialzier(required=False)
 
     class Meta:
         model = CheckIn
@@ -24,15 +26,20 @@ class CheckInSerializer(serializers.ModelSerializer):
             'pk',
             'created',
             'text',
+            'foreman',
         )
 
     def create(self, validated_data):
         view = self.context['view']
         job_pk = view.kwargs['pk']
         job = Job.objects.get(pk=job_pk)
+
+        employee = Employee.objects.get(user=view.request.user)
+
         check_in = CheckIn.objects.create(
             text=validated_data['text'],
             job=job,
+            foreman=employee
         )
         check_in.save()
         return check_in

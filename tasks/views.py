@@ -108,7 +108,7 @@ class CheckIn(APIView):
         check_in = CheckInSerializer(data=request.data, context={'view': self})
         if check_in.is_valid():
             check_in.save()
-            return Response(status=status.HTTP_201_CREATED)
+            return Response(check_in.data, status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class MaterialView(APIView):

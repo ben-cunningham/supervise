@@ -3,7 +3,7 @@ from django.contrib.postgres.fields import JSONField
 
 from main.models import House
 from team.models import Team
-from employees.models import Estimator, Foreman
+from employees.models import Estimator, Foreman, Employee
 from units import UNIT_CHOICES
 
 JOB_CHOICES = (
@@ -59,6 +59,7 @@ class CheckIn(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     text = models.CharField(max_length=500)
     job = models.ForeignKey(Job, related_name='check_ins')
+    foreman = models.ForeignKey(Employee, related_name='check_ins')
 
     class Meta:
         ordering = ('created',)
