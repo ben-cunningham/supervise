@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams','Jobs', 'Estimators', 'Quote', 'Houses', 'Foremen',
-    function($scope, $stateParams, Jobs, Estimators, Quote, Houses, Foremen) {
+angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams','Jobs', 'Estimators', 'Quote', 'Houses', 'Foremen', '$state',
+    function($scope, $stateParams, Jobs, Estimators, Quote, Houses, Foremen, $state) {
 
         Estimators.getEstimators(function(response) {
             $scope.estimators = response;
@@ -80,8 +80,9 @@ angular.module('myApp.jobs').controller('NewJobCtrl', ['$scope', '$stateParams',
                     job.foreman = $scope.job.foreman.pk;
                     job.estimator = $scope.job.estimator.pk;
                     job.description = $scope.job.description;
-                    Jobs.updateJob(pk, job, function() {
+                    Jobs.updateJob(pk, job, function(updatedJob) {
 
+                        $state.go('jobs-detail', { pk: updatedJob.pk });
                     });
                 };
             }
