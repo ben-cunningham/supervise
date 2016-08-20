@@ -1,11 +1,17 @@
 <div class="estimator-detail">
     <div class="row">
-        <span>{{ estimator.user.first_name }} {{ estimator.user.last_name }}</span>
+        <div class="avatar"><img ng-src="{{ estimator.avatar }}"></div>
+        <span>{{ estimator.user.first_name }} {{ estimator.user.last_name }}</span><br>
+        <span>{{ estimator.user.email }}</span>
     </div>
     <div class="row">
-        <span>Jobs</span>
-        <div ng-repeat="job in estimator.jobs">
-            {{ job }}
+        <span class="job-title">Jobs</span>
+        <div ng-repeat="job in jobs">
+            <div class="job">
+                <a ui-sref="jobs-detail({ pk: {{ job.pk }}})">
+                    <img ng-src="{{ job.images.urls[0] }}" height="72"> {{ job.house.address.line1 }}
+                </a>
+            </div>
         </div>
     </div>
 </div>
