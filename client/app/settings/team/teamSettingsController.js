@@ -15,4 +15,14 @@ angular.module('myApp.settings')
 
                 $scope.estimators = response;
             });
+            
+            $scope.submit = function() {
+
+                Team.editTeam($scope.team.name, function(response) {
+
+                    
+                }, function() {
+
+                })
+            };
     }]);
