@@ -4,7 +4,7 @@ angular.module('myApp.settings')
     .factory('Team', function($resource, Teams) {
         var team = Teams.getTeam();
         var resource = $resource(URL +'teams/' +team, null, {
-            update: {method: 'PUT'},
+            update: {method: 'PATCH'},
         });
 
         var getTeam = function(completion) {
@@ -12,11 +12,15 @@ angular.module('myApp.settings')
         };
 
         var editTeam = function(data, completion, errorCompletion) {
+
             resource.update(data).$promise.then(
+
                 function(profile){
+
                     completion(profile);
                 },
                 function(error){
+
                     errorCompletion(error);
                 }
             );
